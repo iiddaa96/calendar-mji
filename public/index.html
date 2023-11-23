@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" /> 
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MJI Calendar</title>
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/desktop.css" />
 
     <!--Javascript-->
-    <script src="/public/javascript/main.js"></script>
+    <script src="/javascript/main.js"></script>
   </head>
   <body>
     <!-- HEADER---------------------------------------------------------->
@@ -30,58 +30,59 @@
             </p>
 
             <!-- Knappen där man lägger till anteckningar -->
-          <div class="create-button-div">
-            <button class="createButton">
-              <p>Lägg till anteckningar</p>
-              <p><i class="fa-solid fa-plus"></i></p>
-            </button>
-          </div>
+            <div class="create-button-div">
+              <button class="createButton">
+                <p>Lägg till anteckningar</p>
+                <p><i class="fa-solid fa-plus"></i></p>
+              </button>
+            </div>
 
-          <!-- TODO POPUPS----------------------------------------------------------->
-          <div class="create-todo-popup">
-            <!-- Fältet där du skriver in vad du vill göra -->
-            <form>
-              <input
-                type="text"
-                name="text"
-                id="todoInput"
-                class="todo-input"
-                placeholder="ToDo..."
-              />
-              <!-- Fältet där du skriver in när du vill göra det - datum -->
-              <div class="popup-date-btn-container">
+            <!-- TODO POPUPS----------------------------------------------------------->
+            <div class="create-todo-popup">
+              <!-- Fältet där du skriver in vad du vill göra -->
+              <form>
                 <input
-                  type="date"
-                  name="date"
-                  id="dateInput"
-                  class="date-input"
+                  type="text"
+                  name="text"
+                  id="todoInput"
+                  class="todo-input"
+                  placeholder="ToDo..."
                 />
-                <!-- Knappen där du sparar  -->
-                <button class="save-button">Spara</button>
-              </div>
-              <!-- Dyker upp om du inte fyllt i korrekt i båda fälten -->
-              <div class="feedback-container">
-                <div class="warning"></div>
-                <div class="feedback"></div>
-              </div>
-            </form>
+                <!-- Fältet där du skriver in när du vill göra det - datum -->
+                <div class="popup-date-btn-container">
+                  <input
+                    type="date"
+                    name="date"
+                    id="dateInput"
+                    class="date-input"
+                  />
+                  <!-- Knappen där du sparar  -->
+                  <button class="save-button">Spara</button>
+                </div>
+                <!-- Dyker upp om du inte fyllt i korrekt i båda fälten -->
+                <div class="feedback-container">
+                  <div class="warning"></div>
+                  <div class="feedback"></div>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
 
-        <div class="todo-list">
-          <!-- ALL TODO---------------------------------------------------------------------------------------------------------------------------------------------->
+          <div class="todo-list">
+            <!-- ALL TODO---------------------------------------------------------------------------------------------------------------------------------------------->
 
-          <!-- Här kan man se hur många anteckningar man har lagt till  -->
-          <div class="todo-heading">
-            <p>
-              Antal anteckningar
-              <span>
-                <!-- Lägg in antal todos inom "()" -->
-              </span>
-              ()
-            </p>
+            <!-- Här kan man se hur många anteckningar man har lagt till  -->
+            <div class="todo-heading">
+              <p>
+                Antal anteckningar
+                <span>
+                  <!-- Lägg in antal todos inom "()" -->
+                </span>
+                ()
+              </p>
+            </div>
+            <ul class="todo-container" data-cy="todo-list"></ul>
           </div>
-          <ul class="todo-container" data-cy="todo-list"></ul>
         </div>
       </aside>
 
