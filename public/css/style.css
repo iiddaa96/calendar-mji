@@ -70,8 +70,9 @@ aside {
   justify-content: center;
   border: solid;
   border-width: 0.5rem;
+  margin-bottom: 1.5rem;
 }
-
+/* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN */
 .create-button-div .createButton {
   margin: 1.5rem 0;
   padding: 0.5rem 2rem;
@@ -79,12 +80,66 @@ aside {
   max-width: 16rem;
   border-radius: 0.5rem;
   color: black;
-  background-color: #7d7574;
+  background-color: white;
   border: none;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   font-weight: 600;
+}
+/* GÖMMER TODO POPUP */
+/* .create-todo-popup {
+  width: 100%;
+  display: none;
+  top: 215px;
+  left: 0;
+  margin: auto;
+  padding: 2rem;
+  z-index: 100;
+} */
+
+.show-popup {
+  display: block;
+}
+
+/* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
+.create-todo-popup {
+  border: solid;
+  width: 70%;
+}
+
+.create-todo-popup input,
+button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  color: rgba(14, 37, 49, 0.825);
+}
+
+/* Input knapp */
+.todo-input {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+/* DATUM OCH SPARA KNAPPEN */
+.popup-date-btn-container {
+  border: solid;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.save-button {
+  cursor: pointer;
+}
+
+.feedback-container {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+.feedback-container i {
+  color: rgb(255, 0, 0);
+  margin-right: 0.5rem;
 }
 
 /* MAIN---------------------------------------------------------------------------------- */
@@ -108,4 +163,8 @@ aside {
 
 .weekday-div {
   display: none;
+}
+
+.cursor {
+  cursor: pointer;
 }
