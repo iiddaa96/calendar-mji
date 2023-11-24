@@ -53,16 +53,24 @@ aside {
   position: relative;
   /* opacity: 0.8; */
 }
-
+ /* STYLE FÖR KLOCKAN; DATUM; TID */
 .welcome-div {
   text-align: center;
   padding: 1.5rem;
 }
 
 .full-date-and-time {
-  font-size: var(--FS-1_5);
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
+
+.current-time .clock {
+  font-size: 2rem;
+}
+
+/* .clock-and-hand img {
+  display: none;
+} */
 
 /* SKAPA LÄGG TILL KNAPP ---------------------------------*/
 .create-button-div {

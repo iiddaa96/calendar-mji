@@ -13,6 +13,7 @@
     <!--Javascript-->
     <script src="./javascript/main.js"></script>
     <script src="./javascript/todos.js"></script>
+    <script src="./javascript/welcome.js"></script>
   </head>
   <body>
     <!-- HEADER---------------------------------------------------------->
@@ -26,9 +27,16 @@
         <div class="aside-fixed-section">
           <!-- Div där dag, månad och current time syns -->
           <div class="welcome-div">
-            <p class="full-date-and-time">
+            <p  id="todaysDate" class="full-date-and-time">
               <!--JS kod ex:måndag 2 december 2023 -->
             </p>
+
+                 <div class="current-time">
+                <p id="time" class="clock">
+                  <!--Klocka från JS kod -->
+                </p>
+              </div>
+            </div>
 
             <!-- Knappen där man lägger till anteckningar -->
             <div class="create-button-div">
