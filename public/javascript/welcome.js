@@ -1,5 +1,4 @@
 function initWelcome() {
-  //   showCurrentDay();
   updateDateTime();
 }
 
