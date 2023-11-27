@@ -1,44 +1,55 @@
 function initWelcome() {
-  showCurrentDay();
+  updateDateTime();
 }
 
-/**This shows the current date and time in right format */
-function showCurrentDay() {
-  const today = new Date();
+function updateDateTime() {
+  const now = new Date();
+  const days = [
+    "Söndag",
+    "Måndag",
+    "Tisdag",
+    "Onsdag",
+    "Torsdag",
+    "Fredag",
+    "Lördag",
+  ];
+  const months = [
+    "Januari",
+    "Februari",
+    "Mars",
+    "April",
+    "Maj",
+    "Juni",
+    "Juli",
+    "Augusti",
+    "September",
+    "Oktober",
+    "November",
+    "December",
+  ];
 
-  let day = today.getDay();
-  let date = today.getDate();
-  let month = today.getMonth();
-  let year = today.getFullYear();
-  let time = today.toLocaleTimeString("sv-SE");
-  let dayString = "";
+  // Format the day, date, and month
+  const dayOfWeek = days[now.getDay()];
+  const date = now.getDate();
+  const month = months[now.getMonth()];
+  const year = now.getFullYear();
 
-  switch (day) {
-    case 0:
-      dayString = "Söndag";
-      break;
-    case 1:
-      dayString = "Måndag";
-      break;
-    case 2:
-      dayString = "Tisdag";
-      break;
-    case 3:
-      dayString = "Onsdag";
-      break;
-    case 4:
-      dayString = "Torsdag";
-      break;
-    case 5:
-      dayString = "Fredag";
-      break;
-    case 6:
-      dayString = "Lördag";
-      break;
-  }
-  document.getElementById("test").innerHTML =
-    dayString + " " + date + " " + months[month] + " " + year;
-  document.getElementById("time").innerHTML = time;
+  // Display the full date
+  const todaysDateElement = document.getElementById("todaysDate");
+  todaysDateElement.textContent = `${dayOfWeek} ${date} ${month} ${year}`;
 
-  setInterval(showCurrentDay, 1000);
+  // Format the time
+  const timeElement = document.getElementById("time");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+
+  // Display the current time
+  timeElement.textContent = `${hours}:${minutes}:${seconds}`;
 }
+
+// Call `updateDateTime` on page load and then every second
+document.addEventListener("DOMContentLoaded", function () {
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
+});

@@ -12,6 +12,8 @@
 
     <!--Javascript-->
     <script src="./javascript/main.js"></script>
+    <script src="./javascript/todos.js"></script>
+    <script src="./javascript/welcome.js"></script>
   </head>
   <body>
     <!-- HEADER------------------------------>
@@ -25,22 +27,29 @@
         <div class="aside-fixed-section">
           <!-- Div där dag, månad och current time syns -->
           <div class="welcome-div">
-            <p class="full-date-and-time">
+            <p  id="todaysDate" class="full-date-and-time">
               <!--JS kod ex:måndag 2 december 2023 -->
             </p>
 
+                 <div class="current-time">
+                <p id="time" class="clock">
+                  <!--Klocka från JS kod -->
+                </p>
+              </div>
+            </div>
+
             <!-- Knappen där man lägger till anteckningar -->
             <div class="create-button-div">
-              <button class="createButton">
+              <button id="todoButton" class="createButton">
                 <p>Lägg till anteckningar</p>
                 <p><i class="fa-solid fa-plus"></i></p>
               </button>
             </div>
 
             <!----------------------- TODO POPUPS------------------------------------------>
-            <div class="create-todo-popup">
+            <div id="todoPopup" class="create-todo-popup">
               <!-- Fältet där du skriver in vad du vill göra -->
-              <form>
+              <form id="add-todo-form">
                 <input
                   type="text"
                   name="text"
@@ -57,12 +66,12 @@
                     class="date-input"
                   />
                   <!-- Knappen där du sparar  -->
-                  <button class="save-button">Spara</button>
+                  <button id="saveButton" class="save-button">Spara</button>
                 </div>
                 <!-- Dyker upp om du inte fyllt i korrekt i båda fälten -->
                 <div class="feedback-container">
-                  <div class="warning"></div>
-                  <div class="feedback"></div>
+                  <div id="warning" class="warning"></div>
+                  <div id="feedback" class="feedback"></div>
                 </div>
               </form>
             </div>
@@ -81,7 +90,7 @@
                 ()
               </p>
             </div>
-            <ul class="todo-container" data-cy="todo-list"></ul>
+            <ul class="todo-container" id="allTodo" data-cy="todo-list"></ul>
           </div>
         </div>
       </aside>

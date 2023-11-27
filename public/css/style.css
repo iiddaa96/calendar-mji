@@ -53,16 +53,24 @@ aside {
   position: relative;
   /* opacity: 0.8; */
 }
-
+ /* STYLE FÖR KLOCKAN; DATUM; TID */
 .welcome-div {
   text-align: center;
   padding: 1.5rem;
 }
 
 .full-date-and-time {
-  font-size: var(--FS-1_5);
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
+
+.current-time .clock {
+  font-size: 2rem;
+}
+
+/* .clock-and-hand img {
+  display: none;
+} */
 
 /* SKAPA LÄGG TILL KNAPP ---------------------------------*/
 .create-button-div {
@@ -70,8 +78,9 @@ aside {
   justify-content: center;
   border: solid;
   border-width: 0.5rem;
+  margin-bottom: 1.5rem;
 }
-
+/* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN */
 .create-button-div .createButton {
   margin: 1.5rem 0;
   padding: 0.5rem 2rem;
@@ -79,12 +88,127 @@ aside {
   max-width: 16rem;
   border-radius: 0.5rem;
   color: black;
-  background-color: #7d7574;
+  background-color: white;
   border: none;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   font-weight: 600;
+}
+/* GÖMMER TODO POPUP */
+.create-todo-popup {
+  width: 100%;
+  display: none;
+  top: 215px;
+  left: 0;
+  margin: auto;
+  padding: 2rem;
+  z-index: 100;
+}
+
+.show-popup {
+  display: block;
+}
+
+/* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
+.create-todo-popup {
+  border: solid;
+  width: 70%;
+}
+
+.create-todo-popup input,
+button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  color: rgba(14, 37, 49, 0.825);
+}
+
+/* Input knapp */
+.todo-input {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+/* DATUM OCH SPARA KNAPPEN */
+.popup-date-btn-container {
+  border: solid;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.save-button {
+  cursor: pointer;
+}
+
+.feedback-container {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+.feedback-container i {
+  color: rgb(255, 0, 0);
+  margin-right: 0.5rem;
+}
+
+/* TODO-----------------------------------*/
+.todo {
+  padding: 0.8rem 0;
+  margin: 1rem 0.5rem 0.5rem 0.5rem;
+  background-color: beige;
+  border: 1px solid;
+  border-radius: 0.33rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-content {
+  margin-left: 1rem;
+  /* color: var(--Secondary-color); */
+  overflow: hidden;
+  width: 65%;
+}
+
+.todo-content input {
+  background-color: darkgrey;
+  /* color: var(--Secondary-color); */
+  border-style: none;
+  font-size: 1.5rem;
+}
+
+.todo-title {
+  margin-bottom: 0.3rem;
+}
+
+.todo-date {
+  font-size: 0.8rem;
+}
+
+.todo-buttons {
+  margin-right: 1rem;
+  gap: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 35%;
+}
+
+.todo-button-edit {
+  background-color: gray;
+  color: blue;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.5rem 0.5rem;
+  font-size: var(2rem);
+  cursor: pointer;
+}
+
+.todo-button-delete {
+  color: red;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 /* MAIN---------------------------------------------------------------------------------- */
@@ -108,4 +232,8 @@ aside {
 
 .weekday-div {
   display: none;
+}
+
+.cursor {
+  cursor: pointer;
 }
