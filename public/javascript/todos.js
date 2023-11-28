@@ -1,10 +1,13 @@
 window.addEventListener("DOMContentLoaded", startTodos);
 
 /**
- * Global array
+ * Global array "todos" för att lagra ToDo-objekt.
  */
 let todos = [];
 
+/**
+ * Anrop till flera andra funktioner som ställer in händelselyssnare och förbereder gränssnittet.
+ */
 function startTodos() {
   addEventListeners();
   togglePopup();
@@ -55,7 +58,9 @@ function addTodoFormEventListener() {
   }
 }
 
-/** Skapar ny data i ett objekt och pushar in det i arrayen (todos). */
+/** Skapar ny data i ett objekt och pushar in det i arrayen (todos).
+ * Skapar ett nytt att göra-objekt baserat på användarens inmatning och lägger till det i den globala todos-arrayen.
+ */
 function createNewTodoObject(event) {
   event.preventDefault();
 
@@ -72,7 +77,9 @@ function createNewTodoObject(event) {
   refreshTodoList();
 }
 
-/** Skapar element, tillämpar klasser och renderar de skapade todo:sen. */
+/** Skapar element, tillämpar klasser och renderar de skapade todo:sen.
+ * Renderar att göra-listan på sidan. Den skapar HTML-element för varje att göra och lägger till händelselyssnare för redigering och borttagning av varje att göra.
+ */
 function refreshTodoList() {
   const allTodo = document.querySelector("#allTodo");
   allTodo.innerHTML = "";
@@ -93,8 +100,8 @@ function refreshTodoList() {
     editButton.classList.add("todo-button-edit");
     deleteButton.classList.add("todo-button-delete");
 
-    todoContent.innerHTML = `<p>${todo.content}</p>`;
-    todoDate.innerHTML = `<p>${todo.date}</p>`;
+    todoContent.innerHTML = `<p>${todo.content}</p>`; // Sätter HTML-innehållet för todoContent till innehållet (texten) av det aktuella att göra-objektet.
+    todoDate.innerHTML = `<p>${todo.date}</p>`; // Sätter HTML-innehållet för todoDate till datumet av det aktuella att göra-objektet.
 
     editButton.textContent = "Ändra";
     deleteButton.textContent = "Ta bort";
@@ -112,6 +119,7 @@ function refreshTodoList() {
 
     // Ändrar todo.
     editButton.addEventListener("click", (event) => {
+      //Händlselyssnare för knappen "ändra". När knappen klickas kommer kod nedan att köras
       const todoInput = todoContent.querySelector(".input-todo");
       const todoDate = todoContent.querySelector(".input-date");
 
@@ -126,6 +134,7 @@ function refreshTodoList() {
         todo.content = todoInput.value;
         todo.date = todoDate.value;
 
+        //.map-metoden för att skapa en ny array (todos) där todo objektet uppdateras. Görs med att jämföra id, om match så returneras det uppdaterade "todo objektet" annars returneras det befintliga objektet.
         todos = todos.map((item, index) => {
           if (item.id === todo.id) {
             return todo;
