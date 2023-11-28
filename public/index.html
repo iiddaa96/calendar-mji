@@ -55,7 +55,7 @@
           <!----------------------- TODO POPUPS------------------------------------------>
           <div id="todoPopup" class="create-todo-popup">
             <!-- Fältet där du skriver in vad du vill göra -->
-            <form id="add-todo-form">
+            <!-- <form id="add-todo-form">
               <input
                 type="text"
                 name="text"
@@ -63,22 +63,36 @@
                 class="todo-input"
                 placeholder="ToDo..."
               />
-              <!-- Fältet där du skriver in när du vill göra det - datum -->
-              <div class="popup-date-btn-container">
+              <Fältet där du skriver in när du vill göra det - datum -->
+            <!-- <div class="popup-date-btn-container">
                 <input
                   type="date"
                   name="date"
                   id="dateInput"
                   class="date-input"
-                />
-                <!-- Knappen där du sparar  -->
-                <button id="saveButton" class="save-button">Spara</button>
+                /> -->
+            <!-- Knappen där du sparar  -->
+            <!-- <button id="saveButton" class="save-button">Spara</button>
               </div>
-              <!-- Dyker upp om du inte fyllt i korrekt i båda fälten -->
-              <div class="feedback-container">
+              < Dyker upp om du inte fyllt i korrekt i båda fälten -->
+            <!-- <div class="feedback-container">
                 <div id="warning" class="warning"></div>
                 <div id="feedback" class="feedback"></div>
               </div>
+            </form>  -->
+            <form id="todoForm">
+              <label for="todoInput">Text:</label>
+              <input
+                type="text"
+                id="todoInput"
+                placeholder="Lägg till nytt ToDo..."
+                required
+              />
+
+              <label for="dueDate">Datum:</label>
+              <input type="date" id="dueDate" required />
+
+              <button type="button" onclick="addTodo()">Lägg till</button>
             </form>
           </div>
         </div>
@@ -90,13 +104,19 @@
           <div class="todo-heading">
             <p>
               Antal anteckningar
-              <span>
+              <span id="todoCount">
                 <!-- Lägg in antal todos inom "()" -->
               </span>
               ()
             </p>
           </div>
-          <ul class="todo-container" id="allTodo" data-cy="todo-list"></ul>
+          <ul id="todoList"></ul>
+          <!-- <ul class="todo-container" id="allTodo" data-cy="todo-list"> -->
+          <li>
+            <span class="todo-text">Your Todo Item</span>
+            <!-- Add any other elements you need for your todo items -->
+          </li>
+          <!-- </ul> -->
         </div>
       </aside>
 
