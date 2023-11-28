@@ -1,159 +1,138 @@
-// ali cod
-const weekArray = ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
-const monthArray = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-const current = new Date();
-const todaysDate = current.getDate();
-const currentYear = current.getFullYear();
-const currentMonth = current.getMonth();
+function initCalender() {
+  generateCalenderDays();
+  // calenderInfo();
+  // changeBackgroundByMonth();
+}
 
-window.onload = function () {
-  const currentDate = new Date();
-  generateCalendarDays(currentDate);
+document.addEventListener("DOMContentLoaded", () => {
+  const displayCurrentMonth = document.getElementById("displayCurrentMonth");
+  const calendar = document.querySelector(".calendar");
+  let currentDate = new Date();
 
-  let calendarWeek = document.getElementsByClassName("calendar-week")[0];
-  let calendarTodayButton = document.getElementsByClassName(
-    "calendar-today-button"
-  )[0];
-  calendarTodayButton.textContent = `Today ${todaysDate}`;
-
-  calendarTodayButton.addEventListener("click", () => {
-    generateCalendarDays(currentDate);
-  });
-
-  weekArray.forEach((week) => {
-    let li = document.createElement("li");
-    li.textContent = week;
-    li.classList.add("calendar-week-day");
-    calendarWeek.appendChild(li);
-  });
-
-  const calendarMonths = document.getElementsByClassName("calendar-months")[0];
-  const calendarYears = document.getElementsByClassName("calendar-years")[0];
-  const monthYear = document.getElementsByClassName("calendar-month-year")[0];
-
-  const selectedMonth = parseInt(monthYear.getAttribute("data-month") || 0);
-  const selectedYear = parseInt(monthYear.getAttribute("data-year") || 0);
-
-  monthArray.forEach((month, index) => {
-    let option = document.createElement("option");
-    option.textContent = month;
-    option.value = index;
-    option.selected = index === selectedMonth;
-    calendarMonths.appendChild(option);
-  });
-
-  const currentYear = new Date().getFullYear();
-  const startYear = currentYear - 30;
-  const endYear = currentYear + 30;
-  let newYear = startYear;
-  while (newYear <= endYear) {
-    let option = document.createElement("option");
-    option.textContent = newYear;
-    option.value = newYear;
-    option.selected = newYear === selectedYear;
-    calendarYears.appendChild(option);
-    newYear++;
+  function updateMonthDisplay() {
+    displayCurrentMonth.textContent = currentDate.toLocaleDateString("sv-SE", {
+      month: "long",
+      year: "numeric",
+    });
   }
 
-  const leftArrow = document.getElementsByClassName("calendar-left-arrow")[0];
+  async function getHolidayAPI() {
+    try {
+      const url = `https://sholiday.faboul.se/dagar/v2.1/${currentDate.getFullYear()}/${
+        currentDate.getMonth() + 1
+      }`;
+      const response = await fetch(url);
 
-  leftArrow.addEventListener("click", () => {
-    const monthYear = document.getElementsByClassName("calendar-month-year")[0];
-    const month = parseInt(monthYear.getAttribute("data-month") || 0);
-    const year = parseInt(monthYear.getAttribute("data-year") || 0);
+      const days = result.dagar;
 
-    let newMonth = month === 0 ? 11 : month - 1;
-    let newYear = month === 0 ? year - 1 : year;
-    let newDate = new Date(newYear, newMonth, 1);
-    generateCalendarDays(newDate);
-  });
-
-  const rightArrow = document.getElementsByClassName("calendar-right-arrow")[0];
-
-  rightArrow.addEventListener("click", () => {
-    const monthYear = document.getElementsByClassName("calendar-month-year")[0];
-    const month = parseInt(monthYear.getAttribute("data-month") || 0);
-    const year = parseInt(monthYear.getAttribute("data-year") || 0);
-    let newMonth = month + 1;
-    newMonth = newMonth === 12 ? 0 : newMonth;
-    let newYear = newMonth === 0 ? year + 1 : year;
-    let newDate = new Date(newYear, newMonth, 1);
-    generateCalendarDays(newDate);
-  });
-
-  calendarMonths.addEventListener("change", function () {
-    let newDate = new Date(calendarYears.value, calendarMonths.value, 1);
-    generateCalendarDays(newDate);
-  });
-
-  calendarYears.addEventListener("change", function () {
-    let newDate = new Date(calendarYears.value, calendarMonths.value, 1);
-    generateCalendarDays(newDate);
-  });
-};
-
-function generateCalendarDays(currentDate) {
-  const newDate = new Date(currentDate);
-  const year = newDate.getFullYear();
-  const month = newDate.getMonth();
-  const totalDaysInMonth = getTotalDaysInAMonth(year, month);
-  const firstDayOfWeek = getFirstDayOfWeek(year, month);
-  let calendarDays = document.getElementsByClassName("calendar-days")[0];
-
-  removeAllChildren(calendarDays);
-
-  let firstDay = 1;
-  while (firstDay <= firstDayOfWeek) {
-    let li = document.createElement("li");
-    li.classList.add("calendar-day");
-    calendarDays.appendChild(li);
-    firstDay++;
-  }
-
-  let day = 1;
-  while (day <= totalDaysInMonth) {
-    let li = document.createElement("li");
-    li.textContent = day;
-    li.classList.add("calendar-day");
-    if (todaysDate === day && currentMonth === month && currentYear === year) {
-      li.classList.add("calendar-day-active");
+      const fetchedHolidays = [];
+      for (let i = 0; i < days.length; i++) {
+        if (days[i].helgdag) {
+          fetchedHolidays.push(days[i]);
+        }
+      }
+      return fetchedHolidays;
+    } catch (error) {
+      console.error("Error fetching holiday data:", error);
+      throw error; // Rethrow the error to propagate it further
     }
-    calendarDays.appendChild(li);
-    day++;
   }
 
-  const monthYear = document.getElementsByClassName("calendar-month-year")[0];
-  monthYear.setAttribute("data-month", month);
-  monthYear.setAttribute("data-year", year);
-  const calendarMonths = document.getElementsByClassName("calendar-months")[0];
-  const calendarYears = document.getElementsByClassName("calendar-years")[0];
-  calendarMonths.value = month;
-  calendarYears.value = year;
-}
+  async function generateCalenderDays() {
+    const firstDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      1
+    );
+    const lastDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+      0
+    );
 
-function getTotalDaysInAMonth(year, month) {
-  return new Date(year, month + 1, 0).getDate();
-}
+    const now = new Date();
 
-function getFirstDayOfWeek(year, month) {
-  return new Date(year, month, 1).getDay();
-}
+    getHolidayAPI().then((holidays) => {
+      let liTag = "";
 
-function removeAllChildren(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
+      const lastDateOfPrevMonth = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        0
+      ).getDate();
+      // loop for padding days of previous month
+      for (let i = firstDayOfMonth.getDay(); i > 0; i--) {
+        liTag += `<li class="padding-days">${lastDateOfPrevMonth - i + 1}</li>`;
+      }
+
+      // Iterates the current month and adds the days to the calendar
+      for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+        const currentDate =
+          calendar.year +
+          "-" +
+          ("" + (calendar.month + 1)).padStart(2, "0") +
+          "-" +
+          ("" + i).padStart(2, "0");
+
+        let isToday =
+          i === calendar.day &&
+          calendar.month === now.getMonth() &&
+          calendar.year === now.getFullYear()
+            ? "activeDay"
+            : "";
+        let holidayString = "";
+
+        const xx = holidays.filter((h) => {
+          return h.datum === currentDate;
+        });
+
+        if (xx[0]) {
+          holidayString = xx[0].helgdag;
+        }
+
+        liTag += `<li class="${isToday}">${i}<p>${holidayString}</p></li>`;
+      }
+      // Creating li of next month first days
+      for (let i = lastDayOfMonth.getDate(); i < 6; i++) {
+        liTag += `<li class="padding-days">${
+          i - lastDayOfMonth.getDate() + 1
+        }</li>`;
+      }
+
+      calendar.innerHTML = liTag;
+    });
+
+    // Clear the calendar
+    calendar.innerHTML = "";
+
+    // Add empty cells at the start of the calendar
+    for (let i = 0; i < firstDayOfMonth.getDay(); i++) {
+      calendar.insertAdjacentHTML("beforeend", '<li class="empty-day"></li>');
+    }
+
+    // Fill in the days of the month
+    for (let day = 1; day <= lastDayOfMonth.getDate(); day++) {
+      const dayItem = document.createElement("li");
+      dayItem.textContent = day;
+      calendar.appendChild(dayItem);
+    }
   }
-}
+
+  function navigateMonth(offset) {
+    currentDate.setMonth(currentDate.getMonth() + offset);
+    updateMonthDisplay();
+    generateCalenderDays();
+  }
+
+  // Event listeners for navigation arrows
+  document
+    .getElementById("monthBackArrow")
+    .addEventListener("click", () => navigateMonth(-1));
+  document
+    .getElementById("monthForwardArrow")
+    .addEventListener("click", () => navigateMonth(1));
+
+  // Initial setup
+  updateMonthDisplay();
+  generateCalenderDays();
+});
