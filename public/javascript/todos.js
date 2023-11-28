@@ -119,6 +119,7 @@ function refreshTodoList() {
 
     // Ändrar todo.
     editButton.addEventListener("click", (event) => {
+      //Händlselyssnare för knappen "ändra". När knappen klickas kommer kod nedan att köras
       const todoInput = todoContent.querySelector(".input-todo");
       const todoDate = todoContent.querySelector(".input-date");
 
@@ -133,6 +134,7 @@ function refreshTodoList() {
         todo.content = todoInput.value;
         todo.date = todoDate.value;
 
+        //.map-metoden för att skapa en ny array (todos) där todo objektet uppdateras. Görs med att jämföra id, om match så returneras det uppdaterade "todo objektet" annars returneras det befintliga objektet.
         todos = todos.map((item, index) => {
           if (item.id === todo.id) {
             return todo;
