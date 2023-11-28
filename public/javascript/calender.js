@@ -19,7 +19,7 @@ const todaysDate = current.getDate();
 const currentYear = current.getFullYear();
 const currentMonth = current.getMonth();
 
-window.onload = function () {
+function initCalendar() {
   const currentDate = new Date();
   generateCalendarDays(currentDate);
 
@@ -103,7 +103,7 @@ window.onload = function () {
     let newDate = new Date(calendarYears.value, calendarMonths.value, 1);
     generateCalendarDays(newDate);
   });
-};
+}
 
 function generateCalendarDays(currentDate) {
   const newDate = new Date(currentDate);
@@ -111,7 +111,7 @@ function generateCalendarDays(currentDate) {
   const month = newDate.getMonth();
   const totalDaysInMonth = getTotalDaysInAMonth(year, month);
   const firstDayOfWeek = getFirstDayOfWeek(year, month);
-  let calendarDays = document.getElementsByClassName("calendar-days")[0];
+  let calendarDays = document.getElementsByClassName("calendar")[0];
 
   removeAllChildren(calendarDays);
 
