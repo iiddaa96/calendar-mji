@@ -1,6 +1,7 @@
 function initCalender() {
   generateCalenderDays();
   
+  //test
   // calenderInfo();
   // changeBackgroundByMonth();
 }
