@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MJI Calendar</title>
 
+    <script
+      src="https://kit.fontawesome.com/ecb6c407eb.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/desktop.css" />
@@ -28,87 +33,87 @@
         <div class="aside-fixed-section">
           <!-- Div där dag, månad och current time syns -->
           <div class="welcome-div">
-            <p  id="todaysDate" class="full-date-and-time">
+            <p id="todaysDate" class="full-date-and-time">
               <!--JS kod ex:måndag 2 december 2023 -->
             </p>
 
-                 <div class="current-time">
-                <p id="time" class="clock">
-                  <!--Klocka från JS kod -->
-                </p>
-              </div>
-            </div>
-
-            <!-- Knappen där man lägger till anteckningar -->
-            <div class="create-button-div">
-              <button id="todoButton" class="createButton">
-                <p>Lägg till anteckningar</p>
-                <p><i class="fa-solid fa-plus"></i></p>
-              </button>
-            </div>
-
-            <!----------------------- TODO POPUPS------------------------------------------>
-            <div id="todoPopup" class="create-todo-popup">
-              <!-- Fältet där du skriver in vad du vill göra -->
-              <form id="add-todo-form">
-                <input
-                  type="text"
-                  name="text"
-                  id="todoInput"
-                  class="todo-input"
-                  placeholder="ToDo..."
-                />
-                <!-- Fältet där du skriver in när du vill göra det - datum -->
-                <div class="popup-date-btn-container">
-                  <input
-                    type="date"
-                    name="date"
-                    id="dateInput"
-                    class="date-input"
-                  />
-                  <!-- Knappen där du sparar  -->
-                  <button id="saveButton" class="save-button">Spara</button>
-                </div>
-                <!-- Dyker upp om du inte fyllt i korrekt i båda fälten -->
-                <div class="feedback-container">
-                  <div id="warning" class="warning"></div>
-                  <div id="feedback" class="feedback"></div>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <div class="todo-list">
-            <!-------------------------------- ALL TODO------------------------------------------>
-
-            <!-- Här kan man se hur många anteckningar man har lagt till  -->
-            <div class="todo-heading">
-              <p>
-                Antal anteckningar
-                <span>
-                  <!-- Lägg in antal todos inom "()" -->
-                </span>
-                ()
+            <div class="current-time">
+              <p id="time" class="clock">
+                <!--Klocka från JS kod -->
               </p>
             </div>
-            <ul class="todo-container" id="allTodo" data-cy="todo-list"></ul>
           </div>
+
+          <!-- Knappen där man lägger till anteckningar -->
+          <div class="create-button-div">
+            <button id="todoButton" class="createButton">
+              <p>Lägg till anteckningar</p>
+              <p><i class="fa-solid fa-plus"></i></p>
+            </button>
+          </div>
+
+          <!----------------------- TODO POPUPS------------------------------------------>
+          <div id="todoPopup" class="create-todo-popup">
+            <!-- Fältet där du skriver in vad du vill göra -->
+            <form id="add-todo-form">
+              <input
+                type="text"
+                name="text"
+                id="todoInput"
+                class="todo-input"
+                placeholder="ToDo..."
+              />
+              <!-- Fältet där du skriver in när du vill göra det - datum -->
+              <div class="popup-date-btn-container">
+                <input
+                  type="date"
+                  name="date"
+                  id="dateInput"
+                  class="date-input"
+                />
+                <!-- Knappen där du sparar  -->
+                <button id="saveButton" class="save-button">Spara</button>
+              </div>
+              <!-- Dyker upp om du inte fyllt i korrekt i båda fälten -->
+              <div class="feedback-container">
+                <div id="warning" class="warning"></div>
+                <div id="feedback" class="feedback"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="todo-list">
+          <!-------------------------------- ALL TODO------------------------------------------>
+
+          <!-- Här kan man se hur många anteckningar man har lagt till  -->
+          <div class="todo-heading">
+            <p>
+              Antal anteckningar
+              <span>
+                <!-- Lägg in antal todos inom "()" -->
+              </span>
+              ()
+            </p>
+          </div>
+          <ul class="todo-container" id="allTodo" data-cy="todo-list"></ul>
         </div>
       </aside>
 
       <!--------------------------------- MAIN--------------------------------------------------------->
       <main>
         <!-------------------- MONTH DIV------------------------------------------------------------------>
+
         <div class="month-div">
-          <p>
-            <i></i>
+          <p id="monthBackArrow" class="back-month-arrow cursor">
+            <i class="fa-solid fa-chevron-left"></i>
           </p>
-          <p class="current-month">
-            Dagens månad
+          <p id="displayCurrentMonth" class="current-month">
+            dagens månad
             <!-- Lägg till Current month från JS -->
           </p>
-          <p>
-            <i></i>
+          <p id="monthForwardArrow" class="next-month-arrow cursor">
+            <i class="fa-solid fa-chevron-right"></i>
           </p>
         </div>
 
@@ -123,8 +128,19 @@
           <div class="weekday">Sön</div>
         </div>
 
+        <!-- WEEKDAY DIV TABLET/DESKTOP------------------------------------------------------------------------------>
+        <div class="weekday-div">
+          <div class="weekday">Måndag</div>
+          <div class="weekday">Tisdag</div>
+          <div class="weekday">Onsdag</div>
+          <div class="weekday">Torsdag</div>
+          <div class="weekday">Fredag</div>
+          <div class="weekday">Lördag</div>
+          <div class="weekday">Söndag</div>
+        </div>
+
         <!------------------------------- KALENDER--------------------------------------------------------->
-        <!-- Grid ska läggas till för alla dagar / månad -->
+
         <ul class="calendar">
           <!-- Lägg till kalender dag item via JS -->
         </ul>

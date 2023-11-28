@@ -7,8 +7,20 @@
 
 /* ROOT VARIABLER------------------------------------------- */
 :root {
+  /* Färger */
+  --Primary-color: rgb(92, 110, 143);
+  --Secondary-color: rgba(14, 37, 49, 0.825);
+  --light-blue: rgb(147, 167, 220);
+  /* --green-color2: rgb(203, 73, 56); */
+  --grey-color: #9da3c2;
+  --delete-btn-color: #b07575;
+
   /* Värden */
   --header-height: 5rem;
+  --FS-0_7: 0.7rem;
+  /* --FS-1: 1rem; */
+  --FS-1_2: 1.2rem;
+  --FS-1_5: 1.5rem;
 }
 
 /* BODY------------------------- */
@@ -53,7 +65,7 @@ aside {
   position: relative;
   /* opacity: 0.8; */
 }
- /* STYLE FÖR KLOCKAN; DATUM; TID */
+/* STYLE FÖR KLOCKAN; DATUM; TID */
 .welcome-div {
   text-align: center;
   padding: 1.5rem;
@@ -219,21 +231,68 @@ button {
   justify-content: space-between;
   padding: 0.5rem 0;
   margin: 0 3rem;
-  background-color: #003f65;
 }
 
 .weekday-div-mobile {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin: 1rem 0;
-  border: solid;
-  background-color: beige;
+}
+.weekday {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .weekday-div {
   display: none;
 }
 
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  background-color: purple;
+}
+
+.calendar li {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-direction: column;
+  position: relative;
+}
+
+.helgdag {
+  font-size: 0.6rem;
+  position: absolute;
+  top: 3rem;
+}
+
+.padding-days {
+  color: var(--grey-color);
+}
+
+.padding-days:hover {
+  color: white;
+}
+
+.calendar li:hover {
+  background-color: var(--grey-color);
+}
+
+.active {
+  border: 0.5rem solid var(--light-blue);
+}
+
+.activeDay {
+  color: var(--light-blue);
+  font-weight: bolder;
+}
+
+/* REUSABLE CLASSES */
 .cursor {
   cursor: pointer;
 }
