@@ -8,7 +8,6 @@ function startTodos() {
   generateUniqueId();
   updateTodo();
   deleteTodo();
-  // addTodoFormEventListener();
 }
 
 let todos = [];
@@ -61,6 +60,8 @@ function addTodo() {
 
   todoInput.value = "";
   dueDateInput.value = "";
+  warning.textContent = "";
+  feedback.textContent = "";
 }
 
 function generateUniqueId() {
