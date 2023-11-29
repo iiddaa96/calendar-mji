@@ -8,6 +8,7 @@ function startTodos() {
   generateUniqueId();
   updateTodo();
   deleteTodo();
+  showTodoArrayLength();
 }
 
 let todos = [];
@@ -62,6 +63,7 @@ function addTodo() {
 
   saveToLocalStorage();
   renderTodos();
+  showTodoArrayLength();
 
   todoInput.value = "";
   dueDateInput.value = "";
@@ -155,6 +157,7 @@ function updateTodo(id) {
     }
     saveToLocalStorage();
     renderTodos();
+    showTodoArrayLength();
   }
 }
 
@@ -167,6 +170,7 @@ function deleteTodo(id) {
   todos = todos.filter((todo) => todo.id !== id);
   saveToLocalStorage();
   renderTodos();
+  showTodoArrayLength();
 }
 
 /**
@@ -180,4 +184,11 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
   const storedTodos = localStorage.getItem("todos");
   todos = storedTodos ? JSON.parse(storedTodos) : [];
+}
+
+function showTodoArrayLength() {
+  const showTodoLength = document.getElementById("todoCount");
+  const numberOfTodosArray = todos.length;
+  showTodoLength.textContent = numberOfTodosArray;
+  console.log(`Antal todos: ${numberOfTodosArray}`);
 }
