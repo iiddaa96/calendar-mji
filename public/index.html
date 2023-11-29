@@ -92,7 +92,9 @@
               <label for="dueDate">Datum:</label>
               <input type="date" id="dueDate" required />
 
-              <button type="button" onclick="addTodo()">Lägg till</button>
+              <button id="createButton" type="button">Lägg till</button>
+              <div id="warning" class="warning"></div>
+              <div id="feedback" class="feedback"></div>
             </form>
           </div>
         </div>
@@ -110,13 +112,12 @@
               ()
             </p>
           </div>
-          <ul id="todoList"></ul>
-          <!-- <ul class="todo-container" id="allTodo" data-cy="todo-list"> -->
-          <li>
-            <span class="todo-text">Your Todo Item</span>
-            <!-- Add any other elements you need for your todo items -->
-          </li>
-          <!-- </ul> -->
+          <ul class="todo-container" data-cy="todo-list">
+            <li>
+              <span class="todo-text" id="todoList">Your Todo Item</span>
+              <!-- Add any other elements you need for your todo items -->
+            </li>
+          </ul>
         </div>
       </aside>
 

@@ -3,7 +3,12 @@ window.addEventListener("DOMContentLoaded", startTodos);
 function startTodos() {
   addEventListeners();
   togglePopup();
-  // addTodoFormEventListener();}
+  renderTodos();
+  addTodo();
+  generateUniqueId();
+  updateTodo();
+  deleteTodo();
+  // addTodoFormEventListener();
 }
 
 let todos = [];
@@ -14,17 +19,20 @@ let todos = [];
 function addEventListeners() {
   const todoButton = document.getElementById("todoButton");
   todoButton.addEventListener("click", togglePopup);
+
+  const createButton = document.getElementById("createButton");
+  createButton.addEventListener("click", addTodo);
 }
 
 /** Visar / döljer popup fönstret för att skapa Todo. */
 function togglePopup() {
   const todoPopup = document.getElementById("todoPopup");
-  // const warning = document.getElementById("warning");
-  // const feedback = document.getElementById("feedback");
+  const warning = document.getElementById("warning");
+  const feedback = document.getElementById("feedback");
 
   todoPopup.classList.toggle("show-popup");
-  // warning.textContent = "";
-  // feedback.textContent = "";
+  warning.textContent = "";
+  feedback.textContent = "";
 }
 
 function addTodo() {
@@ -34,21 +42,23 @@ function addTodo() {
   const todoText = todoInput.value.trim();
   const dueDate = dueDateInput.value;
 
-  if (todoText !== "") {
-    const todo = {
-      id: generateUniqueId(),
-      text: todoText,
-      date: dueDate,
-    };
-
-    todos.push(todo);
-
-    saveToLocalStorage();
-    renderTodos();
-
-    todoInput.value = "";
-    dueDateInput.value = "";
+  if (todoText === "" || dueDate === "") {
+    warning.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+    feedback.textContent = "Var vänlig fyll i anteckningar och datum.";
   }
+  const todo = {
+    id: generateUniqueId(),
+    text: todoText,
+    date: dueDate,
+  };
+
+  todos.push(todo);
+
+  saveToLocalStorage();
+  renderTodos();
+
+  todoInput.value = "";
+  dueDateInput.value = "";
 }
 
 function generateUniqueId() {
@@ -64,22 +74,45 @@ function renderTodos() {
 
     const updateButton = document.createElement("button");
     updateButton.textContent = "Uppdatera";
-    updateButton.onclick = () => updateTodo(todo.id);
+    updateButton.onclick = () => renderInput(todo.id);
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Ta bort";
     deleteButton.onclick = () => deleteTodo(todo.id);
 
-    const form = document.getElementById("todoForm");
-    form.style.display = "block";
+    todoItem.innerHTML = `
+      ${todo.text}${todo.date}
+    `;
+
+    todoList.appendChild(todoItem);
+    todoList.appendChild(updateButton);
+    todoList.appendChild(deleteButton);
+  });
+}
+
+function renderInput() {
+  const todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
+
+  todos.forEach((todo) => {
+    const todoItem = document.createElement("li");
+
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Spara";
+    saveButton.onclick = () => updateTodo(todo.id);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Ta bort";
+    deleteButton.onclick = () => deleteTodo(todo.id);
 
     todoItem.innerHTML = `
       ${todo.text}${todo.date}
-      <input type="text" id="updateText_${todo.id}" placeholder="Ny text">
-      <input type="date" id="updateDate_${todo.id}">
+      <input type="text" id="updateText_${todo.id}" placeholder="Uppdatera don todo..">
+       <input type="date" id="updateDate_${todo.id}">
     `;
+
     todoList.appendChild(todoItem);
-    todoList.appendChild(updateButton);
+    todoList.appendChild(saveButton);
     todoList.appendChild(deleteButton);
   });
 }

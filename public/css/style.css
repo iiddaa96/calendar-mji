@@ -176,6 +176,7 @@ button {
 
 .todo-content {
   margin-left: 1rem;
+  background-color: aqua;
   /* color: var(--Secondary-color); */
   overflow: hidden;
   width: 65%;
