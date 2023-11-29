@@ -26,13 +26,19 @@
 /* BODY------------------------- */
 
 body {
-  background-color: black;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+  /* background-color: black;
   font-family: "Inter", sans-serif;
 
   background-image: url("/images/winter3.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 /* HEADER--------------------------------------------------- */
