@@ -45,6 +45,7 @@ function addTodo() {
   if (todoText === "" || dueDate === "") {
     warning.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
     feedback.textContent = "Var vänlig fyll i anteckningar och datum.";
+    return;
   }
   const todo = {
     id: generateUniqueId(),
@@ -52,6 +53,7 @@ function addTodo() {
     date: dueDate,
   };
 
+  console.log(todo);
   todos.push(todo);
 
   saveToLocalStorage();
@@ -68,6 +70,8 @@ function generateUniqueId() {
 function renderTodos() {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
+
+  console.log(todos);
 
   todos.forEach((todo) => {
     const todoItem = document.createElement("li");
@@ -152,11 +156,9 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
   const storedTodos = localStorage.getItem("todos");
   todos = storedTodos ? JSON.parse(storedTodos) : [];
-  renderTodos();
 }
 
 // Ladda tidigare sparade todos när sidan laddas
-loadFromLocalStorage();
 
 // /** Tar vara på datan som användaren skriver in vid skapandet av en todo.
 //  * Båda input-fälten måste vara ifyllda, annars varningsmeddelande.

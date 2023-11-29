@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
+  loadFromLocalStorage();
   startTodos();
   initWelcome();
   initCalender();
