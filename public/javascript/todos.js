@@ -12,8 +12,8 @@ function startTodos() {
 
 let todos = [];
 
-/** Aktiverar funktionen togglePopup vid klick av knappen på "Skapa Anteckningar".
- * Spara-knappen leder vidare till addTodoFormEventListener.
+/**
+ * This function lisen to "click" element for the buttons
  */
 function addEventListeners() {
   const todoButton = document.getElementById("todoButton");
@@ -23,7 +23,9 @@ function addEventListeners() {
   createButton.addEventListener("click", addTodo);
 }
 
-/** Visar / döljer popup fönstret för att skapa Todo. */
+/**
+ * This function show/hide the popup-window to create a todo
+ */
 function togglePopup() {
   const todoPopup = document.getElementById("todoPopup");
   const warning = document.getElementById("warning");
@@ -34,6 +36,10 @@ function togglePopup() {
   feedback.textContent = "";
 }
 
+/**
+ * This function create a todo, if you don't fill in the input a warning text popup.
+ * The todo saves in localStorage.
+ */
 function addTodo() {
   const todoInput = document.getElementById("todoInput");
   const dueDateInput = document.getElementById("dueDate");
@@ -52,7 +58,6 @@ function addTodo() {
     date: dueDate,
   };
 
-  console.log(todo);
   todos.push(todo);
 
   saveToLocalStorage();
@@ -64,15 +69,17 @@ function addTodo() {
   feedback.textContent = "";
 }
 
+/**
+ * This function create a unique id för the todo.
+ */
 function generateUniqueId() {
   return "_" + Math.random().toString(36).substr(2, 9);
 }
 
+/** This function render a todo, it look in the todolist array and create a list, and two button: Save and Delete.*/
 function renderTodos() {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
-
-  console.log(todos);
 
   todos.forEach((todo) => {
     const todoItem = document.createElement("li");
@@ -95,6 +102,9 @@ function renderTodos() {
   });
 }
 
+/**
+ * This function render input element for text and date, if you need to update a todo.
+ */
 function renderInput() {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
@@ -122,6 +132,10 @@ function renderInput() {
   });
 }
 
+/**
+ * This function look in the todo-array after a todo with a special id you need to change.
+ * could it find a new update it save it in localstorage. And the todo updates in the todo-array.
+ */
 function updateTodo(id) {
   const todoToUpdate = todos.find((todo) => todo.id === id);
 
@@ -144,135 +158,26 @@ function updateTodo(id) {
   }
 }
 
+/**
+ * This function delete a todo. Looks after a todo with id and if it match
+ * this todo deleted from the todo-array and in localstorage and render out the
+ * new todo-array.
+ */
 function deleteTodo(id) {
   todos = todos.filter((todo) => todo.id !== id);
   saveToLocalStorage();
   renderTodos();
 }
 
+/**
+ * Thid function save our todo-array to localstorage under the name "todos"
+ */
 function saveToLocalStorage() {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
+/** This function look in localstorage if there are saved todos. */
 function loadFromLocalStorage() {
   const storedTodos = localStorage.getItem("todos");
   todos = storedTodos ? JSON.parse(storedTodos) : [];
 }
-
-// Ladda tidigare sparade todos när sidan laddas
-
-// /** Tar vara på datan som användaren skriver in vid skapandet av en todo.
-//  * Båda input-fälten måste vara ifyllda, annars varningsmeddelande.
-//  */
-// function addTodoFormEventListener() {
-//   const todoInput = document.getElementById("todoInput").value;
-//   const dateInput = document.getElementById("dateInput").value;
-//   const form = document.getElementById("add-todo-form");
-//   const warning = document.getElementById("warning");
-//   const feedback = document.getElementById("feedback");
-
-//   if (todoInput === "" || dateInput === "") {
-//     warning.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
-//     feedback.textContent = "Var vänlig fyll i anteckningar och datum.";
-//     event.preventDefault();
-//   } else {
-//     form.addEventListener("submit", createNewTodoObject);
-//     warning.innerHTML = "";
-//     feedback.textContent = "";
-//   }
-// }
-
-// /** Skapar ny data i ett objekt och pushar in det i arrayen (todos). */
-// function createNewTodoObject(event) {
-//   event.preventDefault();
-
-//   const todo = {
-//     content: event.target.elements.text.value,
-//     date: event.target.elements.date.value,
-//     completed: false,
-//   };
-
-//   todos.push(todo);
-
-//   event.target.reset();
-
-//   refreshTodoList();
-// }
-
-// /** Skapar element, tillämpar klasser och renderar de skapade todo:sen. */
-// function refreshTodoList() {
-//   const allTodo = document.querySelector("#allTodo");
-//   allTodo.innerHTML = "";
-
-//   for (const todo of todos) {
-//     const todoItem = document.createElement("li");
-//     todoItem.classList.add("todo");
-
-//     const todoContent = document.createElement("div");
-//     const todoTitle = document.createElement("p");
-//     const todoDate = document.createElement("p");
-//     const todoButtons = document.createElement("div");
-//     const editButton = document.createElement("button");
-//     const deleteButton = document.createElement("button");
-
-//     todoContent.classList.add("todo-content");
-//     todoButtons.classList.add("todo-buttons");
-//     editButton.classList.add("todo-button-edit");
-//     deleteButton.classList.add("todo-button-delete");
-
-//     todoContent.innerHTML = `<p>${todo.content}</p>`;
-//     todoDate.innerHTML = `<p>${todo.date}</p>`;
-
-//     editButton.textContent = "Ändra";
-//     deleteButton.textContent = "Ta bort";
-//     deleteButton.setAttribute("data-cy", "delete-todo-button");
-
-//     todoContent.appendChild(todoTitle);
-//     todoContent.appendChild(todoDate);
-//     todoButtons.appendChild(editButton);
-//     todoButtons.appendChild(deleteButton);
-//     todoItem.appendChild(todoContent);
-//     todoItem.appendChild(todoContent);
-//     todoItem.appendChild(todoButtons);
-
-//     allTodo.appendChild(todoItem);
-
-//     // Ändrar todo.
-//     editButton.onclick = () => updateTodo();
-
-//     editButton.addEventListener("click", () => {
-//       const todoInput = todoContent.querySelector(".input-todo");
-//       const todoDate = todoContent.querySelector(".input-date");
-
-//       if (editButton.textContent === "Ändra") {
-//         todoInput.removeAttribute("readonly");
-//         todoDate.removeAttribute("readonly");
-//         todoInput.style.backgroundColor = "grey";
-//         todoDate.style.backgroundColor = "purple";
-//         editButton.textContent = "Spara";
-//         todoInput.focus();
-//       } else if (editButton.textContent === "Spara") {
-//         todo.content = todoInput.value;
-//         todo.date = todoDate.value;
-
-//         todos = todos.map((item, index) => {
-//           if (item.id === todo.id) {
-//             return todo;
-//           }
-//           return item;
-//         });
-
-//         refreshTodoList();
-//         togglePopup();
-//       }
-//     });
-
-//     // Tar bort todo.
-//     deleteButton.addEventListener("click", () => {
-//       todos = todos.filter((t) => t != todo);
-//       refreshTodoList();
-//       togglePopup();
-//     });
-//   }
-//   togglePopup();
-// }
