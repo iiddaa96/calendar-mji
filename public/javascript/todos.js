@@ -89,10 +89,12 @@ function renderTodos() {
     const updateButton = document.createElement("button");
     updateButton.textContent = "Uppdatera";
     updateButton.onclick = () => renderInput(todo.id);
+    updateButton.setAttribute("data-cy", "edit-todo-button");
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Ta bort";
     deleteButton.onclick = () => deleteTodo(todo.id);
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
       ${todo.text}${todo.date}

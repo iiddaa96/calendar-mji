@@ -87,12 +87,24 @@
                 id="todoInput"
                 placeholder="Lägg till nytt ToDo..."
                 required
+                data-cy="todo-title-input"
               />
 
               <label for="dueDate">Datum:</label>
-              <input type="date" id="dueDate" required />
+              <input
+                type="date"
+                id="dueDate"
+                required
+                data-cy="todo-date-input"
+              />
 
-              <button id="createButton" type="button">Lägg till</button>
+              <button
+                id="createButton"
+                type="button"
+                data-cy="save-todo-button"
+              >
+                Lägg till
+              </button>
               <div id="warning" class="warning"></div>
               <div id="feedback" class="feedback"></div>
             </form>
