@@ -192,32 +192,3 @@ function drawCurrentMonth() {
   document.getElementById("displayCurrentMonth").innerText =
     months[calendar.month] + " " + +calendar.year;
 }
-
-// Funktion för att ändra bakgrundsbilden baserat på månaden
-function changeBackgroundByMonth() {
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth();
-
-  // Array med filnamn för bakgrundsbilder
-  const backgroundImages = [
-    "january.jpg",
-    "february.jpg",
-    "march.jpg",
-    "april.jpg",
-    "may.jpg",
-    "june.jpg",
-    "july.jpg",
-    "august.jpg",
-    "september.jpg",
-    "october.jpg",
-    "winter3.jpg",
-    "november.jpg",
-  ];
-
-  //Använd månaden som index för att hämta rätt bildfilnamn
-  const backgroundUrl = `url("/images/${backgroundImages[currentMonth]}")`;
-  // const backgroundUrl = `url("/path/to/images/${backgroundImages[currentMonth]}")`;
-
-  // Tilldela bakgrundsbilden till kroppselementet
-  document.body.style.backgroundImage = backgroundUrl;
-}
