@@ -1,32 +1,32 @@
 window.addEventListener("DOMContentLoaded", startTodos);
 
-/**
- * Global array "todos" för att lagra ToDo-objekt.
- */
-let todos = [];
-
-/**
- * Anrop till flera andra funktioner som ställer in händelselyssnare och förbereder gränssnittet.
- */
 function startTodos() {
   addEventListeners();
   togglePopup();
-  addTodoFormEventListener();
+  renderTodos();
+  addTodo();
+  generateUniqueId();
+  updateTodo();
+  deleteTodo();
+  showTodoArrayLength();
 }
 
-/** Aktiverar funktionen togglePopup vid klick av knappen på "Skapa Anteckningar".
- * Spara-knappen leder vidare till addTodoFormEventListener.
+let todos = [];
+
+/**
+ * This function lisen to "click" element for the buttons
  */
 function addEventListeners() {
   const todoButton = document.getElementById("todoButton");
   todoButton.addEventListener("click", togglePopup);
 
-  // Hämta spara knappen med klick event
-  const saveTodoButton = document.getElementById("saveButton");
-  saveTodoButton.addEventListener("click", addTodoFormEventListener);
+  const createButton = document.getElementById("createButton");
+  createButton.addEventListener("click", addTodo);
 }
 
-/** Visar / döljer popup fönstret för att skapa Todo. */
+/**
+ * This function show/hide the popup-window to create a todo
+ */
 function togglePopup() {
   const todoPopup = document.getElementById("todoPopup");
   const warning = document.getElementById("warning");
@@ -37,122 +37,160 @@ function togglePopup() {
   feedback.textContent = "";
 }
 
-/** Tar vara på datan som användaren skriver in vid skapandet av en todo.
- * Båda input-fälten måste vara ifyllda, annars varningsmeddelande.
+/**
+ * This function create a todo, if you don't fill in the input a warning text popup.
+ * The todo saves in localStorage.
  */
-function addTodoFormEventListener() {
-  const todoInput = document.getElementById("todoInput").value;
-  const dateInput = document.getElementById("dateInput").value;
-  const form = document.getElementById("add-todo-form");
-  const warning = document.getElementById("warning");
-  const feedback = document.getElementById("feedback");
+function addTodo() {
+  const todoInput = document.getElementById("todoInput");
+  const dueDateInput = document.getElementById("dueDate");
 
-  if (todoInput === "" || dateInput === "") {
+  const todoText = todoInput.value.trim();
+  const dueDate = dueDateInput.value;
+
+  if (todoText === "" || dueDate === "") {
     warning.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
     feedback.textContent = "Var vänlig fyll i anteckningar och datum.";
-    event.preventDefault();
-  } else {
-    form.addEventListener("submit", createNewTodoObject);
-    warning.innerHTML = "";
-    feedback.textContent = "";
+    return;
   }
-}
-
-/** Skapar ny data i ett objekt och pushar in det i arrayen (todos).
- * Skapar ett nytt att göra-objekt baserat på användarens inmatning och lägger till det i den globala todos-arrayen.
- */
-function createNewTodoObject(event) {
-  event.preventDefault();
-
   const todo = {
-    content: event.target.elements.text.value,
-    date: event.target.elements.date.value,
-    completed: false,
+    id: generateUniqueId(),
+    text: todoText,
+    date: dueDate,
   };
 
   todos.push(todo);
 
-  event.target.reset();
+  saveToLocalStorage();
+  renderTodos();
+  showTodoArrayLength();
 
-  refreshTodoList();
+  todoInput.value = "";
+  dueDateInput.value = "";
+  warning.textContent = "";
+  feedback.textContent = "";
 }
 
-/** Skapar element, tillämpar klasser och renderar de skapade todo:sen.
- * Renderar att göra-listan på sidan. Den skapar HTML-element för varje att göra och lägger till händelselyssnare för redigering och borttagning av varje att göra.
+/**
+ * This function create a unique id för the todo.
  */
-function refreshTodoList() {
-  const allTodo = document.querySelector("#allTodo");
-  allTodo.innerHTML = "";
+function generateUniqueId() {
+  return "_" + Math.random().toString(36).substr(2, 9);
+}
 
-  for (const todo of todos) {
+/** This function render a todo, it look in the todolist array and create a list, and two button: Save and Delete.*/
+function renderTodos() {
+  const todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
+
+  todos.forEach((todo) => {
     const todoItem = document.createElement("li");
-    todoItem.classList.add("todo");
 
-    const todoContent = document.createElement("div");
-    const todoTitle = document.createElement("p");
-    const todoDate = document.createElement("p");
-    const todoButtons = document.createElement("div");
-    const editButton = document.createElement("button");
+    const updateButton = document.createElement("button");
+    updateButton.textContent = "Uppdatera";
+    updateButton.onclick = () => renderInput(todo.id);
+    updateButton.setAttribute("data-cy", "edit-todo-button");
+
     const deleteButton = document.createElement("button");
-
-    todoContent.classList.add("todo-content");
-    todoButtons.classList.add("todo-buttons");
-    editButton.classList.add("todo-button-edit");
-    deleteButton.classList.add("todo-button-delete");
-
-    todoContent.innerHTML = `<p>${todo.content}</p>`; // Sätter HTML-innehållet för todoContent till innehållet (texten) av det aktuella att göra-objektet.
-    todoDate.innerHTML = `<p>${todo.date}</p>`; // Sätter HTML-innehållet för todoDate till datumet av det aktuella att göra-objektet.
-
-    editButton.textContent = "Ändra";
     deleteButton.textContent = "Ta bort";
+    deleteButton.onclick = () => deleteTodo(todo.id);
     deleteButton.setAttribute("data-cy", "delete-todo-button");
 
-    todoContent.appendChild(todoTitle);
-    todoContent.appendChild(todoDate);
-    todoButtons.appendChild(editButton);
-    todoButtons.appendChild(deleteButton);
-    todoItem.appendChild(todoContent);
-    todoItem.appendChild(todoContent);
-    todoItem.appendChild(todoButtons);
+    todoItem.innerHTML = `
+      ${todo.text}${todo.date}
+    `;
 
-    allTodo.appendChild(todoItem);
+    todoList.appendChild(todoItem);
+    todoList.appendChild(updateButton);
+    todoList.appendChild(deleteButton);
+  });
+}
 
-    // Ändrar todo.
-    editButton.addEventListener("click", (event) => {
-      //Händlselyssnare för knappen "ändra". När knappen klickas kommer kod nedan att köras
-      const todoInput = todoContent.querySelector(".input-todo");
-      const todoDate = todoContent.querySelector(".input-date");
+/**
+ * This function render input element for text and date, if you need to update a todo.
+ */
+function renderInput() {
+  const todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
 
-      if (editButton.textContent === "Ändra") {
-        todoInput.removeAttribute("readonly");
-        todoDate.removeAttribute("readonly");
-        todoInput.style.backgroundColor = "grey";
-        todoDate.style.backgroundColor = "purple";
-        editButton.textContent = "Spara";
-        todoInput.focus();
-      } else if (editButton.textContent === "Spara") {
-        todo.content = todoInput.value;
-        todo.date = todoDate.value;
+  todos.forEach((todo) => {
+    const todoItem = document.createElement("li");
 
-        //.map-metoden för att skapa en ny array (todos) där todo objektet uppdateras. Görs med att jämföra id, om match så returneras det uppdaterade "todo objektet" annars returneras det befintliga objektet.
-        todos = todos.map((item, index) => {
-          if (item.id === todo.id) {
-            return todo;
-          }
-          return item;
-        });
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Spara";
+    saveButton.onclick = () => updateTodo(todo.id);
 
-        refreshTodoList();
-        togglePopup();
-      }
-    });
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Ta bort";
+    deleteButton.onclick = () => deleteTodo(todo.id);
 
-    // Tar bort todo.
-    deleteButton.addEventListener("click", () => {
-      todos = todos.filter((t) => t != todo);
-      refreshTodoList();
-      togglePopup();
-    });
+    todoItem.innerHTML = `
+      ${todo.text}${todo.date}
+      <input type="text" id="updateText_${todo.id}" placeholder="Uppdatera don todo..">
+       <input type="date" id="updateDate_${todo.id}">
+    `;
+
+    todoList.appendChild(todoItem);
+    todoList.appendChild(saveButton);
+    todoList.appendChild(deleteButton);
+  });
+}
+
+/**
+ * This function look in the todo-array after a todo with a special id you need to change.
+ * could it find a new update it save it in localstorage. And the todo updates in the todo-array.
+ */
+function updateTodo(id) {
+  const todoToUpdate = todos.find((todo) => todo.id === id);
+
+  if (todoToUpdate) {
+    const updateTextElement = document.getElementById(`updateText_${id}`);
+    const updateDateElement = document.getElementById(`updateDate_${id}`);
+
+    const updatedText = updateTextElement.value.trim();
+    const updatedDate = updateDateElement.value;
+
+    if (updatedText !== "") {
+      todoToUpdate.text = updatedText;
+    }
+
+    if (updatedDate !== "") {
+      todoToUpdate.date = updatedDate;
+    }
+    saveToLocalStorage();
+    renderTodos();
+    showTodoArrayLength();
   }
-  togglePopup();
+}
+
+/**
+ * This function delete a todo. Looks after a todo with id and if it match
+ * this todo deleted from the todo-array and in localstorage and render out the
+ * new todo-array.
+ */
+function deleteTodo(id) {
+  todos = todos.filter((todo) => todo.id !== id);
+  saveToLocalStorage();
+  renderTodos();
+  showTodoArrayLength();
+}
+
+/**
+ * Thid function save our todo-array to localstorage under the name "todos"
+ */
+function saveToLocalStorage() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+/** This function look in localstorage if there are saved todos. */
+function loadFromLocalStorage() {
+  const storedTodos = localStorage.getItem("todos");
+  todos = storedTodos ? JSON.parse(storedTodos) : [];
+}
+
+function showTodoArrayLength() {
+  const showTodoLength = document.getElementById("todoCount");
+  const numberOfTodosArray = todos.length;
+  showTodoLength.textContent = numberOfTodosArray;
+  console.log(`Antal todos: ${numberOfTodosArray}`);
 }

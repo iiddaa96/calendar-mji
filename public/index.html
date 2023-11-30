@@ -55,7 +55,7 @@
           <!----------------------- TODO POPUPS------------------------------------------>
           <div id="todoPopup" class="create-todo-popup">
             <!-- Fältet där du skriver in vad du vill göra -->
-            <form id="add-todo-form">
+            <!-- <form id="add-todo-form">
               <input
                 type="text"
                 name="text"
@@ -63,22 +63,50 @@
                 class="todo-input"
                 placeholder="ToDo..."
               />
-              <!-- Fältet där du skriver in när du vill göra det - datum -->
-              <div class="popup-date-btn-container">
+              <Fältet där du skriver in när du vill göra det - datum -->
+            <!-- <div class="popup-date-btn-container">
                 <input
                   type="date"
                   name="date"
                   id="dateInput"
                   class="date-input"
-                />
-                <!-- Knappen där du sparar  -->
-                <button id="saveButton" class="save-button">Spara</button>
+                /> -->
+            <!-- Knappen där du sparar  -->
+            <!-- <button id="saveButton" class="save-button">Spara</button>
               </div>
-              <!-- Dyker upp om du inte fyllt i korrekt i båda fälten -->
-              <div class="feedback-container">
+              < Dyker upp om du inte fyllt i korrekt i båda fälten -->
+            <!-- <div class="feedback-container">
                 <div id="warning" class="warning"></div>
                 <div id="feedback" class="feedback"></div>
               </div>
+            </form>  -->
+            <form id="todoForm">
+              <label for="todoInput">Text:</label>
+              <input
+                type="text"
+                id="todoInput"
+                placeholder="Lägg till nytt ToDo..."
+                required
+                data-cy="todo-title-input"
+              />
+
+              <label for="dueDate">Datum:</label>
+              <input
+                type="date"
+                id="dueDate"
+                required
+                data-cy="todo-date-input"
+              />
+
+              <button
+                id="createButton"
+                type="button"
+                data-cy="save-todo-button"
+              >
+                Lägg till
+              </button>
+              <div id="warning" class="warning"></div>
+              <div id="feedback" class="feedback"></div>
             </form>
           </div>
         </div>
@@ -90,13 +118,13 @@
           <div class="todo-heading">
             <p>
               Antal anteckningar
-              <span>
-                <!-- Lägg in antal todos inom "()" -->
-              </span>
-              ()
+              <!-- Lägg in antal todos inom "()" -->
+              (<span id="todoCount"></span>)
             </p>
           </div>
-          <ul class="todo-container" id="allTodo" data-cy="todo-list"></ul>
+          <ul id="todoList" class="todo-container" data-cy="todo-list">
+            <!-- Skapas från JS -->
+          </ul>
         </div>
       </aside>
 
