@@ -198,7 +198,7 @@ function getMonthImage(month) {
   const monthImages = [
     "january.jpg",
     "february.jpg",
-    "mars.jpg",
+    "march.jpg",
     "april.jpg",
     "may.jpg",
     "june.jpg",
