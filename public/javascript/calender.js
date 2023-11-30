@@ -192,3 +192,34 @@ function drawCurrentMonth() {
   document.getElementById("displayCurrentMonth").innerText =
     months[calendar.month] + " " + +calendar.year;
 }
+
+// Array, Hämta bildnamnet för den aktuella månaden
+function getMonthImage(month) {
+  const monthImages = [
+    "january.jpg",
+    "february.jpg",
+    "mars.jpg",
+    "april.jpg",
+    "may.jpg",
+    "june.jpg",
+    "july.jpg",
+    "august.jpg",
+    "september.jpg",
+    "october.jpg",
+    "november.jpg",
+    "december.jpg",
+  ];
+  return monthImages[month];
+}
+
+// Sätt bakgrundsbild
+// Sätt bakgrundsbild
+function changeBackgroundByMonth() {
+  const month = calendar.month;
+  const imageUrl = `/images/${getMonthImage(month)}`;
+
+  document.body.style.backgroundImage = `url("${imageUrl}")`;
+}
+
+// Anropa initCalendar() när sidan har laddats
+window.addEventListener("DOMContentLoaded", initCalendar);
