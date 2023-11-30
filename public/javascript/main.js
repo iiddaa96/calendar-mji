@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", main);
 function main() {
   startTodos();
   initWelcome();
-  initCalender();
+  initCalendar();
   // initCalendar();
   // console.log('Hi students!');
   // Init today view
