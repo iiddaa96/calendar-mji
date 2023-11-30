@@ -4,7 +4,7 @@ function main() {
   loadFromLocalStorage();
   startTodos();
   initWelcome();
-  initCalender();
+  initCalendar();
   // initCalendar();
   // console.log('Hi students!');
   // Init today view
