@@ -3,7 +3,6 @@
     flex-direction: row;
     display: flex;
     height: calc(100vh - var(--header-height));
-    display: flex;
     align-items: center;
   }
 
@@ -61,5 +60,39 @@
     display: flex;
     margin-top: 4px;
     width: 33%;
+  }
+
+  .month-div {
+    font-size: 1.5rem;
+    padding: 15px;
+    margin: 0 3rem;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .weekday-div-mobile {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 0 3rem;
+    padding-bottom: 15px;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .calendar li {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    position: relative;
+    border-radius: 8px;
+    margin: 3px;
+  }
+
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    margin: 22px;
   }
 }

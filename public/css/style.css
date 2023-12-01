@@ -204,7 +204,7 @@ button {
   margin: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   font-family: "Cookie", cursive;
-  font-size: rem;
+  font-size: 1.8rem;
 }
 
 /* MAIN---------------------------------------------------------------------------------- */
@@ -214,7 +214,8 @@ button {
   display: flex;
   justify-content: space-between;
   padding: 15px;
-  margin: 0 3rem;
+  margin-bottom: -70px;
+  margin-top: 2rem;
   background-color: rgba(211, 211, 211, 0.7);
   border-radius: 5px 5px 0 0;
 }
@@ -222,10 +223,11 @@ button {
 .weekday-div-mobile {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin: 0 3rem;
-  padding-bottom: 15px;
+  margin: 4.7rem;
+  margin-bottom: 5px;
   background-color: rgba(211, 211, 211, 0.7);
   border-radius: 0 0 5px 5px;
+  padding: 10px;
 }
 
 .weekday {
@@ -272,10 +274,6 @@ button {
   border-radius: 8px;
   margin: 3px;
 }
-
-/* .padding-days:hover {
-  color: green;
-} */
 
 .calendar li:hover {
   background-color: var(--grey-color);
