@@ -125,7 +125,7 @@ async function renderCalenderDays() {
 
       const todosForDay = todos.filter((todo) => todo.date === currentDate);
       const hasTodos = todosForDay.length > 0;
-      const todoCount = hasTodos ? todosForDay.lenght : "";
+      const todoCount = hasTodos ? todosForDay.length : "";
 
       liTag += `<li class="${isToday}">${i}<p>${holidayString}</p><span>${todoCount}</span></li>`;
     }
