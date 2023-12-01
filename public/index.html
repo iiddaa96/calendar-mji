@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MJI Calendar</title>
 
+    <!-- Länk för icon -->
     <script
       src="https://kit.fontawesome.com/ecb6c407eb.js"
       crossorigin="anonymous"
@@ -22,9 +23,9 @@
     <script src="./javascript/calender.js"></script>
   </head>
   <body>
-    <!-- HEADER------------------------------>
+    <!------- HEADER------------------------------>
     <header>
-      <h1>MJIA Calendar</h1>
+      <h1>MJIA CALENDAR</h1>
     </header>
 
     <div class="aside-main-container">
@@ -81,21 +82,23 @@
               </div>
             </form>  -->
             <form id="todoForm">
-              <label for="todoInput">Text:</label>
+              <label for="todoInput"></label>
               <input
                 type="text"
                 id="todoInput"
                 placeholder="Lägg till nytt ToDo..."
                 required
                 data-cy="todo-title-input"
+                class="todo-input"
               />
 
-              <label for="dueDate">Datum:</label>
+              <label for="dueDate"></label>
               <input
                 type="date"
                 id="dueDate"
                 required
                 data-cy="todo-date-input"
+                class="date-input"
               />
 
               <button
@@ -116,11 +119,9 @@
 
           <!-- Här kan man se hur många anteckningar man har lagt till  -->
           <div class="todo-heading">
-            <p>
-              Antal anteckningar
-              <!-- Lägg in antal todos inom "()" -->
-              (<span id="todoCount"></span>)
-            </p>
+            <h3 class="todayTodoText">
+              Dagens todo (<span id="todoCount"></span>)
+            </h3>
           </div>
           <ul id="todoList" class="todo-container" data-cy="todo-list">
             <!-- Skapas från JS -->
@@ -137,7 +138,7 @@
             <i class="fa-solid fa-chevron-left"></i>
           </p>
           <p id="displayCurrentMonth" class="current-month">
-            dagens månad
+            Dagens månad
             <!-- Lägg till Current month från JS -->
           </p>
           <p id="monthForwardArrow" class="next-month-arrow cursor">

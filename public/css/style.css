@@ -5,16 +5,8 @@
   list-style-type: none;
 }
 
-/* ROOT VARIABLER------------------------------------------- */
+/* -----------ROOT VARIABLER------------------------------- */
 :root {
-  /* Färger */
-  --Primary-color: rgb(92, 110, 143);
-  --Secondary-color: rgba(14, 37, 49, 0.825);
-  --light-blue: rgb(147, 167, 220);
-  /* --green-color2: rgb(203, 73, 56); */
-  --grey-color: #9da3c2;
-  --delete-btn-color: #b07575;
-
   /* Värden */
   --header-height: 5rem;
   --FS-0_7: 0.7rem;
@@ -23,7 +15,7 @@
   --FS-1_5: 1.5rem;
 }
 
-/* BODY------------------------- */
+/* ----------------BODY--------------------- */
 
 body {
   margin: 0;
@@ -31,25 +23,27 @@ body {
   height: 100vh;
   background-size: cover;
   background-position: center;
-  transition: background-image 1s ease-in-out;
-  /* background-color: black;
-  font-family: "Inter", sans-serif;
-
-  background-image: url("/images/winter3.jpg");
+  transition: background-image 0.5s ease-in-out;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.4rem; /*Storleken på datumen*/
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 }
 
-/* HEADER--------------------------------------------------- */
+/* -----------------HEADER----------------------------------- */
 
 header {
   height: var(--header-height);
-  background-color: lightblue;
   text-align: center;
+  padding-top: 25px;
+  font-size: 1.2rem;
+  color: white;
 }
 
 header h1 {
+  font-family: "Times New Roman", Times, serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,16 +55,20 @@ header h1 {
   flex-direction: column;
 }
 
-/* ASIDE MENU--------------------------------------------------------------------------------- */
+/* -----------------ASIDE MENU---------------------------------- */
 
 aside {
   width: 100%;
-  background-color: #006fa2;
   display: flex;
   flex-direction: column;
+  margin: 22px;
+  border-radius: 10px;
+  /* border: 20px; */
   position: relative;
-  /* opacity: 0.8; */
+  padding-left: 10px;
+  background-color: rgba(211, 211, 211, 0.5);
 }
+
 /* STYLE FÖR KLOCKAN; DATUM; TID */
 .welcome-div {
   text-align: center;
@@ -80,25 +78,25 @@ aside {
 .full-date-and-time {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .current-time .clock {
   font-size: 2rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* .clock-and-hand img {
-  display: none;
-} */
-
-/* SKAPA LÄGG TILL KNAPP ---------------------------------*/
+/* --------SKAPA LÄGG TILL KNAPP ------------------------*/
 .create-button-div {
   display: flex;
   justify-content: center;
-  border: solid;
+  /* border: solid 1px; */
   border-width: 0.5rem;
   margin-bottom: 1.5rem;
 }
-/* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN */
+/* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
 .create-button-div .createButton {
   margin: 1.5rem 0;
   padding: 0.5rem 2rem;
@@ -106,13 +104,22 @@ aside {
   max-width: 16rem;
   border-radius: 0.5rem;
   color: black;
-  background-color: white;
-  border: none;
+  font-size: 0.8rem;
+  background-color: beige; /* Ändra färgen här */
+  border: solid beige 2px; /* Anpassa ramfärgen här */
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   font-weight: 600;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
+
+.create-button-div .createButton:hover {
+  background-color: burlywood; /* Ändra färgen här */
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 /* GÖMMER TODO POPUP */
 .create-todo-popup {
   width: 100%;
@@ -122,6 +129,7 @@ aside {
   margin: auto;
   padding: 2rem;
   z-index: 100;
+  background-color: lightgray;
 }
 
 .show-popup {
@@ -130,8 +138,11 @@ aside {
 
 /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
 .create-todo-popup {
-  border: solid;
+  /* border: solid; */
+  border-radius: 10px;
+
   width: 70%;
+  font-size: 1rem;
 }
 
 .create-todo-popup input,
@@ -146,13 +157,14 @@ button {
   width: 100%;
   margin-bottom: 1rem;
 }
+
 /* DATUM OCH SPARA KNAPPEN */
-.popup-date-btn-container {
+/* .popup-date-btn-container {
   border: solid;
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
-}
+} */
 
 .save-button {
   cursor: pointer;
@@ -163,13 +175,14 @@ button {
   justify-content: center;
   font-size: 2rem;
 }
+
 .feedback-container i {
   color: rgb(255, 0, 0);
   margin-right: 0.5rem;
 }
 
 /* TODO-----------------------------------*/
-.todo {
+/* .todo {
   padding: 0.8rem 0;
   margin: 1rem 0.5rem 0.5rem 0.5rem;
   background-color: beige;
@@ -178,19 +191,16 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .todo-content {
   margin-left: 1rem;
-  background-color: aqua;
-  /* color: var(--Secondary-color); */
   overflow: hidden;
   width: 65%;
 }
 
 .todo-content input {
   background-color: darkgrey;
-  /* color: var(--Secondary-color); */
   border-style: none;
   font-size: 1.5rem;
 }
@@ -212,8 +222,8 @@ button {
 }
 
 .todo-button-edit {
-  background-color: gray;
-  color: blue;
+  background-color: darkgray;
+  color: white;
   border: none;
   border-radius: 0.7rem;
   padding: 0.5rem 0.5rem;
@@ -230,21 +240,32 @@ button {
   cursor: pointer;
 }
 
+.todayTodoText {
+  color: white;
+  margin: 10px;
+}
+
 /* MAIN---------------------------------------------------------------------------------- */
 
 .month-div {
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
+  padding: 15px;
   margin: 0 3rem;
+  background-color: rgba(211, 211, 211, 0.7);
+  border-radius: 5px 5px 0 0;
 }
 
 .weekday-div-mobile {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin: 1rem 0;
+  margin: 0 3rem;
+  padding-bottom: 15px;
+  background-color: rgba(211, 211, 211, 0.7);
+  border-radius: 0 0 5px 5px;
 }
+
 .weekday {
   display: flex;
   justify-content: center;
@@ -259,7 +280,7 @@ button {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  /* background-color: purple; */
+  margin: 22px;
 }
 
 .calendar li {
@@ -270,6 +291,10 @@ button {
   cursor: pointer;
   flex-direction: column;
   position: relative;
+  border: solid 1px black;
+  border-radius: 8px;
+  margin: 3px;
+  background-color: rgba(211, 211, 211, 0.6);
 }
 
 .helgdag {
@@ -280,23 +305,32 @@ button {
 
 .padding-days {
   color: var(--grey-color);
+  background-color: rgba(211, 211, 211, 0.4);
+  border: solid 1px black;
+  border-radius: 8px;
+  margin: 3px;
 }
 
-.padding-days:hover {
-  color: white;
-}
+/* .padding-days:hover {
+  color: green;
+} */
 
 .calendar li:hover {
   background-color: var(--grey-color);
 }
 
 .active {
-  border: 0.5rem solid var(--light-blue);
+  border: 0.5rem solid;
 }
 
 .activeDay {
-  color: var(--light-blue);
+  color: red;
   font-weight: bolder;
+  border: 0.1rem solid black;
+}
+
+.activeDay:hover {
+  color: red;
 }
 
 /* REUSABLE CLASSES */
