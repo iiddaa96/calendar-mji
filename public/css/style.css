@@ -8,7 +8,7 @@
 /* -----------ROOT VARIABLER------------------------------- */
 :root {
   /* Värden */
-  --header-height: 5rem;
+  --header-height: 9rem;
   --FS-0_7: 0.7rem;
   /* --FS-1: 1rem; */
   --FS-1_2: 1.2rem;
@@ -36,17 +36,29 @@ body {
 header {
   height: var(--header-height);
   text-align: center;
-  padding-top: 25px;
+  /* padding-top: 25px; */
   font-size: 1.2rem;
   color: white;
 }
 
 header h1 {
-  font-family: "Times New Roman", Times, serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
+  font-family: "Zeyada", cursive;
   justify-content: center;
+  align-items: center;
+  display: flex;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-size: 5em;
+  opacity: 0;
+
+  transform: translateY(-100px);
+  animation: bounceIn 1s ease forwards;
+}
+
+@keyframes bounceIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .aside-main-container {
@@ -76,16 +88,18 @@ aside {
 }
 
 .full-date-and-time {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "Zeyada", cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .current-time .clock {
-  font-size: 2rem;
+  font-size: 4rem;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "Cookie", cursive;
 }
 
 /* --------SKAPA LÄGG TILL KNAPP ------------------------*/
@@ -96,6 +110,7 @@ aside {
   border-width: 0.5rem;
   margin-bottom: 1.5rem;
 }
+
 /* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
 .create-button-div .createButton {
   margin: 1.5rem 0;
@@ -243,6 +258,9 @@ button {
 .todayTodoText {
   color: white;
   margin: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-family: "Cookie", cursive;
+  font-size: 2rem;
 }
 
 /* MAIN---------------------------------------------------------------------------------- */
