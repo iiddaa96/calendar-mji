@@ -169,10 +169,22 @@ function updateTodo(id) {
  * new todo-array.
  */
 function deleteTodo(id) {
-  todos = todos.filter((todo) => todo.id !== id);
-  saveToLocalStorage();
-  renderTodos();
-  showTodoArrayLength();
+  const todoIndex = todos.findIndex((todo) => todo.id === id);
+
+  if (todoIndex !== -1) {
+    //Ta bort todo från todos-listan
+    todos.splice(todoIndex, 1);
+
+    //mUppdatera kalendern
+    renderCalenderDays();
+
+    // Spara ändringarna i localStorage
+    saveToLocalStorage();
+
+    // Uppdatera todo-listan och visa antalet todos
+    renderTodos();
+    showTodoArrayLength();
+  }
 }
 
 /**
