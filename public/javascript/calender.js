@@ -123,7 +123,11 @@ async function renderCalenderDays() {
         holidayString = xx[0].helgdag;
       }
 
-      liTag += `<li class="${isToday}">${i}<p>${holidayString}</p></li>`;
+      const todosForDay = todos.filter((todo) => todo.date === currentDate);
+      const hasTodos = todosForDay.length > 0;
+      const todoCount = hasTodos ? todosForDay.lenght : "";
+
+      liTag += `<li class="${isToday}">${i}<p>${holidayString}</p><span>${todoCount}</span></li>`;
     }
     // Creating li of next month first days
     for (let i = lastDayOfMonth; i < 6; i++) {
