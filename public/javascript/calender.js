@@ -64,6 +64,33 @@ async function getHolidayAPI() {
   return fetchedHolidays;
 }
 
+function renderSelectedTodos(selectedTodos) {
+  const todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
+
+  selectedTodos.forEach((todo) => {
+    const todoItem = document.createElement("li");
+
+    const updateButton = document.createElement("button");
+    updateButton.textContent = "Uppdatera";
+    updateButton.onclick = () => renderInput(todo.id);
+    updateButton.setAttribute("data-cy", "edit-todo-button");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Ta bort";
+    deleteButton.onclick = () => deleteTodo(todo.id);
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
+
+    todoItem.innerHTML = `
+      ${todo.text} ${todo.date}
+    `;
+
+    todoList.appendChild(todoItem);
+    todoList.appendChild(updateButton);
+    todoList.appendChild(deleteButton);
+  });
+}
+
 async function renderCalenderDays() {
   let calenderUL = document.querySelector(".calendar");
 
@@ -91,47 +118,74 @@ async function renderCalenderDays() {
 
   const now = new Date();
 
-  getHolidayAPI().then((holidays) => {
-    let liTag = "";
-    // loop for padding days of previous month
-    for (let i = firstWeekDayOfMonth; i > 0; i--) {
-      liTag += `<li class="padding-days">${lastDateOfPrevMonth - i + 1}</li>`;
+  const holidays = await getHolidayAPI();
+  let liTag = "";
+  const dayCells = [];
+
+  // loop for padding days of previous month
+  for (let i = firstWeekDayOfMonth; i > 0; i--) {
+    const cell = document.createElement("li");
+    cell.className = "padding-days";
+    cell.textContent = lastDateOfPrevMonth - i + 1;
+    dayCells.push(cell);
+  }
+
+  // Iterates the current month and adds the days to the calendar
+  for (let i = 1; i <= lastDateOfMonth; i++) {
+    const currentDate =
+      calendar.year +
+      "-" +
+      ("" + (calendar.month + 1)).padStart(2, "0") +
+      "-" +
+      ("" + i).padStart(2, "0");
+
+    let isToday =
+      i === calendar.day &&
+      calendar.month === now.getMonth() &&
+      calendar.year === now.getFullYear()
+        ? "activeDay"
+        : "";
+    let holidayString = "";
+
+    const xx = holidays.filter((h) => {
+      return h.datum === currentDate;
+    });
+
+    if (xx[0]) {
+      holidayString = xx[0].helgdag;
     }
 
-    // Iterates the current month and adds the days to the calendar
-    for (let i = 1; i <= lastDateOfMonth; i++) {
-      const currentDate =
-        calendar.year +
-        "-" +
-        ("" + (calendar.month + 1)).padStart(2, "0") +
-        "-" +
-        ("" + i).padStart(2, "0");
+    const todosForDay = todos.filter((todo) => todo.date === currentDate);
+    const hasTodos = todosForDay.length > 0;
+    const todoCount = hasTodos ? todosForDay.length : "";
 
-      let isToday =
-        i === calendar.day &&
-        calendar.month === now.getMonth() &&
-        calendar.year === now.getFullYear()
-          ? "activeDay"
-          : "";
-      let holidayString = "";
+    const cell = document.createElement("li");
+    cell.className = isToday;
+    cell.textContent = i;
+    cell.addEventListener("click", () => {
+      const loopDay = new Date(calendar.year, calendar.month, i);
+      const formattedDate = loopDay.toLocaleDateString();
+      updateTodoList(formattedDate);
+    });
 
-      const xx = holidays.filter((h) => {
-        return h.datum === currentDate;
-      });
+    const dateSpan = document.createElement("span");
+    dateSpan.textContent = holidayString;
+    const todoCountSpan = document.createElement("span");
+    todoCountSpan.textContent = todoCount;
+    cell.append(dateSpan, todoCountSpan);
 
-      if (xx[0]) {
-        holidayString = xx[0].helgdag;
-      }
+    dayCells.push(cell);
+  }
+  // Creating li of next month first days
+  for (let i = lastDayOfMonth; i < 6; i++) {
+    const cell = document.createElement("li");
+    cell.className = "padding-days";
+    cell.textContent = i - lastDayOfMonth + 1;
+    dayCells.push(cell);
+  }
 
-      liTag += `<li class="${isToday}">${i}<p>${holidayString}</p></li>`;
-    }
-    // Creating li of next month first days
-    for (let i = lastDayOfMonth; i < 6; i++) {
-      liTag += `<li class="padding-days">${i - lastDayOfMonth + 1}</li>`;
-    }
-
-    calenderUL.innerHTML = liTag;
-  });
+  calenderUL.innerHTML = "";
+  calenderUL.append(...dayCells);
 }
 
 /**
