@@ -118,63 +118,75 @@ async function renderCalenderDays() {
 
   const now = new Date();
 
-  getHolidayAPI().then((holidays) => {
-    let liTag = "";
-    // loop for padding days of previous month
-    for (let i = firstWeekDayOfMonth; i > 0; i--) {
-      liTag += `<li class="padding-days">${lastDateOfPrevMonth - i + 1}</li>`;
-    }
+  const holidays = await getHolidayAPI();
+  let liTag = "";
+  const dayCells = [];
 
-    // Iterates the current month and adds the days to the calendar
-    for (let i = 1; i <= lastDateOfMonth; i++) {
-      const currentDate =
-        calendar.year +
-        "-" +
-        ("" + (calendar.month + 1)).padStart(2, "0") +
-        "-" +
-        ("" + i).padStart(2, "0");
+  // loop for padding days of previous month
+  for (let i = firstWeekDayOfMonth; i > 0; i--) {
+    const cell = document.createElement("li");
+    cell.className = "padding-days";
+    cell.textContent = lastDateOfPrevMonth - i + 1;
+    dayCells.push(cell);
+  }
 
-      let isToday =
-        i === calendar.day &&
-        calendar.month === now.getMonth() &&
-        calendar.year === now.getFullYear()
-          ? "activeDay"
-          : "";
-      let holidayString = "";
+  // Iterates the current month and adds the days to the calendar
+  for (let i = 1; i <= lastDateOfMonth; i++) {
+    const currentDate =
+      calendar.year +
+      "-" +
+      ("" + (calendar.month + 1)).padStart(2, "0") +
+      "-" +
+      ("" + i).padStart(2, "0");
 
-      const xx = holidays.filter((h) => {
-        return h.datum === currentDate;
-      });
+    let isToday =
+      i === calendar.day &&
+      calendar.month === now.getMonth() &&
+      calendar.year === now.getFullYear()
+        ? "activeDay"
+        : "";
+    let holidayString = "";
 
-      if (xx[0]) {
-        holidayString = xx[0].helgdag;
-      }
-
-      const todosForDay = todos.filter((todo) => todo.date === currentDate);
-      const hasTodos = todosForDay.length > 0;
-      const todoCount = hasTodos ? todosForDay.length : "";
-
-      liTag += `<li class="${isToday}">${i}<p>${holidayString}</p><span>${todoCount}</span></li>`;
-    }
-    // Creating li of next month first days
-    for (let i = lastDayOfMonth; i < 6; i++) {
-      liTag += `<li class="padding-days">${i - lastDayOfMonth + 1}</li>`;
-    }
-
-    calenderUL.innerHTML = liTag;
-
-    // Add event listener for each calendar day
-    const calendarDays = calenderUL.querySelectorAll("li");
-    calendarDays.forEach((day) => {
-      day.addEventListener("click", (event) => {
-        const selectedDate = event.currentTarget.getAttribute("data-date");
-        const selectedTodos = todos.filter(
-          (todo) => todo.date === selectedDate
-        );
-        renderSelectedTodos(selectedTodos);
-      });
+    const xx = holidays.filter((h) => {
+      return h.datum === currentDate;
     });
-  });
+
+    if (xx[0]) {
+      holidayString = xx[0].helgdag;
+    }
+
+    const todosForDay = todos.filter((todo) => todo.date === currentDate);
+    const hasTodos = todosForDay.length > 0;
+    const todoCount = hasTodos ? todosForDay.length : "";
+
+    const cell = document.createElement("li");
+    cell.className = isToday;
+    cell.textContent = i;
+    cell.addEventListener("click", () => {
+      const loopDay = new Date(calendar.year, calendar.month, i);
+      console.log(loopDay, todos);
+      const selectedTodos = todos.filter((todo) => todo.date === loopDay);
+      renderSelectedTodos(selectedTodos);
+    });
+
+    const dateSpan = document.createElement("span");
+    dateSpan.textContent = holidayString;
+    const todoCountSpan = document.createElement("span");
+    todoCountSpan.textContent = todoCount;
+    cell.append(dateSpan, todoCountSpan);
+
+    dayCells.push(cell);
+  }
+  // Creating li of next month first days
+  for (let i = lastDayOfMonth; i < 6; i++) {
+    const cell = document.createElement("li");
+    cell.className = "padding-days";
+    cell.textContent = i - lastDayOfMonth + 1;
+    dayCells.push(cell);
+  }
+
+  calenderUL.innerHTML = "";
+  calenderUL.append(...dayCells);
 }
 
 /**

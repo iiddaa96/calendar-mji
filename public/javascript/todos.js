@@ -80,6 +80,7 @@ function generateUniqueId() {
 }
 
 /** This function render a todo, it look in the todolist array and create a list, and two button: Save and Delete.*/
+
 function renderTodos() {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
@@ -208,4 +209,63 @@ function showTodoArrayLength() {
   const numberOfTodosArray = todos.length;
   showTodoLength.textContent = numberOfTodosArray;
   console.log(`Antal todos: ${numberOfTodosArray}`);
+}
+
+function renderFilteredTodos(filteredTodos) {
+  const todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
+
+  filteredTodos.forEach((todo) => {
+    const todoItem = document.createElement("li");
+
+    const updateButton = document.createElement("button");
+    updateButton.textContent = "Uppdatera";
+    updateButton.onclick = () => renderInput(todo.id);
+    updateButton.setAttribute("data-cy", "edit-todo-button");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Ta bort";
+    deleteButton.onclick = () => deleteTodo(todo.id);
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
+
+    todoItem.innerHTML = `
+      ${todo.text}${todo.date}
+    `;
+
+    todoList.appendChild(todoItem);
+    todoList.appendChild(updateButton);
+    todoList.appendChild(deleteButton);
+  });
+}
+
+function updateTodoList(selectedDate) {
+  const selectedTodos = todos.filter((todo) => todo.date === selectedDate);
+  renderFilteredTodos(selectedTodos);
+}
+
+function renderFilteredTodos(filteredTodos) {
+  const todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
+
+  filteredTodos.forEach((todo) => {
+    const todoItem = document.createElement("li");
+
+    const updateButton = document.createElement("button");
+    updateButton.textContent = "Uppdatera";
+    updateButton.onclick = () => renderInput(todo.id);
+    updateButton.setAttribute("data-cy", "edit-todo-button");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Ta bort";
+    deleteButton.onclick = () => deleteTodo(todo.id);
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
+
+    todoItem.innerHTML = `
+      ${todo.text}${todo.date}
+    `;
+
+    todoList.appendChild(todoItem);
+    todoList.appendChild(updateButton);
+    todoList.appendChild(deleteButton);
+  });
 }
