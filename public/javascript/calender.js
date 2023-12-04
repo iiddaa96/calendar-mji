@@ -164,9 +164,8 @@ async function renderCalenderDays() {
     cell.textContent = i;
     cell.addEventListener("click", () => {
       const loopDay = new Date(calendar.year, calendar.month, i);
-      console.log(loopDay, todos);
-      const selectedTodos = todos.filter((todo) => todo.date === loopDay);
-      renderSelectedTodos(selectedTodos);
+      const formattedDate = loopDay.toLocaleDateString();
+      updateTodoList(formattedDate);
     });
 
     const dateSpan = document.createElement("span");

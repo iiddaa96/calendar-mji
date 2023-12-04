@@ -178,9 +178,6 @@ function deleteTodo(id) {
     //Ta bort todo från todos-listan
     todos.splice(todoIndex, 1);
 
-    //mUppdatera kalendern
-    renderCalenderDays();
-
     // Spara ändringarna i localStorage
     saveToLocalStorage();
 
@@ -239,7 +236,10 @@ function renderFilteredTodos(filteredTodos) {
 }
 
 function updateTodoList(selectedDate) {
-  const selectedTodos = todos.filter((todo) => todo.date === selectedDate);
+  const selectedTodos = todos.filter((todo) => {
+    const todoDate = new Date(todo.date);
+    return todoDate.toLocaleDateString() === selectedDate;
+  });
   renderFilteredTodos(selectedTodos);
 }
 
