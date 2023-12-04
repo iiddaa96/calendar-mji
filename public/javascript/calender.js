@@ -64,6 +64,33 @@ async function getHolidayAPI() {
   return fetchedHolidays;
 }
 
+function renderSelectedTodos(selectedTodos) {
+  const todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
+
+  selectedTodos.forEach((todo) => {
+    const todoItem = document.createElement("li");
+
+    const updateButton = document.createElement("button");
+    updateButton.textContent = "Uppdatera";
+    updateButton.onclick = () => renderInput(todo.id);
+    updateButton.setAttribute("data-cy", "edit-todo-button");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Ta bort";
+    deleteButton.onclick = () => deleteTodo(todo.id);
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
+
+    todoItem.innerHTML = `
+      ${todo.text} ${todo.date}
+    `;
+
+    todoList.appendChild(todoItem);
+    todoList.appendChild(updateButton);
+    todoList.appendChild(deleteButton);
+  });
+}
+
 async function renderCalenderDays() {
   let calenderUL = document.querySelector(".calendar");
 
@@ -135,6 +162,18 @@ async function renderCalenderDays() {
     }
 
     calenderUL.innerHTML = liTag;
+
+    // Add event listener for each calendar day
+    const calendarDays = calenderUL.querySelectorAll("li");
+    calendarDays.forEach((day) => {
+      day.addEventListener("click", (event) => {
+        const selectedDate = event.currentTarget.getAttribute("data-date");
+        const selectedTodos = todos.filter(
+          (todo) => todo.date === selectedDate
+        );
+        renderSelectedTodos(selectedTodos);
+      });
+    });
   });
 }
 

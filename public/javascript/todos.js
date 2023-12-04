@@ -63,6 +63,7 @@ function addTodo() {
 
   saveToLocalStorage();
   renderTodos();
+  renderCalenderDays();
   showTodoArrayLength();
 
   todoInput.value = "";
@@ -159,6 +160,7 @@ function updateTodo(id) {
     }
     saveToLocalStorage();
     renderTodos();
+    renderCalenderDays();
     showTodoArrayLength();
   }
 }
@@ -183,6 +185,7 @@ function deleteTodo(id) {
 
     // Uppdatera todo-listan och visa antalet todos
     renderTodos();
+    renderCalenderDays();
     showTodoArrayLength();
   }
 }
