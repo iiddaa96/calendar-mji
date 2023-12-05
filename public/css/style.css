@@ -10,12 +10,9 @@
   /* Värden */
   --header-height: 9rem;
   --FS-0_7: 0.7rem;
-  /* --FS-1: 1rem; */
   --FS-1_2: 1.2rem;
   --FS-1_5: 1.5rem;
 }
-
-/* hej */
 /* ----------------BODY--------------------- */
 
 body {
@@ -37,7 +34,6 @@ body {
 header {
   height: var(--header-height);
   text-align: center;
-  /* padding-top: 25px; */
   font-size: 1.2rem;
   color: white;
 }
@@ -154,7 +150,6 @@ aside {
 
 /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
 .create-todo-popup {
-  /* border: solid; */
   border-radius: 10px;
 
   width: 70%;
@@ -174,40 +169,18 @@ button {
   margin-bottom: 1rem;
 }
 
-/* DATUM OCH SPARA KNAPPEN */
-/* .popup-date-btn-container {
-  border: solid;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-} */
-
 .save-button {
   cursor: pointer;
 }
 
-.feedback-container {
+.feedback {
   display: flex;
   justify-content: center;
-  font-size: 2rem;
-}
-
-.feedback-container i {
-  color: rgb(255, 0, 0);
-  margin-right: 0.5rem;
+  font-size: 1rem;
+  color: red;
 }
 
 /* TODO-----------------------------------*/
-/* .todo {
-  padding: 0.8rem 0;
-  margin: 1rem 0.5rem 0.5rem 0.5rem;
-  background-color: beige;
-  border: 1px solid;
-  border-radius: 0.33rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
 
 .todo-content {
   margin-left: 1rem;
