@@ -132,7 +132,7 @@ function renderInput() {
     deleteButton.onclick = () => deleteTodo(todo.id);
 
     todoItem.innerHTML = `
-      ${todo.text}${todo.date}
+      ${todo.text} ${todo.date}
       <input type="text" id="updateText_${todo.id}" placeholder="Uppdatera don todo..">
        <input type="date" id="updateDate_${todo.id}">
     `;
@@ -231,7 +231,7 @@ function renderFilteredTodos(filteredTodos) {
     deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
-      ${todo.text}${todo.date}
+      ${todo.text} ${todo.date}
     `;
 
     todoList.appendChild(todoItem);
@@ -254,7 +254,7 @@ function renderFilteredTodos(filteredTodos) {
 
   filteredTodos.forEach((todo) => {
     const todoItem = document.createElement("li");
-
+    todoItem.className = "todoListText";
     const updateButton = document.createElement("button");
     updateButton.textContent = "Uppdatera";
     updateButton.onclick = () => renderInput(todo.id);
@@ -266,7 +266,7 @@ function renderFilteredTodos(filteredTodos) {
     deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
-      ${todo.text}${todo.date}
+      ${todo.text} ${todo.date}
     `;
 
     todoList.appendChild(todoItem);
