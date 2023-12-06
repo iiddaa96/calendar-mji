@@ -21,7 +21,7 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  /* height: 100vh; */
   background-size: cover;
   background-position: center;
   transition: background-image 0.5s ease-in-out;
@@ -71,7 +71,7 @@ header h1 {
 /* -----------------ASIDE MENU---------------------------------- */
 
 aside {
-  width: 70%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   margin: 22px;
@@ -114,7 +114,7 @@ aside {
 .create-button-div .createButton {
   margin: 1.5rem 0;
   padding: 0.5rem 2rem;
-  width: 75%;
+  width: 70%;
   max-width: 16rem;
   border-radius: 0.5rem;
   color: black;
