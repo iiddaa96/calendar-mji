@@ -49,6 +49,7 @@ function addTodo() {
   const dueDate = dueDateInput.value;
 
   if (todoText === "" || dueDate === "") {
+    warning.style.color = "red";
     warning.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
     feedback.textContent = "Var vänlig fyll i anteckningar och datum.";
     return;

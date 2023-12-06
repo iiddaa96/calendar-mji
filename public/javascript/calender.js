@@ -160,7 +160,7 @@ async function renderCalenderDays() {
     const todoCount = hasTodos ? todosForDay.length : "";
 
     const cell = document.createElement("li");
-    cell.className = isToday;
+    cell.className = isToday + (xx[0] ? " redDay" : ""); // Om det är en röd dag så blir texten röd.
     cell.textContent = i;
     cell.addEventListener("click", () => {
       const loopDay = new Date(calendar.year, calendar.month, i);
@@ -266,8 +266,7 @@ function getMonthImage(month) {
   return monthImages[month];
 }
 
-// Sätt bakgrundsbild
-// Sätt bakgrundsbild
+// Sätter bakgrundsbild
 function changeBackgroundByMonth() {
   const month = calendar.month;
   const imageUrl = `/images/${getMonthImage(month)}`;
