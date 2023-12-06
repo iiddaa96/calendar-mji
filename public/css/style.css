@@ -77,12 +77,13 @@ aside {
   position: relative;
   padding-left: 10px;
   background-color: rgba(211, 211, 211, 0.5);
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .todo-heading {
   padding: 20px;
-  max-height: 350px;
+  max-height: 210px;
+  overflow-y: auto;
 }
 
 /* STYLE FÖR KLOCKAN; DATUM; TID */
@@ -146,7 +147,6 @@ aside {
   left: 0;
   margin: auto;
   padding: 1.4rem;
-  /* z-index: 100; */
   background-color: lightgray;
 }
 
@@ -186,8 +186,8 @@ aside {
 
 .create-todo-popup input,
 button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.75rem;
+  padding: 0rem 1rem;
+  border-radius: 0.5rem;
   color: rgba(14, 37, 49, 0.825);
 }
 
@@ -234,7 +234,6 @@ button {
 
 .todo-buttons {
   display: flex;
-  justify-content: flex-end;
   margin-top: 5px;
   width: 50%;
 }

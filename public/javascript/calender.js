@@ -176,7 +176,10 @@ async function renderCalenderDays() {
     const dateSpan = document.createElement("span");
     dateSpan.textContent = holidayString;
     const todoCountSpan = document.createElement("span");
+
+    todoCountSpan.className = "todoCountSpan";
     todoCountSpan.textContent = todoCount;
+
     cell.append(dateSpan, todoCountSpan);
 
     dayCells.push(cell);

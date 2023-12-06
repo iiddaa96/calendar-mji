@@ -1,4 +1,17 @@
 @media (width > 1024px) {
+  body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.4rem; /*Storleken på datumen*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
   .aside-main-container {
     flex-direction: row;
     display: flex;
@@ -44,9 +57,9 @@
     font-size: 2rem;
   }
 
-  .create-todo-popup {
+  /* .create-todo-popup {
     width: 70%;
-  }
+  } */
 
   .create-todo-popup input,
   button {
@@ -54,14 +67,14 @@
   }
 
   .todo-input {
-    width: 100%;
+    width: 70%;
     margin-bottom: 0.3rem;
   }
 
   .todo-buttons {
     display: flex;
     margin-top: 4px;
-    width: 33%;
+    width: 28%;
   }
 
   .month-div {
@@ -89,6 +102,14 @@
     position: relative;
     border-radius: 8px;
     margin: 3px;
+  }
+
+  .todoCountSpan {
+    /* color: white; */
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    font-weight: bolder;
+    padding-left: 6px;
   }
 
   .calendar {
