@@ -16,6 +16,7 @@
     border-radius: 10px;
     position: relative;
     padding-left: 10px;
+    overflow-y: auto;
   }
 
   main {
@@ -95,5 +96,27 @@
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr);
     margin: 22px;
+  }
+
+  /*Uppdatera knappen*/
+  .todoUpdate {
+    margin-right: 8px;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  /*Style för deleted knappen i todo*/
+  .todoDeleted {
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
+  .create-todo-popup {
+    border-radius: 10px;
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  #todoList.todo-container {
+    padding: 20px;
   }
 }
