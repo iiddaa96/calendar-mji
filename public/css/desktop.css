@@ -37,6 +37,13 @@
     width: 70%;
   }
 
+  header {
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+  }
+
   header h1 {
     font-size: 5rem;
   }
@@ -57,10 +64,6 @@
     font-size: 2rem;
   }
 
-  /* .create-todo-popup {
-    width: 70%;
-  } */
-
   .create-todo-popup input,
   button {
     padding: 0.5rem 1rem;
@@ -78,21 +81,22 @@
   }
 
   .month-div {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     padding: 15px;
-    margin: 0 3rem;
+    margin: 0 1.5rem;
     border-radius: 5px 5px 0 0;
   }
 
   .weekday-div-mobile {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    margin: 0 3rem;
-    padding-bottom: 15px;
+    margin: 0 1.5rem;
+    padding-bottom: px;
     border-radius: 0 0 5px 5px;
   }
 
   .calendar li {
+    width: 7.4rem;
     height: 5rem;
     display: flex;
     justify-content: center;
@@ -104,19 +108,38 @@
     margin: 3px;
   }
 
+  .calendar {
+    gap: 1px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    margin: 22px;
+  }
+
+  .back-month-arrow {
+    margin-right: 22rem;
+  }
+
+  .next-month-arrow {
+    margin-left: 22rem;
+  }
+
+  .weekday {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .weekday-div {
+    display: none;
+  }
+
   .todoCountSpan {
     /* color: white; */
     font-family: "Times New Roman", Times, serif;
     font-size: 15px;
     font-weight: bolder;
     padding-left: 6px;
-  }
-
-  .calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    margin: 22px;
   }
 
   /*Uppdatera knappen*/
@@ -139,5 +162,12 @@
 
   #todoList.todo-container {
     padding: 20px;
+  }
+
+  .redDay {
+    color: rgb(177, 38, 38);
+    font-weight: bolder;
+    font-size: 1.2rem;
+    padding: 10px;
   }
 }
