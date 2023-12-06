@@ -8,6 +8,7 @@
 
   aside {
     width: 30%;
+    height: 33rem;
     min-width: 360px;
     display: flex;
     flex-direction: column;
