@@ -6,7 +6,9 @@ function initCalendar() {
   changeBackgroundByMonth();
 }
 
-/** Creates an object with the current date, year, month and day. */
+/**
+ * Creates an object with the current date, year, month and day.
+ */
 let calendar = {
   date: new Date(),
   year: null,
@@ -18,7 +20,9 @@ calendar.year = calendar.date.getFullYear();
 calendar.month = calendar.date.getMonth();
 calendar.day = calendar.date.getDate();
 
-/** Array with the months of the year.*/
+/**
+ * Array with the months of the year.
+ * */
 const months = [
   "Januari",
   "Februari",
@@ -34,8 +38,9 @@ const months = [
   "December",
 ];
 
-/**Array with the weekdays */
-// const weekdays = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
+/**
+ * Array with the weekdays
+ */
 const weekdays = [
   "Sunday",
   "Monday",
@@ -185,6 +190,7 @@ function monthBack() {
   drawCurrentMonth();
   changeBackgroundByMonth();
 }
+
 /**
  * Displays the current month and year in the calendar.
  */
@@ -193,7 +199,11 @@ function drawCurrentMonth() {
     months[calendar.month] + " " + +calendar.year;
 }
 
-// Array, Hämta bildnamnet för den aktuella månaden
+/**
+ * Array, Hämta bildnamnet för den aktuella månaden
+ * @param {number} month - Månadens index (0-11) som representerar januari till december.
+ * @returns {string} - Bildnamnet för den angivna månaden.
+ */
 function getMonthImage(month) {
   const monthImages = [
     "january.jpg",
@@ -212,8 +222,9 @@ function getMonthImage(month) {
   return monthImages[month];
 }
 
-// Sätt bakgrundsbild
-// Sätt bakgrundsbild
+/**
+ * Sätt bakgrundsbild
+ */
 function changeBackgroundByMonth() {
   const month = calendar.month;
   const imageUrl = `/images/${getMonthImage(month)}`;
