@@ -1,16 +1,99 @@
 @media (width > 1024px) {
   .aside-main-container {
     flex-direction: row;
+    display: flex;
+    height: calc(100vh - var(--header-height));
+    align-items: center;
   }
 
   aside {
     width: 30%;
+    height: 33rem;
     min-width: 360px;
-    border: 2px solid var(--Secondary-color);
+    display: flex;
+    flex-direction: column;
+    margin: 22px;
+    border-radius: 10px;
+    position: relative;
+    padding-left: 10px;
   }
 
   main {
     display: block;
     width: 70%;
+  }
+
+  header h1 {
+    font-size: 5rem;
+  }
+
+  .full-date-and-time {
+    font-size: 2.5rem;
+  }
+
+  .current-time .clock {
+    font-size: 4rem;
+  }
+
+  .todayTodoText {
+    font-size: 2rem;
+  }
+
+  .todayTodoText {
+    font-size: 2rem;
+  }
+
+  .create-todo-popup {
+    width: 70%;
+  }
+
+  .create-todo-popup input,
+  button {
+    padding: 0.5rem 1rem;
+  }
+
+  .todo-input {
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+
+  .todo-buttons {
+    display: flex;
+    margin-top: 4px;
+    width: 33%;
+  }
+
+  .month-div {
+    font-size: 1.5rem;
+    padding: 15px;
+    margin: 0 3rem;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .weekday-div-mobile {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 0 3rem;
+    padding-bottom: 15px;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .calendar li {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    position: relative;
+    border-radius: 8px;
+    margin: 3px;
+  }
+
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    margin: 22px;
   }
 }
