@@ -1,5 +1,4 @@
 /* STYLE FÖR MOBIL ENHET */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,14 +19,11 @@
 body {
   margin: 0;
   padding: 0;
-  /* height: 100vh; */
-  background-size: cover;
   background-position: center;
   transition: background-image 0.5s ease-in-out;
   font-family: "Times New Roman", Times, serif;
   font-size: 1.4rem; /*Storleken på datumen*/
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
 }
 
@@ -48,7 +44,6 @@ header h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   font-size: 3em;
   opacity: 0;
-
   transform: translateY(-100px);
   animation: bounceIn 1s ease forwards;
 }
@@ -62,7 +57,7 @@ header h1 {
 
 .aside-main-container {
   display: flex;
-  height: calc(100vh - var(--header-height));
+  /* height: calc(100vh - var(--header-height)); */
   flex-direction: column;
   align-items: center;
 }
@@ -78,6 +73,13 @@ aside {
   position: relative;
   padding-left: 10px;
   background-color: rgba(211, 211, 211, 0.5);
+  /* overflow-y: auto; */
+}
+
+.todo-heading {
+  padding: 20px;
+  max-height: 210px;
+  overflow-y: auto;
 }
 
 /* STYLE FÖR KLOCKAN; DATUM; TID */
@@ -141,12 +143,34 @@ aside {
   left: 0;
   margin: auto;
   padding: 1.4rem;
-  /* z-index: 100; */
   background-color: lightgray;
 }
 
 .show-popup {
   display: block;
+}
+
+/*Style för todo texten*/
+.todoItem {
+  color: white;
+  font-family: "Cookie", cursive;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+
+#todoList.todo-container {
+  padding: 20px;
+}
+
+/*Uppdatera knappen*/
+.todoUpdate {
+  margin-right: 8px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/*Style för deleted knappen i todo*/
+.todoDeleted {
+  font-family: "Times New Roman", Times, serif;
 }
 
 /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
@@ -158,8 +182,8 @@ aside {
 
 .create-todo-popup input,
 button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.75rem;
+  padding: 0rem 1rem;
+  border-radius: 0.5rem;
   color: rgba(14, 37, 49, 0.825);
 }
 
@@ -206,7 +230,6 @@ button {
 
 .todo-buttons {
   display: flex;
-  justify-content: flex-end;
   margin-top: 5px;
   width: 50%;
 }
@@ -222,24 +245,25 @@ button {
 /* MAIN---------------------------------------------------------------------------------- */
 
 .month-div {
-  font-size: 1.5rem;
+  gap: 9px;
+  font-size: 1.7rem;
   display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  margin-bottom: -70px;
-  margin-top: 2rem;
+  justify-content: center;
+  padding: 17px;
+  margin-bottom: -65px;
+  margin-top: 3rem;
   background-color: rgba(211, 211, 211, 0.7);
   border-radius: 5px 5px 0 0;
 }
 
 .weekday-div-mobile {
+  gap: 15px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin: 4.7rem;
-  margin-bottom: 5px;
+  margin-top: 4.8rem;
   background-color: rgba(211, 211, 211, 0.7);
   border-radius: 0 0 5px 5px;
-  padding: 10px;
+  padding: 16px;
 }
 
 .weekday {
@@ -253,14 +277,16 @@ button {
 }
 
 .calendar {
+  gap: 5px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  margin: 22px;
+  /* margin: 55px; */
 }
 
 .calendar li {
-  height: 5rem;
+  height: 2rem;
+  width: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -269,8 +295,16 @@ button {
   position: relative;
   border: solid 1px black;
   border-radius: 8px;
-  margin: 3px;
-  background-color: rgba(211, 211, 211, 0.6);
+  margin: 7px;
+  background-color: rgba(211, 211, 211, 0.8);
+}
+
+.back-month-arrow {
+  margin-right: 30px;
+}
+
+.next-month-arrow {
+  margin-left: 30px;
 }
 
 .helgdag {
@@ -291,18 +325,21 @@ button {
   background-color: var(--grey-color);
 }
 
+li.activeDay {
+  border: 4px solid rgb(177, 38, 38);
+}
+
 .active {
   border: 0.5rem solid;
 }
 
 .activeDay {
-  color: red;
   font-weight: bolder;
-  border: 0.1rem solid black;
+  border: 0.1rem solid;
 }
 
 .activeDay:hover {
-  color: red;
+  color: rgb(177, 38, 38);
 }
 
 /* REUSABLE CLASSES */
@@ -310,6 +347,6 @@ button {
   cursor: pointer;
 }
 
-.redDay {
-  color: red;
+li.redDay {
+  display: none;
 }

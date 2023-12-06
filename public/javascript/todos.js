@@ -84,25 +84,29 @@ function generateUniqueId() {
 
 function renderTodos() {
   const todoList = document.getElementById("todoList");
+  const todoContainer = document.createElement("todo-heading");
   todoList.innerHTML = "";
 
   todos.forEach((todo) => {
     const todoItem = document.createElement("li");
+    todoItem.className = "todoItem";
 
     const updateButton = document.createElement("button");
     updateButton.textContent = "Uppdatera";
+    updateButton.className = "todoUpdate";
     updateButton.onclick = () => renderInput(todo.id);
     updateButton.setAttribute("data-cy", "edit-todo-button");
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Ta bort";
+    deleteButton.className = "todoDeleted";
     deleteButton.onclick = () => deleteTodo(todo.id);
     deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
-      ${todo.text}${todo.date}
+      ${todo.text} ${todo.date}
     `;
-
+    todoContainer.append(todoItem);
     todoList.appendChild(todoItem);
     todoList.appendChild(updateButton);
     todoList.appendChild(deleteButton);
@@ -128,7 +132,7 @@ function renderInput() {
     deleteButton.onclick = () => deleteTodo(todo.id);
 
     todoItem.innerHTML = `
-      ${todo.text}${todo.date}
+      ${todo.text} ${todo.date}
       <input type="text" id="updateText_${todo.id}" placeholder="Uppdatera don todo..">
        <input type="date" id="updateDate_${todo.id}">
     `;
@@ -227,7 +231,7 @@ function renderFilteredTodos(filteredTodos) {
     deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
-      ${todo.text}${todo.date}
+      ${todo.text} ${todo.date}
     `;
 
     todoList.appendChild(todoItem);
@@ -250,7 +254,7 @@ function renderFilteredTodos(filteredTodos) {
 
   filteredTodos.forEach((todo) => {
     const todoItem = document.createElement("li");
-
+    todoItem.className = "todoListText";
     const updateButton = document.createElement("button");
     updateButton.textContent = "Uppdatera";
     updateButton.onclick = () => renderInput(todo.id);
@@ -262,7 +266,7 @@ function renderFilteredTodos(filteredTodos) {
     deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
-      ${todo.text}${todo.date}
+      ${todo.text} ${todo.date}
     `;
 
     todoList.appendChild(todoItem);

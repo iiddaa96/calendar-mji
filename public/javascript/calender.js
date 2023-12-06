@@ -104,7 +104,7 @@ async function renderCalenderDays() {
     calendar.month,
     1,
     -1
-  ).getDay(); // Getting first weekday of mounth
+  ).getDay(); // Getting first weekday of month
   let lastDateOfMonth = new Date(
     calendar.year,
     calendar.month + 1,
@@ -176,7 +176,10 @@ async function renderCalenderDays() {
     const dateSpan = document.createElement("span");
     dateSpan.textContent = holidayString;
     const todoCountSpan = document.createElement("span");
+
+    todoCountSpan.className = "todoCountSpan";
     todoCountSpan.textContent = todoCount;
+
     cell.append(dateSpan, todoCountSpan);
 
     dayCells.push(cell);
