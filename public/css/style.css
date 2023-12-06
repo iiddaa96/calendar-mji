@@ -15,7 +15,6 @@
   --FS-1_2: 1.2rem;
   --FS-1_5: 1.5rem;
 }
-
 /* ----------------BODY--------------------- */
 
 body {
@@ -168,6 +167,19 @@ button {
 .todo-input {
   width: 84%;
   margin-bottom: 0.4rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.save-button {
+  cursor: pointer;
+}
+
+.feedback {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  color: red;
 }
 
 /* TODO-----------------------------------*/
@@ -296,4 +308,8 @@ button {
 /* REUSABLE CLASSES */
 .cursor {
   cursor: pointer;
+}
+
+.redDay {
+  color: red;
 }
