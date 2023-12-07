@@ -96,7 +96,7 @@
   }
 
   .calendar li {
-    width: 7.4rem;
+    width: 8.3rem; /*Storlek på cellerna från sidan*/
     height: 5rem;
     display: flex;
     justify-content: center;
@@ -135,13 +135,14 @@
   }
 
   .todoCountSpan {
+    display: block;
     color: white;
     border-radius: 11px 11px;
     font-family: "Times New Roman", Times, serif;
     font-size: 20px;
     font-weight: bolder;
     text-align: center;
-    background-color: black;
+    background-color: #555555;
     width: 30px;
   }
 
