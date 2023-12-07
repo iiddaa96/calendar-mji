@@ -1,362 +1,364 @@
-/* STYLE FÖR MOBIL ENHET */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-/* -----------ROOT VARIABLER------------------------------- */
-:root {
-  /* Värden */
-  /* --header-height: 9rem; */
-  --header-height: 5rem;
-  --FS-0_7: 0.7rem;
-  --FS-1_2: 1.2rem;
-  --FS-1_5: 1.5rem;
-}
-/* ----------------BODY--------------------- */
-
-body {
-  background-position: center;
-  transition: background-image 0.5s ease-in-out;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 1.4rem; /*Storleken på datumen*/
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-/* -----------------HEADER----------------------------------- */
-
-header {
-  height: var(--header-height);
-  text-align: center;
-  /* font-size: 1.2rem; */
-  color: white;
-  border-bottom: 2px solid;
-}
-
-header h1 {
-  font-family: "Zeyada", cursive;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  font-size: 3em;
-  opacity: 0;
-  transform: translateY(-100px);
-  animation: bounceIn 1s ease forwards;
-}
-
-@keyframes bounceIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (width > 360px) {
+  /* STYLE FÖR MOBIL ENHET */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
-}
 
-.aside-main-container {
-  /* height: calc(100vh - var(--header-height)); */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  /* -----------ROOT VARIABLER------------------------------- */
+  :root {
+    /* Värden */
+    /* --header-height: 9rem; */
+    --header-height: 5rem;
+    --FS-0_7: 0.7rem;
+    --FS-1_2: 1.2rem;
+    --FS-1_5: 1.5rem;
+  }
+  /* ----------------BODY--------------------- */
 
-/* -----------------ASIDE MENU---------------------------------- */
+  body {
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.4rem; /*Storleken på datumen*/
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
-aside {
-  /* width: 75%; */
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  /* margin: 22px; */
-  border-radius: 10px;
-  position: relative;
-  /* padding-left: 10px; */
-  background-color: rgba(211, 211, 211, 0.5);
-  border-bottom: solid 2px;
-}
+  /* -----------------HEADER----------------------------------- */
 
-.todo-heading {
-  /* padding: 20px; */
-  max-height: 210px;
-  overflow-y: auto;
-}
+  header {
+    height: var(--header-height);
+    text-align: center;
+    /* font-size: 1.2rem; */
+    color: white;
+    border-bottom: 2px solid;
+  }
 
-/* STYLE FÖR KLOCKAN; DATUM; TID */
-.welcome-div {
-  text-align: center;
-  padding: 1.5rem;
-}
+  header h1 {
+    font-family: "Zeyada", cursive;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 3em;
+    opacity: 0;
+    transform: translateY(-100px);
+    animation: bounceIn 1s ease forwards;
+  }
 
-.full-date-and-time {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: white;
-  font-family: "Zeyada", cursive;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
+  @keyframes bounceIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.current-time .clock {
-  font-size: 2rem;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: "Cookie", cursive;
-}
+  .aside-main-container {
+    /* height: calc(100vh - var(--header-height)); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* --------SKAPA LÄGG TILL KNAPP ------------------------*/
-.create-button-div {
-  display: flex;
-  justify-content: center;
-  /* border-width: 0.5rem;
+  /* -----------------ASIDE MENU---------------------------------- */
+
+  aside {
+    /* width: 75%; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* margin: 22px; */
+    border-radius: 10px;
+    position: relative;
+    /* padding-left: 10px; */
+    background-color: rgba(211, 211, 211, 0.5);
+    border-bottom: solid 2px;
+  }
+
+  .todo-heading {
+    /* padding: 20px; */
+    max-height: 210px;
+    overflow-y: auto;
+  }
+
+  /* STYLE FÖR KLOCKAN; DATUM; TID */
+  .welcome-div {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .full-date-and-time {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-family: "Zeyada", cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .current-time .clock {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: "Cookie", cursive;
+  }
+
+  /* --------SKAPA LÄGG TILL KNAPP ------------------------*/
+  .create-button-div {
+    display: flex;
+    justify-content: center;
+    /* border-width: 0.5rem;
   margin-bottom: 1.5rem; */
-}
+  }
 
-/* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
-.create-button-div .createButton {
-  margin: 1.5rem 0;
-  padding: 0.5rem 2rem;
-  width: 70%;
-  max-width: 16rem;
-  border-radius: 0.5rem;
-  color: black;
-  font-size: 0.8rem;
-  background-color: beige;
-  border: solid beige 2px;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
+  /* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
+  .create-button-div .createButton {
+    margin: 1.5rem 0;
+    padding: 0.5rem 2rem;
+    width: 70%;
+    max-width: 16rem;
+    border-radius: 0.5rem;
+    color: black;
+    font-size: 0.8rem;
+    background-color: beige;
+    border: solid beige 2px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
 
-.create-button-div .createButton:hover {
-  background-color: burlywood; /* Ändra färgen här */
-  transform: scale(1.08);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+  .create-button-div .createButton:hover {
+    background-color: burlywood; /* Ändra färgen här */
+    transform: scale(1.08);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
 
-/* GÖMMER TODO POPUP */
-.create-todo-popup {
-  width: 100%;
-  display: none;
-  /* top: 215px; */
-  /* left: 0; */
-  margin: auto;
-  padding: 1.4rem;
-  background-color: lightgray;
-}
+  /* GÖMMER TODO POPUP */
+  .create-todo-popup {
+    width: 100%;
+    display: none;
+    /* top: 215px; */
+    /* left: 0; */
+    margin: auto;
+    padding: 1.4rem;
+    background-color: lightgray;
+  }
 
-.show-popup {
-  display: block;
-}
+  .show-popup {
+    display: block;
+  }
 
-/*Style för todo texten*/
-.todoItem {
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-  font-family: "Cookie", cursive;
-  font-size: 1.5rem;
-  padding: 10px;
-}
+  /*Style för todo texten*/
+  .todoItem {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    font-family: "Cookie", cursive;
+    font-size: 1.5rem;
+    padding: 10px;
+  }
 
-#todoList.todo-container {
-  padding: 20px;
-}
+  #todoList.todo-container {
+    padding: 20px;
+  }
 
-/*Uppdatera knappen*/
-.todoUpdate {
-  font-size: 0.9rem;
-  margin-right: 8px;
-  font-family: "Times New Roman", Times, serif;
-}
+  /*Uppdatera knappen*/
+  .todoUpdate {
+    font-size: 0.9rem;
+    margin-right: 8px;
+    font-family: "Times New Roman", Times, serif;
+  }
 
-/*Style för deleted knappen i todo*/
-.todoDeleted {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 0.9rem;
-}
+  /*Style för deleted knappen i todo*/
+  .todoDeleted {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 0.9rem;
+  }
 
-/* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
-.create-todo-popup {
-  border-radius: 10px;
-  width: 90%;
-  font-size: 1rem;
-}
+  /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
+  .create-todo-popup {
+    border-radius: 10px;
+    width: 90%;
+    font-size: 1rem;
+  }
 
-.create-todo-popup input,
-button {
-  padding: 0rem 1rem;
-  border-radius: 0.5rem;
-  color: rgba(14, 37, 49, 0.825);
-}
+  .create-todo-popup input,
+  button {
+    padding: 0rem 1rem;
+    border-radius: 0.5rem;
+    color: rgba(14, 37, 49, 0.825);
+  }
 
-/* Input knapp */
-.todo-input {
-  width: 84%;
-  margin-bottom: 0.4rem;
-  width: 100%;
-  margin-bottom: 1rem;
-}
+  /* Input knapp */
+  .todo-input {
+    width: 84%;
+    margin-bottom: 0.4rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
-.save-button {
-  cursor: pointer;
-}
+  .save-button {
+    cursor: pointer;
+  }
 
-.feedback {
-  display: flex;
-  justify-content: center;
-  font-size: 1rem;
-  color: red;
-}
+  .feedback {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    color: red;
+  }
 
-/* TODO-----------------------------------*/
+  /* TODO-----------------------------------*/
 
-.todo-content {
-  margin-left: 1rem;
-  overflow: hidden;
-  width: 65%;
-}
+  .todo-content {
+    margin-left: 1rem;
+    overflow: hidden;
+    width: 65%;
+  }
 
-.todo-content input {
-  background-color: darkgrey;
-  border-style: none;
-  font-size: 1.5rem;
-}
+  .todo-content input {
+    background-color: darkgrey;
+    border-style: none;
+    font-size: 1.5rem;
+  }
 
-.todo-title {
-  margin-bottom: 0.3rem;
-}
+  .todo-title {
+    margin-bottom: 0.3rem;
+  }
 
-.todo-date {
-  font-size: 0.8rem;
-}
+  .todo-date {
+    font-size: 0.8rem;
+  }
 
-.todo-buttons {
-  display: flex;
-  margin-top: 5px;
-  width: 50%;
-}
+  .todo-buttons {
+    display: flex;
+    margin-top: 5px;
+    width: 50%;
+  }
 
-.todayTodoText {
-  color: white;
-  margin: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-  font-family: "Cookie", cursive;
-  font-size: 1.8rem;
-}
+  .todayTodoText {
+    color: white;
+    margin: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    font-family: "Cookie", cursive;
+    font-size: 1.8rem;
+  }
 
-/* MAIN---------------------------------------------------------------------------------- */
+  /* MAIN---------------------------------------------------------------------------------- */
 
-.month-div {
-  /* font-size: 1.7rem; */
-  font-size: 1.5rem;
-  display: flex;
-  /* justify-content: center; */
-  justify-content: space-between;
-  /* padding: 17px; */
-  padding: 0.5rem 0;
-  /* margin-bottom: -65px; */
-  /* margin-top: 3rem; */
-  margin: 0 3rem;
-  /* background-color: rgba(211, 211, 211, 0.7); */
-  /* border-radius: 5px 5px 0 0; */
-}
+  .month-div {
+    /* font-size: 1.7rem; */
+    font-size: 1.5rem;
+    display: flex;
+    /* justify-content: center; */
+    justify-content: space-between;
+    /* padding: 17px; */
+    padding: 0.5rem 0;
+    /* margin-bottom: -65px; */
+    /* margin-top: 3rem; */
+    margin: 0 3rem;
+    /* background-color: rgba(211, 211, 211, 0.7); */
+    /* border-radius: 5px 5px 0 0; */
+  }
 
-.weekday-div-mobile {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  margin: 1rem 0;
-  /* margin-top: 4.8rem; */
-  /* background-color: rgba(211, 211, 211, 0.7); */
-  /* border-radius: 0 0 5px 5px; */
-  /* padding: 16px; */
-}
+  .weekday-div-mobile {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 1rem 0;
+    /* margin-top: 4.8rem; */
+    /* background-color: rgba(211, 211, 211, 0.7); */
+    /* border-radius: 0 0 5px 5px; */
+    /* padding: 16px; */
+  }
 
-.weekday {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .weekday {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.weekday-div {
-  display: none;
-}
+  .weekday-div {
+    display: none;
+  }
 
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-}
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
 
-.calendar li {
-  /* height: 2.8rem; */
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  flex-direction: column;
-  position: relative;
-  border: solid 1px black;
-  border-radius: 8px;
-  margin: 4px;
-  background-color: rgba(211, 211, 211, 0.8);
-}
+  .calendar li {
+    /* height: 2.8rem; */
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    position: relative;
+    border: solid 1px black;
+    border-radius: 8px;
+    margin: 4px;
+    background-color: rgba(211, 211, 211, 0.8);
+  }
 
-.back-month-arrow {
-  margin-right: 40px;
-}
+  .back-month-arrow {
+    margin-right: 40px;
+  }
 
-.next-month-arrow {
-  margin-left: 40px;
-}
+  .next-month-arrow {
+    margin-left: 40px;
+  }
 
-.helgdag {
-  /* font-size: 0.6rem; */
-  /* position: absolute; */
-  /* top: 3rem; */
-}
+  .helgdag {
+    /* font-size: 0.6rem; */
+    /* position: absolute; */
+    /* top: 3rem; */
+  }
 
-.padding-days {
-  color: var(--grey-color);
-  background-color: rgba(211, 211, 211, 0.4);
-  border: solid 1px black;
-  border-radius: 8px;
-  margin: 3px;
-}
+  .padding-days {
+    color: var(--grey-color);
+    background-color: rgba(211, 211, 211, 0.4);
+    border: solid 1px black;
+    border-radius: 8px;
+    margin: 3px;
+  }
 
-/*Tar bort prickarna från cellerna*/
-.todoCountSpan {
-  display: none;
-}
+  /*Tar bort prickarna från cellerna*/
+  .todoCountSpan {
+    display: none;
+  }
 
-.calendar li:hover {
-  background-color: var(--grey-color);
-}
+  .calendar li:hover {
+    background-color: var(--grey-color);
+  }
 
-li.activeDay {
-  border: 4px solid rgb(177, 38, 38);
-}
+  li.activeDay {
+    border: 4px solid rgb(177, 38, 38);
+  }
 
-.active {
-  border: 0.5rem solid;
-}
+  .active {
+    border: 0.5rem solid;
+  }
 
-.activeDay {
-  font-weight: bolder;
-  border: 0.1rem solid;
-}
+  .activeDay {
+    font-weight: bolder;
+    border: 0.1rem solid;
+  }
 
-.activeDay:hover {
-  color: rgb(177, 38, 38);
-}
+  .activeDay:hover {
+    color: rgb(177, 38, 38);
+  }
 
-/* REUSABLE CLASSES */
-.cursor {
-  cursor: pointer;
-}
+  /* REUSABLE CLASSES */
+  .cursor {
+    cursor: pointer;
+  }
 
-li.redDay {
-  display: none;
+  li.redDay {
+    display: none;
+  }
 }
