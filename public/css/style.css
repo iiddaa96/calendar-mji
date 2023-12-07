@@ -9,7 +9,8 @@
 /* -----------ROOT VARIABLER------------------------------- */
 :root {
   /* Värden */
-  --header-height: 9rem;
+  /* --header-height: 9rem; */
+  --header-height: 5rem;
   --FS-0_7: 0.7rem;
   --FS-1_2: 1.2rem;
   --FS-1_5: 1.5rem;
@@ -17,8 +18,6 @@
 /* ----------------BODY--------------------- */
 
 body {
-  margin: 0;
-  padding: 0;
   background-position: center;
   transition: background-image 0.5s ease-in-out;
   font-family: "Times New Roman", Times, serif;
@@ -32,8 +31,9 @@ body {
 header {
   height: var(--header-height);
   text-align: center;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
   color: white;
+  border-bottom: 2px solid;
 }
 
 header h1 {
@@ -56,8 +56,8 @@ header h1 {
 }
 
 .aside-main-container {
-  display: flex;
   /* height: calc(100vh - var(--header-height)); */
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -65,19 +65,20 @@ header h1 {
 /* -----------------ASIDE MENU---------------------------------- */
 
 aside {
-  width: 75%;
+  /* width: 75%; */
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 22px;
+  /* margin: 22px; */
   border-radius: 10px;
   position: relative;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   background-color: rgba(211, 211, 211, 0.5);
-  /* overflow-y: auto; */
+  border-bottom: solid 2px;
 }
 
 .todo-heading {
-  padding: 20px;
+  /* padding: 20px; */
   max-height: 210px;
   overflow-y: auto;
 }
@@ -107,8 +108,8 @@ aside {
 .create-button-div {
   display: flex;
   justify-content: center;
-  border-width: 0.5rem;
-  margin-bottom: 1.5rem;
+  /* border-width: 0.5rem;
+  margin-bottom: 1.5rem; */
 }
 
 /* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
@@ -120,8 +121,8 @@ aside {
   border-radius: 0.5rem;
   color: black;
   font-size: 0.8rem;
-  background-color: beige; /* Ändra färgen här */
-  border: solid beige 2px; /* Anpassa ramfärgen här */
+  background-color: beige;
+  border: solid beige 2px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
@@ -139,8 +140,8 @@ aside {
 .create-todo-popup {
   width: 100%;
   display: none;
-  top: 215px;
-  left: 0;
+  /* top: 215px; */
+  /* left: 0; */
   margin: auto;
   padding: 1.4rem;
   background-color: lightgray;
@@ -153,6 +154,7 @@ aside {
 /*Style för todo texten*/
 .todoItem {
   color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   font-family: "Cookie", cursive;
   font-size: 1.5rem;
   padding: 10px;
@@ -164,6 +166,7 @@ aside {
 
 /*Uppdatera knappen*/
 .todoUpdate {
+  font-size: 0.9rem;
   margin-right: 8px;
   font-family: "Times New Roman", Times, serif;
 }
@@ -171,6 +174,7 @@ aside {
 /*Style för deleted knappen i todo*/
 .todoDeleted {
   font-family: "Times New Roman", Times, serif;
+  font-size: 0.9rem;
 }
 
 /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
@@ -237,7 +241,7 @@ button {
 .todayTodoText {
   color: white;
   margin: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   font-family: "Cookie", cursive;
   font-size: 1.8rem;
 }
@@ -245,25 +249,28 @@ button {
 /* MAIN---------------------------------------------------------------------------------- */
 
 .month-div {
-  gap: 9px;
-  font-size: 1.7rem;
+  /* font-size: 1.7rem; */
+  font-size: 1.5rem;
   display: flex;
-  justify-content: center;
-  padding: 17px;
-  margin-bottom: -65px;
-  margin-top: 3rem;
-  background-color: rgba(211, 211, 211, 0.7);
-  border-radius: 5px 5px 0 0;
+  /* justify-content: center; */
+  justify-content: space-between;
+  /* padding: 17px; */
+  padding: 0.5rem 0;
+  /* margin-bottom: -65px; */
+  /* margin-top: 3rem; */
+  margin: 0 3rem;
+  /* background-color: rgba(211, 211, 211, 0.7); */
+  /* border-radius: 5px 5px 0 0; */
 }
 
 .weekday-div-mobile {
-  gap: 15px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-top: 4.8rem;
-  background-color: rgba(211, 211, 211, 0.7);
-  border-radius: 0 0 5px 5px;
-  padding: 16px;
+  margin: 1rem 0;
+  /* margin-top: 4.8rem; */
+  /* background-color: rgba(211, 211, 211, 0.7); */
+  /* border-radius: 0 0 5px 5px; */
+  /* padding: 16px; */
 }
 
 .weekday {
@@ -277,16 +284,14 @@ button {
 }
 
 .calendar {
-  gap: 5px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  /* margin: 55px; */
 }
 
 .calendar li {
-  height: 2rem;
-  width: 2rem;
+  /* height: 2.8rem; */
+  height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,22 +300,22 @@ button {
   position: relative;
   border: solid 1px black;
   border-radius: 8px;
-  margin: 7px;
+  margin: 4px;
   background-color: rgba(211, 211, 211, 0.8);
 }
 
 .back-month-arrow {
-  margin-right: 30px;
+  margin-right: 40px;
 }
 
 .next-month-arrow {
-  margin-left: 30px;
+  margin-left: 40px;
 }
 
 .helgdag {
-  font-size: 0.6rem;
-  position: absolute;
-  top: 3rem;
+  /* font-size: 0.6rem; */
+  /* position: absolute; */
+  /* top: 3rem; */
 }
 
 .padding-days {
@@ -319,6 +324,11 @@ button {
   border: solid 1px black;
   border-radius: 8px;
   margin: 3px;
+}
+
+/*Tar bort prickarna från cellerna*/
+.todoCountSpan {
+  display: none;
 }
 
 .calendar li:hover {
