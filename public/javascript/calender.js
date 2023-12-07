@@ -165,6 +165,7 @@ async function renderCalenderDays() {
     const todoCount = hasTodos ? todosForDay.length : "";
 
     const cell = document.createElement("li");
+    cell.setAttribute("data-cy", "calendar-cell");
     cell.className = isToday + (xx[0] ? " redDay" : ""); // Om det är en röd dag så blir texten röd.
     cell.textContent = i;
     cell.addEventListener("click", () => {
@@ -175,6 +176,7 @@ async function renderCalenderDays() {
 
     const dateSpan = document.createElement("span");
     dateSpan.textContent = holidayString;
+    dateSpan.setAttribute("data-cy", "calendar-cell-date");
     const todoCountSpan = document.createElement("span");
 
     todoCountSpan.className = "todoCountSpan";

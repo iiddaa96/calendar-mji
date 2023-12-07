@@ -108,8 +108,8 @@ function renderTodos() {
     `;
     todoContainer.append(todoItem);
     todoList.appendChild(todoItem);
-    todoList.appendChild(updateButton);
-    todoList.appendChild(deleteButton);
+    todoItem.appendChild(updateButton);
+    todoItem.appendChild(deleteButton);
   });
 }
 
