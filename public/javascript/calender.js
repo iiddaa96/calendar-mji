@@ -114,7 +114,7 @@ async function renderCalenderDays() {
     calendar.year,
     calendar.month,
     lastDateOfMonth - 1
-  ).getDay(); // Getting last date of month
+  ).getDay(); // Getting last date of previous month
   let lastDateOfPrevMonth = new Date(
     calendar.year,
     calendar.month,
@@ -131,6 +131,7 @@ async function renderCalenderDays() {
   for (let i = firstWeekDayOfMonth; i > 0; i--) {
     const cell = document.createElement("li");
     cell.className = "padding-days";
+    cell.setAttribute("data-cy", "calendar-cell");
     cell.textContent = lastDateOfPrevMonth - i + 1;
     dayCells.push(cell);
   }
@@ -165,6 +166,7 @@ async function renderCalenderDays() {
     const todoCount = hasTodos ? todosForDay.length : "";
 
     const cell = document.createElement("li");
+    cell.setAttribute("data-cy", "calendar-cell");
     cell.className = isToday + (xx[0] ? " redDay" : ""); // Om det är en röd dag så blir texten röd.
     cell.textContent = i;
     cell.addEventListener("click", () => {
@@ -174,8 +176,11 @@ async function renderCalenderDays() {
     });
 
     const dateSpan = document.createElement("span");
+    dateSpan.setAttribute("data-cy", "calendar-cell-date");
     dateSpan.textContent = holidayString;
+
     const todoCountSpan = document.createElement("span");
+    todoCountSpan.setAttribute("data-cy", "calendar-cell-todos");
 
     todoCountSpan.className = "todoCountSpan";
     todoCountSpan.textContent = todoCount;

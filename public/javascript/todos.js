@@ -98,18 +98,18 @@ function renderTodos() {
     updateButton.setAttribute("data-cy", "edit-todo-button");
 
     const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
     deleteButton.textContent = "Ta bort";
     deleteButton.className = "todoDeleted";
     deleteButton.onclick = () => deleteTodo(todo.id);
-    deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
       ${todo.text} ${todo.date}
     `;
     todoContainer.append(todoItem);
     todoList.appendChild(todoItem);
-    todoList.appendChild(updateButton);
-    todoList.appendChild(deleteButton);
+    todoItem.appendChild(updateButton);
+    todoItem.appendChild(deleteButton);
   });
 }
 
@@ -128,6 +128,7 @@ function renderInput() {
     saveButton.onclick = () => updateTodo(todo.id);
 
     const deleteButton = document.createElement("button");
+    updateButton.setAttribute("data-cy", "delete-todo-button");
     deleteButton.textContent = "Ta bort";
     deleteButton.onclick = () => deleteTodo(todo.id);
 
@@ -213,32 +214,32 @@ function showTodoArrayLength() {
   console.log(`Antal todos: ${numberOfTodosArray}`);
 }
 
-function renderFilteredTodos(filteredTodos) {
-  const todoList = document.getElementById("todoList");
-  todoList.innerHTML = "";
+// function renderFilteredTodos(filteredTodos) {
+//   const todoList = document.getElementById("todoList");
+//   todoList.innerHTML = "";
 
-  filteredTodos.forEach((todo) => {
-    const todoItem = document.createElement("li");
+//   filteredTodos.forEach((todo) => {
+//     const todoItem = document.createElement("li");
 
-    const updateButton = document.createElement("button");
-    updateButton.textContent = "Uppdatera";
-    updateButton.onclick = () => renderInput(todo.id);
-    updateButton.setAttribute("data-cy", "edit-todo-button");
+//     const updateButton = document.createElement("button");
+//     updateButton.textContent = "Uppdatera";
+//     updateButton.onclick = () => renderInput(todo.id);
+//     updateButton.setAttribute("data-cy", "edit-todo-button");
 
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Ta bort";
-    deleteButton.onclick = () => deleteTodo(todo.id);
-    deleteButton.setAttribute("data-cy", "delete-todo-button");
+//     const deleteButton = document.createElement("button");
+//     deleteButton.textContent = "Ta bort";
+//     deleteButton.onclick = () => deleteTodo(todo.id);
+//     deleteButton.setAttribute("data-cy", "delete-todo-button");
 
-    todoItem.innerHTML = `
-      ${todo.text} ${todo.date}
-    `;
+//     todoItem.innerHTML = `
+//       ${todo.text} ${todo.date}
+//     `;
 
-    todoList.appendChild(todoItem);
-    todoList.appendChild(updateButton);
-    todoList.appendChild(deleteButton);
-  });
-}
+//     todoList.appendChild(todoItem);
+//     todoList.appendChild(updateButton);
+//     todoList.appendChild(deleteButton);
+//   });
+// }
 
 function updateTodoList(selectedDate) {
   const selectedTodos = todos.filter((todo) => {
@@ -256,14 +257,14 @@ function renderFilteredTodos(filteredTodos) {
     const todoItem = document.createElement("li");
     todoItem.className = "todoListText";
     const updateButton = document.createElement("button");
+    updateButton.setAttribute("data-cy", "edit-todo-button");
     updateButton.textContent = "Uppdatera";
     updateButton.onclick = () => renderInput(todo.id);
-    updateButton.setAttribute("data-cy", "edit-todo-button");
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Ta bort";
     deleteButton.onclick = () => deleteTodo(todo.id);
-    deleteButton.setAttribute("data-cy", "delete-todo-button");
+    // deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
       ${todo.text} ${todo.date}
