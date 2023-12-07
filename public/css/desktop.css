@@ -81,7 +81,7 @@
   }
 
   .month-div {
-    font-size: 1.4rem;
+    font-size: 1.7rem; /*strl på månaden*/
     padding: 15px;
     margin: 0 1.5rem;
     border-radius: 5px 5px 0 0;
@@ -134,25 +134,26 @@
     display: none;
   }
 
+  /*Style för prickarna*/
   .todoCountSpan {
     display: block;
     color: white;
     border-radius: 11px 11px;
     font-family: "Times New Roman", Times, serif;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bolder;
     text-align: center;
     background-color: #555555;
     width: 30px;
   }
 
-  /*Uppdatera knappen*/
+  /*Uppdatera knappen i todo*/
   .todoUpdate {
     margin-right: 8px;
     font-family: "Times New Roman", Times, serif;
   }
 
-  /*Style för deleted knappen i todo*/
+  /*Deleted knappen i todo*/
   .todoDeleted {
     font-family: "Times New Roman", Times, serif;
   }
@@ -171,8 +172,9 @@
   .redDay {
     color: rgb(177, 38, 38);
     font-weight: bolder;
-    font-size: 1.2rem;
+    font-size: 15px; /*Storlek på de röda dagarna*/
     padding: 10px;
+    word-break: break-word; /*Alternativt break-all*/
   }
 
   .todoDate {
@@ -181,6 +183,7 @@
 
   .todoListText {
     color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     font-size: 1.5rem;
     padding: 10px;
     font-family: "Cookie", cursive;

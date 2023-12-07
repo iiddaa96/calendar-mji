@@ -57,7 +57,6 @@ header h1 {
 
 .aside-main-container {
   display: flex;
-  /* height: calc(100vh - var(--header-height)); */
   flex-direction: column;
   align-items: center;
 }
@@ -73,7 +72,6 @@ aside {
   position: relative;
   padding-left: 10px;
   background-color: rgba(211, 211, 211, 0.5);
-  /* overflow-y: auto; */
 }
 
 .todo-heading {
@@ -120,8 +118,8 @@ aside {
   border-radius: 0.5rem;
   color: black;
   font-size: 0.8rem;
-  background-color: beige; /* Ändra färgen här */
-  border: solid beige 2px; /* Anpassa ramfärgen här */
+  background-color: beige;
+  border: solid beige 2px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
@@ -153,6 +151,7 @@ aside {
 /*Style för todo texten*/
 .todoItem {
   color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   font-family: "Cookie", cursive;
   font-size: 1.5rem;
   padding: 10px;
@@ -164,6 +163,7 @@ aside {
 
 /*Uppdatera knappen*/
 .todoUpdate {
+  font-size: 0.9rem;
   margin-right: 8px;
   font-family: "Times New Roman", Times, serif;
 }
@@ -171,6 +171,7 @@ aside {
 /*Style för deleted knappen i todo*/
 .todoDeleted {
   font-family: "Times New Roman", Times, serif;
+  font-size: 0.9rem;
 }
 
 /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
@@ -237,7 +238,7 @@ button {
 .todayTodoText {
   color: white;
   margin: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   font-family: "Cookie", cursive;
   font-size: 1.8rem;
 }
@@ -245,7 +246,6 @@ button {
 /* MAIN---------------------------------------------------------------------------------- */
 
 .month-div {
-  gap: 9px;
   font-size: 1.7rem;
   display: flex;
   justify-content: center;
@@ -257,7 +257,6 @@ button {
 }
 
 .weekday-div-mobile {
-  gap: 15px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin-top: 4.8rem;
@@ -268,7 +267,7 @@ button {
 
 .weekday {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -277,16 +276,13 @@ button {
 }
 
 .calendar {
-  gap: 5px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  /* margin: 55px; */
 }
 
 .calendar li {
-  height: 2rem;
-  width: 2rem;
+  height: 2.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -300,16 +296,17 @@ button {
 }
 
 .back-month-arrow {
-  margin-right: 30px;
+  margin-right: 40px;
 }
 
 .next-month-arrow {
-  margin-left: 30px;
+  margin-left: 40px;
 }
+
 .helgdag {
-  font-size: 0.6rem;
-  position: absolute;
-  top: 3rem;
+  /* font-size: 0.6rem; */
+  /* position: absolute; */
+  /* top: 3rem; */
 }
 
 .padding-days {
