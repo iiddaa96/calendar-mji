@@ -1,4 +1,4 @@
-@media (width > 1624px) {
+@media (width > 1500px) {
   body {
     margin: 0;
     padding: 0;
@@ -81,7 +81,7 @@
   }
 
   .month-div {
-    font-size: 1.7rem; /*strl på månaden*/
+    font-size: 1.4rem;
     padding: 15px;
     margin: 0 1.5rem;
     border-radius: 5px 5px 0 0;
@@ -96,7 +96,7 @@
   }
 
   .calendar li {
-    width: 8.3rem; /*Storlek på cellerna från sidan*/
+    width: 7.4rem;
     height: 5rem;
     display: flex;
     justify-content: center;
@@ -134,26 +134,24 @@
     display: none;
   }
 
-  /*Style för prickarna*/
   .todoCountSpan {
-    display: block;
     color: white;
     border-radius: 11px 11px;
     font-family: "Times New Roman", Times, serif;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: bolder;
     text-align: center;
-    background-color: #555555;
+    background-color: black;
     width: 30px;
   }
 
-  /*Uppdatera knappen i todo*/
+  /*Uppdatera knappen*/
   .todoUpdate {
     margin-right: 8px;
     font-family: "Times New Roman", Times, serif;
   }
 
-  /*Deleted knappen i todo*/
+  /*Style för deleted knappen i todo*/
   .todoDeleted {
     font-family: "Times New Roman", Times, serif;
   }
@@ -172,9 +170,8 @@
   .redDay {
     color: rgb(177, 38, 38);
     font-weight: bolder;
-    font-size: 15px; /*Storlek på de röda dagarna*/
+    font-size: 1.2rem;
     padding: 10px;
-    word-break: break-word; /*Alternativt break-all*/
   }
 
   .todoDate {
@@ -183,7 +180,6 @@
 
   .todoListText {
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     font-size: 1.5rem;
     padding: 10px;
     font-family: "Cookie", cursive;
