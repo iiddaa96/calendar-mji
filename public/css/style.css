@@ -1,352 +1,354 @@
-/* STYLE FÖR MOBIL ENHET */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-/* -----------ROOT VARIABLER------------------------------- */
-:root {
-  /* Värden */
-  --header-height: 9rem;
-  --FS-0_7: 0.7rem;
-  --FS-1_2: 1.2rem;
-  --FS-1_5: 1.5rem;
-}
-/* ----------------BODY--------------------- */
-
-body {
-  margin: 0;
-  padding: 0;
-  background-position: center;
-  transition: background-image 0.5s ease-in-out;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 1.4rem; /*Storleken på datumen*/
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-/* -----------------HEADER----------------------------------- */
-
-header {
-  height: var(--header-height);
-  text-align: center;
-  font-size: 1.2rem;
-  color: white;
-}
-
-header h1 {
-  font-family: "Zeyada", cursive;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  font-size: 3em;
-  opacity: 0;
-  transform: translateY(-100px);
-  animation: bounceIn 1s ease forwards;
-}
-
-@keyframes bounceIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (width > 360px) {
+  /* STYLE FÖR MOBIL ENHET */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
-}
 
-.aside-main-container {
-  display: flex;
-  /* height: calc(100vh - var(--header-height)); */
-  flex-direction: column;
-  align-items: center;
-}
+  /* -----------ROOT VARIABLER------------------------------- */
+  :root {
+    /* Värden */
+    --header-height: 9rem;
+    --FS-0_7: 0.7rem;
+    --FS-1_2: 1.2rem;
+    --FS-1_5: 1.5rem;
+  }
+  /* ----------------BODY--------------------- */
 
-/* -----------------ASIDE MENU---------------------------------- */
+  body {
+    margin: 0;
+    padding: 0;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.4rem; /*Storleken på datumen*/
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
-aside {
-  width: 75%;
-  display: flex;
-  flex-direction: column;
-  margin: 22px;
-  border-radius: 10px;
-  position: relative;
-  padding-left: 10px;
-  background-color: rgba(211, 211, 211, 0.5);
-  /* overflow-y: auto; */
-}
+  /* -----------------HEADER----------------------------------- */
 
-.todo-heading {
-  padding: 20px;
-  max-height: 210px;
-  overflow-y: auto;
-}
+  header {
+    height: var(--header-height);
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+  }
 
-/* STYLE FÖR KLOCKAN; DATUM; TID */
-.welcome-div {
-  text-align: center;
-  padding: 1.5rem;
-}
+  header h1 {
+    font-family: "Zeyada", cursive;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 3em;
+    opacity: 0;
+    transform: translateY(-100px);
+    animation: bounceIn 1s ease forwards;
+  }
 
-.full-date-and-time {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: white;
-  font-family: "Zeyada", cursive;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
+  @keyframes bounceIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.current-time .clock {
-  font-size: 2rem;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: "Cookie", cursive;
-}
+  .aside-main-container {
+    display: flex;
+    /* height: calc(100vh - var(--header-height)); */
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* --------SKAPA LÄGG TILL KNAPP ------------------------*/
-.create-button-div {
-  display: flex;
-  justify-content: center;
-  border-width: 0.5rem;
-  margin-bottom: 1.5rem;
-}
+  /* -----------------ASIDE MENU---------------------------------- */
 
-/* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
-.create-button-div .createButton {
-  margin: 1.5rem 0;
-  padding: 0.5rem 2rem;
-  width: 70%;
-  max-width: 16rem;
-  border-radius: 0.5rem;
-  color: black;
-  font-size: 0.8rem;
-  background-color: beige; /* Ändra färgen här */
-  border: solid beige 2px; /* Anpassa ramfärgen här */
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
+  aside {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    margin: 22px;
+    border-radius: 10px;
+    position: relative;
+    padding-left: 10px;
+    background-color: rgba(211, 211, 211, 0.5);
+    /* overflow-y: auto; */
+  }
 
-.create-button-div .createButton:hover {
-  background-color: burlywood; /* Ändra färgen här */
-  transform: scale(1.08);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+  .todo-heading {
+    padding: 20px;
+    max-height: 210px;
+    overflow-y: auto;
+  }
 
-/* GÖMMER TODO POPUP */
-.create-todo-popup {
-  width: 100%;
-  display: none;
-  top: 215px;
-  left: 0;
-  margin: auto;
-  padding: 1.4rem;
-  background-color: lightgray;
-}
+  /* STYLE FÖR KLOCKAN; DATUM; TID */
+  .welcome-div {
+    text-align: center;
+    padding: 1.5rem;
+  }
 
-.show-popup {
-  display: block;
-}
+  .full-date-and-time {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-family: "Zeyada", cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
 
-/*Style för todo texten*/
-.todoItem {
-  color: white;
-  font-family: "Cookie", cursive;
-  font-size: 1.5rem;
-  padding: 10px;
-}
+  .current-time .clock {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: "Cookie", cursive;
+  }
 
-#todoList.todo-container {
-  padding: 20px;
-}
+  /* --------SKAPA LÄGG TILL KNAPP ------------------------*/
+  .create-button-div {
+    display: flex;
+    justify-content: center;
+    border-width: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
 
-/*Uppdatera knappen*/
-.todoUpdate {
-  margin-right: 8px;
-  font-family: "Times New Roman", Times, serif;
-}
+  /* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
+  .create-button-div .createButton {
+    margin: 1.5rem 0;
+    padding: 0.5rem 2rem;
+    width: 70%;
+    max-width: 16rem;
+    border-radius: 0.5rem;
+    color: black;
+    font-size: 0.8rem;
+    background-color: beige; /* Ändra färgen här */
+    border: solid beige 2px; /* Anpassa ramfärgen här */
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
 
-/*Style för deleted knappen i todo*/
-.todoDeleted {
-  font-family: "Times New Roman", Times, serif;
-}
+  .create-button-div .createButton:hover {
+    background-color: burlywood; /* Ändra färgen här */
+    transform: scale(1.08);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
 
-/* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
-.create-todo-popup {
-  border-radius: 10px;
-  width: 90%;
-  font-size: 1rem;
-}
+  /* GÖMMER TODO POPUP */
+  .create-todo-popup {
+    width: 100%;
+    display: none;
+    top: 215px;
+    left: 0;
+    margin: auto;
+    padding: 1.4rem;
+    background-color: lightgray;
+  }
 
-.create-todo-popup input,
-button {
-  padding: 0rem 1rem;
-  border-radius: 0.5rem;
-  color: rgba(14, 37, 49, 0.825);
-}
+  .show-popup {
+    display: block;
+  }
 
-/* Input knapp */
-.todo-input {
-  width: 84%;
-  margin-bottom: 0.4rem;
-  width: 100%;
-  margin-bottom: 1rem;
-}
+  /*Style för todo texten*/
+  .todoItem {
+    color: white;
+    font-family: "Cookie", cursive;
+    font-size: 1.5rem;
+    padding: 10px;
+  }
 
-.save-button {
-  cursor: pointer;
-}
+  #todoList.todo-container {
+    padding: 20px;
+  }
 
-.feedback {
-  display: flex;
-  justify-content: center;
-  font-size: 1rem;
-  color: red;
-}
+  /*Uppdatera knappen*/
+  .todoUpdate {
+    margin-right: 8px;
+    font-family: "Times New Roman", Times, serif;
+  }
 
-/* TODO-----------------------------------*/
+  /*Style för deleted knappen i todo*/
+  .todoDeleted {
+    font-family: "Times New Roman", Times, serif;
+  }
 
-.todo-content {
-  margin-left: 1rem;
-  overflow: hidden;
-  width: 65%;
-}
+  /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
+  .create-todo-popup {
+    border-radius: 10px;
+    width: 90%;
+    font-size: 1rem;
+  }
 
-.todo-content input {
-  background-color: darkgrey;
-  border-style: none;
-  font-size: 1.5rem;
-}
+  .create-todo-popup input,
+  button {
+    padding: 0rem 1rem;
+    border-radius: 0.5rem;
+    color: rgba(14, 37, 49, 0.825);
+  }
 
-.todo-title {
-  margin-bottom: 0.3rem;
-}
+  /* Input knapp */
+  .todo-input {
+    width: 84%;
+    margin-bottom: 0.4rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
-.todo-date {
-  font-size: 0.8rem;
-}
+  .save-button {
+    cursor: pointer;
+  }
 
-.todo-buttons {
-  display: flex;
-  margin-top: 5px;
-  width: 50%;
-}
+  .feedback {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    color: red;
+  }
 
-.todayTodoText {
-  color: white;
-  margin: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  font-family: "Cookie", cursive;
-  font-size: 1.8rem;
-}
+  /* TODO-----------------------------------*/
 
-/* MAIN---------------------------------------------------------------------------------- */
+  .todo-content {
+    margin-left: 1rem;
+    overflow: hidden;
+    width: 65%;
+  }
 
-.month-div {
-  gap: 9px;
-  font-size: 1.7rem;
-  display: flex;
-  justify-content: center;
-  padding: 17px;
-  margin-bottom: -65px;
-  margin-top: 3rem;
-  background-color: rgba(211, 211, 211, 0.7);
-  border-radius: 5px 5px 0 0;
-}
+  .todo-content input {
+    background-color: darkgrey;
+    border-style: none;
+    font-size: 1.5rem;
+  }
 
-.weekday-div-mobile {
-  gap: 15px;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  margin-top: 4.8rem;
-  background-color: rgba(211, 211, 211, 0.7);
-  border-radius: 0 0 5px 5px;
-  padding: 16px;
-}
+  .todo-title {
+    margin-bottom: 0.3rem;
+  }
 
-.weekday {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .todo-date {
+    font-size: 0.8rem;
+  }
 
-.weekday-div {
-  display: none;
-}
+  .todo-buttons {
+    display: flex;
+    margin-top: 5px;
+    width: 50%;
+  }
 
-.calendar {
-  gap: 5px;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  /* margin: 55px; */
-}
+  .todayTodoText {
+    color: white;
+    margin: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: "Cookie", cursive;
+    font-size: 1.8rem;
+  }
 
-.calendar li {
-  height: 2rem;
-  width: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  flex-direction: column;
-  position: relative;
-  border: solid 1px black;
-  border-radius: 8px;
-  margin: 7px;
-  background-color: rgba(211, 211, 211, 0.8);
-}
+  /* MAIN---------------------------------------------------------------------------------- */
 
-.back-month-arrow {
-  margin-right: 30px;
-}
+  .month-div {
+    gap: 9px;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    padding: 17px;
+    margin-bottom: -65px;
+    margin-top: 3rem;
+    background-color: rgba(211, 211, 211, 0.7);
+    border-radius: 5px 5px 0 0;
+  }
 
-.next-month-arrow {
-  margin-left: 30px;
-}
+  .weekday-div-mobile {
+    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-top: 4.8rem;
+    background-color: rgba(211, 211, 211, 0.7);
+    border-radius: 0 0 5px 5px;
+    padding: 16px;
+  }
 
-.helgdag {
-  font-size: 0.6rem;
-  position: absolute;
-  top: 3rem;
-}
+  .weekday {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.padding-days {
-  color: var(--grey-color);
-  background-color: rgba(211, 211, 211, 0.4);
-  border: solid 1px black;
-  border-radius: 8px;
-  margin: 3px;
-}
+  .weekday-div {
+    display: none;
+  }
 
-.calendar li:hover {
-  background-color: var(--grey-color);
-}
+  .calendar {
+    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    /* margin: 55px; */
+  }
 
-li.activeDay {
-  border: 4px solid rgb(177, 38, 38);
-}
+  .calendar li {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    position: relative;
+    border: solid 1px black;
+    border-radius: 8px;
+    margin: 7px;
+    background-color: rgba(211, 211, 211, 0.8);
+  }
 
-.active {
-  border: 0.5rem solid;
-}
+  .back-month-arrow {
+    margin-right: 30px;
+  }
 
-.activeDay {
-  font-weight: bolder;
-  border: 0.1rem solid;
-}
+  .next-month-arrow {
+    margin-left: 30px;
+  }
 
-.activeDay:hover {
-  color: rgb(177, 38, 38);
-}
+  .helgdag {
+    font-size: 0.6rem;
+    position: absolute;
+    top: 3rem;
+  }
 
-/* REUSABLE CLASSES */
-.cursor {
-  cursor: pointer;
-}
+  .padding-days {
+    color: var(--grey-color);
+    background-color: rgba(211, 211, 211, 0.4);
+    border: solid 1px black;
+    border-radius: 8px;
+    margin: 3px;
+  }
 
-li.redDay {
-  display: none;
+  .calendar li:hover {
+    background-color: var(--grey-color);
+  }
+
+  li.activeDay {
+    border: 4px solid rgb(177, 38, 38);
+  }
+
+  .active {
+    border: 0.5rem solid;
+  }
+
+  .activeDay {
+    font-weight: bolder;
+    border: 0.1rem solid;
+  }
+
+  .activeDay:hover {
+    color: rgb(177, 38, 38);
+  }
+
+  /* REUSABLE CLASSES */
+  .cursor {
+    cursor: pointer;
+  }
+
+  li.redDay {
+    display: none;
+  }
 }
