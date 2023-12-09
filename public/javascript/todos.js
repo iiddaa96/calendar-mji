@@ -116,33 +116,69 @@ function renderTodos() {
 /**
  * This function render input element for text and date, if you need to update a todo.
  */
-function renderInput() {
+function renderInput(id) {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
 
-  todos.forEach((todo) => {
+  const todoToUpdate = todos.find((todo) => todo.id === id);
+
+  if (todoToUpdate) {
     const todoItem = document.createElement("li");
 
     const saveButton = document.createElement("button");
     saveButton.textContent = "Spara";
-    saveButton.onclick = () => updateTodo(todo.id);
+    saveButton.onclick = () => updateTodo(id);
 
     const deleteButton = document.createElement("button");
-    updateButton.setAttribute("data-cy", "delete-todo-button");
     deleteButton.textContent = "Ta bort";
-    deleteButton.onclick = () => deleteTodo(todo.id);
+    deleteButton.onclick = () => deleteTodo(id);
 
-    todoItem.innerHTML = `
-      ${todo.text} ${todo.date}
-      <input type="text" id="updateText_${todo.id}" placeholder="Uppdatera don todo..">
-       <input type="date" id="updateDate_${todo.id}">
-    `;
+    const updateTextElement = document.createElement("input");
+    updateTextElement.type = "text";
+    updateTextElement.id = `updateText_${id}`;
+    updateTextElement.placeholder = "Uppdatera din todo..";
+    updateTextElement.value = todoToUpdate.text;
 
+    const updateDateElement = document.createElement("input");
+    updateDateElement.type = "date";
+    updateDateElement.id = `updateDate_${id}`;
+    updateDateElement.value = todoToUpdate.date;
+
+    todoItem.appendChild(updateTextElement);
+    todoItem.appendChild(updateDateElement);
     todoList.appendChild(todoItem);
     todoList.appendChild(saveButton);
     todoList.appendChild(deleteButton);
-  });
+  }
 }
+
+// function renderInput() {
+//   const todoList = document.getElementById("todoList");
+//   todoList.innerHTML = "";
+
+//   todos.forEach((todo) => {
+//     const todoItem = document.createElement("li");
+
+//     const saveButton = document.createElement("button");
+//     saveButton.textContent = "Spara";
+//     saveButton.onclick = () => updateTodo(todo.id);
+
+//     const deleteButton = document.createElement("button");
+//     updateButton.setAttribute("data-cy", "delete-todo-button");
+//     deleteButton.textContent = "Ta bort";
+//     deleteButton.onclick = () => deleteTodo(todo.id);
+
+//     todoItem.innerHTML = `
+//       ${todo.text} ${todo.date}
+//       <input type="text" id="updateText_${todo.id}" placeholder="Uppdatera don todo..">
+//        <input type="date" id="updateDate_${todo.id}">
+//     `;
+
+//     todoList.appendChild(todoItem);
+//     todoList.appendChild(saveButton);
+//     todoList.appendChild(deleteButton);
+//   });
+// }
 
 /**
  * This function look in the todo-array after a todo with a special id you need to change.
