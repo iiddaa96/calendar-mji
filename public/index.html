@@ -121,14 +121,22 @@
         <!-------------------- MONTH DIV------------------------------------------------------------------>
 
         <div class="month-div">
-          <p id="monthBackArrow" class="back-month-arrow cursor">
+          <p
+            id="monthBackArrow"
+            class="back-month-arrow cursor"
+            data-cy="prev-month"
+          >
             <i class="fa-solid fa-chevron-left"></i>
           </p>
           <p id="displayCurrentMonth" class="current-month">
             Dagens månad
             <!-- Lägg till Current month från JS -->
           </p>
-          <p id="monthForwardArrow" class="next-month-arrow cursor">
+          <p
+            id="monthForwardArrow"
+            class="next-month-arrow cursor"
+            data-cy="next-month"
+          >
             <i class="fa-solid fa-chevron-right"></i>
           </p>
         </div>

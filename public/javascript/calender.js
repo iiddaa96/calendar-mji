@@ -123,7 +123,6 @@ async function renderCalenderDays() {
 
   const now = new Date();
 
-  const holidays = await getHolidayAPI();
   let liTag = "";
   const dayCells = [];
 
@@ -132,6 +131,7 @@ async function renderCalenderDays() {
     const cell = document.createElement("li");
     cell.className = "padding-days";
     cell.textContent = lastDateOfPrevMonth - i + 1;
+    cell.setAttribute("data-cy", "calendar-cell");
     dayCells.push(cell);
   }
 
@@ -150,23 +150,14 @@ async function renderCalenderDays() {
       calendar.year === now.getFullYear()
         ? "activeDay"
         : "";
-    let holidayString = "";
-
-    const xx = holidays.filter((h) => {
-      return h.datum === currentDate;
-    });
-
-    if (xx[0]) {
-      holidayString = xx[0].helgdag;
-    }
 
     const todosForDay = todos.filter((todo) => todo.date === currentDate);
     const hasTodos = todosForDay.length > 0;
     const todoCount = hasTodos ? todosForDay.length : "";
 
     const cell = document.createElement("li");
-    cell.className = isToday + (xx[0] ? " redDay" : ""); // Om det är en röd dag så blir texten röd.
-    cell.textContent = i;
+    cell.setAttribute("data-cy", "calendar-cell");
+    // cell.className = isToday + (xx[0] ? " redDay" : ""); // Om det är en röd dag så blir texten röd.
     cell.addEventListener("click", () => {
       const loopDay = new Date(calendar.year, calendar.month, i);
       const formattedDate = loopDay.toLocaleDateString();
@@ -175,9 +166,11 @@ async function renderCalenderDays() {
 
     // Felet är med span
     const dateSpan = document.createElement("span");
-    dateSpan.textContent = holidayString;
-    const todoCountSpan = document.createElement("span");
+    dateSpan.setAttribute("data-cy", "calendar-cell-date");
+    dateSpan.textContent = i;
 
+    const todoCountSpan = document.createElement("span");
+    todoCountSpan.setAttribute("data-cy", "calendar-cell-todos");
     todoCountSpan.className = "todoCountSpan";
     todoCountSpan.textContent = todoCount;
 
@@ -188,6 +181,7 @@ async function renderCalenderDays() {
   // Creating li of next month first days
   for (let i = lastDayOfMonth; i < 6; i++) {
     const cell = document.createElement("li");
+    cell.setAttribute("data-cy", "calendar-cell");
     cell.className = "padding-days";
     cell.textContent = i - lastDayOfMonth + 1;
     dayCells.push(cell);
