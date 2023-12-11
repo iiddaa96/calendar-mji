@@ -354,11 +354,16 @@ function togglePopup() {
 function addOrUpdateTodo() {
   const todoInput = document.getElementById("todoInput");
   const dueDateInput = document.getElementById("dueDate");
+  const warning = document.getElementById("warning");
+  const feedback = document.getElementById("feedback");
 
   const todoText = todoInput.value.trim();
   const dueDate = dueDateInput.value;
 
   if (todoText === "" || dueDate === "") {
+    warning.style.color = "red";
+    warning.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+    feedback.textContent = "Var vänlig fyll i anteckningar och datum.";
     return;
   }
 
@@ -382,6 +387,10 @@ function addOrUpdateTodo() {
   saveToLocalStorage();
   renderTodos();
   togglePopup();
+
+  // Återställ varning och feedback till tomma strängar efter att ha lagt till eller uppdaterat todo
+  warning.textContent = "";
+  feedback.textContent = "";
 }
 
 function renderTodos() {
@@ -414,7 +423,7 @@ function renderTodos() {
 function updateTodo(id) {
   const selectedTodos = todos.filter((todo) => todo.id === id);
   renderFilteredTodos(selectedTodos);
-  showTodoCountInCalendar(selectedTodos.length); // Ny rad
+  showTodoCountInCalendar(selectedTodos.length);
 
   saveToLocalStorage();
   renderTodos();
