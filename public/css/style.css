@@ -328,9 +328,9 @@
   }
 
   /*Tar bort prickarna från cellerna*/
-  .todoCountSpan {
+  /* .todoCountSpan {
     display: none;
-  }
+  } */
 
   .calendar li:hover {
     background-color: var(--grey-color);
