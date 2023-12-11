@@ -314,6 +314,9 @@
 
 window.addEventListener("DOMContentLoaded", startTodos);
 
+/**
+ * Funktion som initierar applikationen genom att lägga till händelselyssnare, öppna popup-fönstret, rendera todos, generera unika id:n och visa antalet todos
+ */
 function startTodos() {
   addEventListeners();
   togglePopup();
@@ -404,6 +407,7 @@ function addOrUpdateTodo() {
   feedback.textContent = "";
 }
 
+/** This function render a todo, it look in the todo list array and create a list, and two button: Save and Delete. */
 function renderTodos() {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
@@ -432,6 +436,10 @@ function renderTodos() {
   });
 }
 
+/**
+ * This function look in the todo-array after a todo with a special id you need to change.
+ * could it find a new update it save it in localStorage. And the todo updates in the todo-array.
+ */
 function updateTodo(id) {
   const selectedTodos = todos.filter((todo) => todo.id === id);
   renderFilteredTodos(selectedTodos);
@@ -450,6 +458,11 @@ function editTodo(id) {
   togglePopup();
 }
 
+/**
+ * This function delete a todo. Looks after a todo with id and if it match
+ * this todo deleted from the todo-array and in localstorage and render out the
+ * new todo-array.
+ */
 function deleteTodo(id) {
   const todoIndex = todos.findIndex((todo) => todo.id === id);
 
@@ -462,6 +475,9 @@ function deleteTodo(id) {
   }
 }
 
+/**
+ * This function create a unique id för the todo.
+ */
 function generateUniqueId() {
   return "_" + Math.random().toString(36).substr(2, 9);
 }
@@ -472,27 +488,19 @@ function resetTodoForm() {
   editingTodoId = null;
 }
 
+/**
+ * Save our todo-array to localstorage under the name "todos"
+ */
 function saveToLocalStorage() {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
+/**
+ * This function look in localStorage if there are saved todos.
+ * */
 function loadFromLocalStorage() {
   const storedTodos = localStorage.getItem("todos");
   todos = storedTodos ? JSON.parse(storedTodos) : [];
-}
-
-function showTodoArrayLength() {
-  const showTodoLength = document.getElementById("todoCount");
-  const numberOfTodosArray = todos.length;
-  showTodoLength.textContent = numberOfTodosArray;
-  console.log(`Antal todos: ${numberOfTodosArray}`);
-}
-
-function showTodoArrayLength() {
-  const showTodoLength = document.getElementById("todoCount");
-  const numberOfTodosArray = todos.length;
-  showTodoLength.textContent = numberOfTodosArray;
-  console.log(`Antal todos: ${numberOfTodosArray}`);
 }
 
 function showTodoArrayLength() {
