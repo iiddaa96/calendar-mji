@@ -325,6 +325,9 @@ function startTodos() {
 let todos = [];
 let editingTodoId = null;
 
+/**
+ * This function lisen to "click" element for the buttons
+ */
 function addEventListeners() {
   const todoButton = document.getElementById("todoButton");
   todoButton.addEventListener("click", togglePopup);
@@ -333,6 +336,9 @@ function addEventListeners() {
   createButton.addEventListener("click", addOrUpdateTodo);
 }
 
+/**
+ * This function show/hide the popup-window to create a todo
+ */
 function togglePopup() {
   const todoPopup = document.getElementById("todoPopup");
   const warning = document.getElementById("warning");
@@ -351,6 +357,10 @@ function togglePopup() {
   }
 }
 
+/**
+ * Create a todo or update a todo. if you don´t fill in the input correct a warning text popup will come
+ * The todo saves in localStorage
+ */
 function addOrUpdateTodo() {
   const todoInput = document.getElementById("todoInput");
   const dueDateInput = document.getElementById("dueDate");
@@ -387,6 +397,7 @@ function addOrUpdateTodo() {
   saveToLocalStorage();
   renderTodos();
   togglePopup();
+  renderCalenderDays();
 
   // Återställ varning och feedback till tomma strängar efter att ha lagt till eller uppdaterat todo
   warning.textContent = "";
@@ -407,6 +418,7 @@ function renderTodos() {
     updateButton.onclick = () => editTodo(todo.id);
 
     const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
     deleteButton.textContent = "Ta bort";
     deleteButton.onclick = () => deleteTodo(todo.id);
 
@@ -423,6 +435,8 @@ function renderTodos() {
 function updateTodo(id) {
   const selectedTodos = todos.filter((todo) => todo.id === id);
   renderFilteredTodos(selectedTodos);
+  const todoDate = new Date(selectedTodos[0].date);
+  const formattedDate = todoDate.toLocaleDateString();
   showTodoCountInCalendar(selectedTodos.length);
 
   saveToLocalStorage();
@@ -444,6 +458,7 @@ function deleteTodo(id) {
     saveToLocalStorage();
     renderTodos();
     showTodoArrayLength();
+    renderCalenderDays();
   }
 }
 
@@ -464,6 +479,20 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
   const storedTodos = localStorage.getItem("todos");
   todos = storedTodos ? JSON.parse(storedTodos) : [];
+}
+
+function showTodoArrayLength() {
+  const showTodoLength = document.getElementById("todoCount");
+  const numberOfTodosArray = todos.length;
+  showTodoLength.textContent = numberOfTodosArray;
+  console.log(`Antal todos: ${numberOfTodosArray}`);
+}
+
+function showTodoArrayLength() {
+  const showTodoLength = document.getElementById("todoCount");
+  const numberOfTodosArray = todos.length;
+  showTodoLength.textContent = numberOfTodosArray;
+  console.log(`Antal todos: ${numberOfTodosArray}`);
 }
 
 function showTodoArrayLength() {

@@ -178,6 +178,7 @@ async function renderCalenderDays() {
 
     dayCells.push(cell);
   }
+
   // Creating li of next month first days
   for (let i = lastDayOfMonth; i < 6; i++) {
     const cell = document.createElement("li");
