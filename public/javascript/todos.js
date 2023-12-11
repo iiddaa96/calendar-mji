@@ -188,8 +188,8 @@ function updateTodo(id) {
   const todoToUpdate = todos.find((todo) => todo.id === id);
 
   if (todoToUpdate) {
-    const updateTextElement = document.getElementById(`updateText__${id}`);
-    const updateDateElement = document.getElementById(`updateDate__${id}`);
+    const updateTextElement = document.getElementById(`updateText_${id}`);
+    const updateDateElement = document.getElementById(`updateDate_${id}`);
 
     const updatedText = updateTextElement.value.trim();
     const updatedDate = updateDateElement.value;
