@@ -313,11 +313,11 @@
     margin-left: 40px;
   }
 
-  .helgdag {
-    /* font-size: 0.6rem; */
-    /* position: absolute; */
-    /* top: 3rem; */
-  }
+  /* .helgdag {
+    font-size: 0.6rem; */
+  /* position: absolute; */
+  /* top: 3rem;
+  } */
 
   .padding-days {
     color: var(--grey-color);
@@ -328,9 +328,9 @@
   }
 
   /*Tar bort prickarna från cellerna*/
-  /* .todoCountSpan {
+  .todoCountSpan {
     display: none;
-  } */
+  }
 
   .calendar li:hover {
     background-color: var(--grey-color);
