@@ -411,6 +411,17 @@ function renderTodos() {
   });
 }
 
+function updateTodo(id) {
+  const selectedTodos = todos.filter((todo) => todo.id === id);
+  renderFilteredTodos(selectedTodos);
+  showTodoCountInCalendar(selectedTodos.length); // Ny rad
+
+  saveToLocalStorage();
+  renderTodos();
+  renderCalenderDays();
+  showTodoArrayLength();
+}
+
 function editTodo(id) {
   editingTodoId = id;
   togglePopup();
