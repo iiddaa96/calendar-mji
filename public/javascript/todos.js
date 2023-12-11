@@ -188,8 +188,8 @@ function updateTodo(id) {
   const todoToUpdate = todos.find((todo) => todo.id === id);
 
   if (todoToUpdate) {
-    const updateTextElement = document.getElementById(`updateText_${id}`);
-    const updateDateElement = document.getElementById(`updateDate_${id}`);
+    const updateTextElement = document.getElementById(`updateText__${id}`);
+    const updateDateElement = document.getElementById(`updateDate__${id}`);
 
     const updatedText = updateTextElement.value.trim();
     const updatedDate = updateDateElement.value;
@@ -231,7 +231,7 @@ function deleteTodo(id) {
 }
 
 /**
- * Thid function save our todo-array to localstorage under the name "todos"
+ * This function save our todo-array to localstorage under the name "todos"
  */
 function saveToLocalStorage() {
   localStorage.setItem("todos", JSON.stringify(todos));
