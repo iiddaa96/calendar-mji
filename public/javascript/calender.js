@@ -173,6 +173,7 @@ async function renderCalenderDays() {
       updateTodoList(formattedDate);
     });
 
+    // Felet är med span
     const dateSpan = document.createElement("span");
     dateSpan.textContent = holidayString;
     const todoCountSpan = document.createElement("span");
