@@ -260,7 +260,7 @@
     /* margin-bottom: -65px; */
     /* margin-top: 3rem; */
     margin: 0 3rem;
-    /* background-color: rgba(211, 211, 211, 0.7); */
+    background-color: rgba(211, 211, 211, 0.7);
     /* border-radius: 5px 5px 0 0; */
   }
 
@@ -314,9 +314,9 @@
   }
 
   /* .helgdag {
-    font-size: 0.6rem; */
-  /* position: absolute; */
-  /* top: 3rem;
+    font-size: 0.6rem;
+    position: absolute;
+    top: 3rem;
   } */
 
   .padding-days {

@@ -96,8 +96,8 @@
   }
 
   .calendar li {
-    width: 7.4rem;
-    height: 5rem;
+    /* width: 7.4rem; */
+    /* height: 5rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,11 +109,11 @@
   }
 
   .calendar {
-    gap: 1px;
+    /* gap: 1px; */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr);
-    margin: 22px;
+    /* margin: 22px; */
   }
 
   .back-month-arrow {
@@ -135,7 +135,7 @@
   }
 
   .todoCountSpan {
-    display: block; /*Visar antal todos i cellerna för desktop*/
+    /* display: block;  */
     color: white;
     border-radius: 11px 11px;
     font-family: "Times New Roman", Times, serif;
@@ -171,8 +171,8 @@
   .redDay {
     color: rgb(177, 38, 38);
     font-weight: bolder;
-    font-size: 1.2rem;
-    padding: 10px;
+    font-size: 1.1rem;
+    /* padding: 10px; */
   }
 
   .todoDate {
