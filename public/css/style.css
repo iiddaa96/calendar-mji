@@ -34,7 +34,7 @@
     text-align: center;
     /* font-size: 1.2rem; */
     color: white;
-    border-bottom: 2px solid;
+    /* border-bottom: 2px solid; */
   }
 
   header h1 {
@@ -75,7 +75,7 @@
     position: relative;
     /* padding-left: 10px; */
     background-color: rgba(211, 211, 211, 0.5);
-    border-bottom: solid 2px;
+    /* border-bottom: solid 2px; */
   }
 
   .todo-heading {
@@ -260,7 +260,7 @@
     /* margin-bottom: -65px; */
     /* margin-top: 3rem; */
     margin: 0 3rem;
-    /* background-color: rgba(211, 211, 211, 0.7); */
+    background-color: rgba(211, 211, 211, 0.7);
     /* border-radius: 5px 5px 0 0; */
   }
 
@@ -313,11 +313,11 @@
     margin-left: 40px;
   }
 
-  .helgdag {
-    /* font-size: 0.6rem; */
-    /* position: absolute; */
-    /* top: 3rem; */
-  }
+  /* .helgdag {
+    font-size: 0.6rem;
+    position: absolute;
+    top: 3rem;
+  } */
 
   .padding-days {
     color: var(--grey-color);

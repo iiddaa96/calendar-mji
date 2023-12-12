@@ -123,6 +123,7 @@ async function renderCalenderDays() {
 
   const now = new Date();
 
+  const holidays = await getHolidayAPI(); //Test
   let liTag = "";
   const dayCells = [];
 
@@ -150,6 +151,14 @@ async function renderCalenderDays() {
       calendar.year === now.getFullYear()
         ? "activeDay"
         : "";
+    let holidayString = ""; // Test
+    const xx = holidays.filter((h) => {
+      return h.datum === currentDate;
+    });
+
+    if (xx[0]) {
+      holidayString = xx[0].helgdag;
+    }
 
     const todosForDay = todos.filter((todo) => todo.date === currentDate);
     const hasTodos = todosForDay.length > 0;
@@ -157,14 +166,14 @@ async function renderCalenderDays() {
 
     const cell = document.createElement("li");
     cell.setAttribute("data-cy", "calendar-cell");
-    // cell.className = isToday + (xx[0] ? " redDay" : ""); // Om det är en röd dag så blir texten röd.
+    cell.className = isToday + (xx[0] ? " redDay" : ""); // Om det är en röd dag så blir texten röd.
+    cell.textContent = holidayString; // Test
     cell.addEventListener("click", () => {
       const loopDay = new Date(calendar.year, calendar.month, i);
       const formattedDate = loopDay.toLocaleDateString();
       updateTodoList(formattedDate);
     });
 
-    // Felet är med span
     const dateSpan = document.createElement("span");
     dateSpan.setAttribute("data-cy", "calendar-cell-date");
     dateSpan.textContent = i;
@@ -178,6 +187,7 @@ async function renderCalenderDays() {
 
     dayCells.push(cell);
   }
+
   // Creating li of next month first days
   for (let i = lastDayOfMonth; i < 6; i++) {
     const cell = document.createElement("li");
