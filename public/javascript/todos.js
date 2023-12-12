@@ -119,8 +119,8 @@ function renderTodos() {
     `;
 
     todoList.appendChild(todoItem);
-    todoList.appendChild(updateButton);
-    todoList.appendChild(deleteButton);
+    todoItem.appendChild(updateButton);
+    todoItem.appendChild(deleteButton);
   });
 }
 
@@ -269,7 +269,7 @@ function renderFilteredTodos(filteredTodos) {
     `;
 
     todoList.appendChild(todoItem);
-    todoList.appendChild(updateButton);
-    todoList.appendChild(deleteButton);
+    todoItem.appendChild(updateButton);
+    todoItem.appendChild(deleteButton);
   });
 }
