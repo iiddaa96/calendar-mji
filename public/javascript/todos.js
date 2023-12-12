@@ -315,8 +315,8 @@
 window.addEventListener("DOMContentLoaded", startTodos);
 
 let todos = [];
-let editingTodoId = null;
-let selectedDate = null; // Lägg till här
+let editingTodoId = null; // Variabel för att hålla reda på id:et för den todo som för närvarande är under redigering
+let selectedDate = null; // Variabel för att hålla reda på det datum som användaren har valt i kalendern
 
 /**
  * Funktion som initierar applikationen genom att lägga till händelselyssnare, öppna popup-fönstret, rendera todos, generera unika id:n och visa antalet todos
