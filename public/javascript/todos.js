@@ -483,12 +483,20 @@ function generateUniqueId() {
   return "_" + Math.random().toString(36).substr(2, 9);
 }
 
+/**
+ * Resets the todo form by clearing input fields and setting editingTodoId to null.
+ */
 function resetTodoForm() {
   document.getElementById("todoInput").value = "";
   document.getElementById("dueDate").value = "";
   editingTodoId = null;
 }
 
+/**
+ * Filters todos based on the specified date and renders them.
+ * Updates the selectedDate variable and invokes updateTodoList.
+ * @param {string} date - The date for which to filter and display todos.
+ */
 function showTodosForDate(date) {
   const todosForDate = todos.filter((todo) => todo.date === date);
   renderTodos(todosForDate);
@@ -512,6 +520,10 @@ function loadFromLocalStorage() {
   todos = storedTodos ? JSON.parse(storedTodos) : [];
 }
 
+/**
+ * Displays the number of todos in the HTML element with the id "todoCount"
+ * and logs the total number of todos to the console.
+ */
 function showTodoArrayLength() {
   const showTodoLength = document.getElementById("todoCount");
   const numberOfTodosArray = todos.length;
@@ -519,6 +531,10 @@ function showTodoArrayLength() {
   console.log(`Antal todos: ${numberOfTodosArray}`);
 }
 
+/**
+ * Sets up event listeners for calendar cells. When a cell is clicked,
+ * retrieves the clicked date and calls showTodosForDate to display todos for that date.
+ */
 function setupCalendarListeners() {
   const calendarCells = document.querySelectorAll(".calendar-cell");
   calendarCells.forEach((cell) => {
@@ -529,6 +545,10 @@ function setupCalendarListeners() {
   });
 }
 
+/**
+ * Updates the displayed todo list based on the selected date. Filters todos with a matching date,
+ * then calls renderFilteredTodos to update the DOM with the filtered todos.
+ */
 function updateTodoList(selectedDate) {
   const selectedTodos = todos.filter((todo) => {
     const todoDate = new Date(todo.date);
@@ -537,6 +557,9 @@ function updateTodoList(selectedDate) {
   renderFilteredTodos(selectedTodos);
 }
 
+/**
+ * Denna funktionen måste finnas för den gör så att man kan se specifik todo i det datumet todon är satt
+ */
 function renderFilteredTodos(filteredTodos) {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
@@ -550,9 +573,9 @@ function renderFilteredTodos(filteredTodos) {
     updateButton.onclick = () => editTodo(todo.id);
 
     const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
     deleteButton.textContent = "Ta bort";
     deleteButton.onclick = () => deleteTodo(todo.id);
-    deleteButton.setAttribute("data-cy", "delete-todo-button");
 
     todoItem.innerHTML = `
       ${todo.text} ${todo.date}
