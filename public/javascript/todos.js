@@ -327,6 +327,7 @@ function startTodos() {
   renderTodos();
   generateUniqueId();
   showTodoArrayLength();
+  editTodo();
 }
 
 /**
