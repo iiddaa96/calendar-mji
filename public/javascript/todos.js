@@ -314,6 +314,10 @@
 
 window.addEventListener("DOMContentLoaded", startTodos);
 
+let todos = [];
+let editingTodoId = null;
+let selectedDate = null; // Lägg till här
+
 /**
  * Funktion som initierar applikationen genom att lägga till händelselyssnare, öppna popup-fönstret, rendera todos, generera unika id:n och visa antalet todos
  */
@@ -324,9 +328,6 @@ function startTodos() {
   generateUniqueId();
   showTodoArrayLength();
 }
-
-let todos = [];
-let editingTodoId = null;
 
 /**
  * This function lisen to "click" element for the buttons
@@ -488,6 +489,14 @@ function resetTodoForm() {
   editingTodoId = null;
 }
 
+function showTodosForDate(date) {
+  const todosForDate = todos.filter((todo) => todo.date === date);
+  renderTodos(todosForDate);
+
+  selectedDate = date;
+  updateTodoList(selectedDate);
+}
+
 /**
  * Save our todo-array to localstorage under the name "todos"
  */
@@ -508,4 +517,49 @@ function showTodoArrayLength() {
   const numberOfTodosArray = todos.length;
   showTodoLength.textContent = numberOfTodosArray;
   console.log(`Antal todos: ${numberOfTodosArray}`);
+}
+
+function setupCalendarListeners() {
+  const calendarCells = document.querySelectorAll(".calendar-cell");
+  calendarCells.forEach((cell) => {
+    cell.addEventListener("click", () => {
+      const clickedDate = cell.getAttribute("data-date");
+      showTodosForDate(clickedDate);
+    });
+  });
+}
+
+function updateTodoList(selectedDate) {
+  const selectedTodos = todos.filter((todo) => {
+    const todoDate = new Date(todo.date);
+    return todoDate.toLocaleDateString() === selectedDate;
+  });
+  renderFilteredTodos(selectedTodos);
+}
+
+function renderFilteredTodos(filteredTodos) {
+  const todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
+
+  filteredTodos.forEach((todo) => {
+    const todoItem = document.createElement("li");
+    todoItem.className = "todoListText";
+    const updateButton = document.createElement("button");
+    updateButton.setAttribute("data-cy", "edit-todo-button");
+    updateButton.textContent = "Uppdatera";
+    updateButton.onclick = () => editTodo(todo.id);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Ta bort";
+    deleteButton.onclick = () => deleteTodo(todo.id);
+    deleteButton.setAttribute("data-cy", "delete-todo-button");
+
+    todoItem.innerHTML = `
+      ${todo.text} ${todo.date}
+    `;
+
+    todoList.appendChild(todoItem);
+    todoList.appendChild(updateButton);
+    todoList.appendChild(deleteButton);
+  });
 }

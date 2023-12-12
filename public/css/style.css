@@ -260,7 +260,7 @@
     /* margin-bottom: -65px; */
     /* margin-top: 3rem; */
     margin: 0 3rem;
-    background-color: rgba(211, 211, 211, 0.7);
+    /* background-color: rgba(211, 211, 211, 0.7); */
     /* border-radius: 5px 5px 0 0; */
   }
 
@@ -269,7 +269,7 @@
     grid-template-columns: repeat(7, 1fr);
     margin: 1rem 0;
     /* margin-top: 4.8rem; */
-    background-color: rgba(211, 211, 211, 0.7);
+    /* background-color: rgba(211, 211, 211, 0.7); */
     /* border-radius: 0 0 5px 5px; */
     /* padding: 16px; */
   }
