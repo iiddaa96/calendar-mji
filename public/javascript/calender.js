@@ -98,6 +98,7 @@ function renderSelectedTodos(selectedTodos) {
 
 async function renderCalenderDays() {
   let calenderUL = document.querySelector(".calendar");
+  calenderUL.innerHTML = "";
 
   let firstWeekDayOfMonth = new Date(
     calendar.year,
@@ -162,22 +163,22 @@ async function renderCalenderDays() {
 
     const todosForDay = todos.filter((todo) => todo.date === currentDate);
     const hasTodos = todosForDay.length > 0;
-  
+
     const cell = document.createElement("li");
     cell.setAttribute("data-cy", "calendar-cell");
     cell.className = isToday + (xx[0] ? " redDay" : "");
     cell.textContent = holidayString;
     cell.addEventListener("click", () => {
       const loopDay = new Date(calendar.year, calendar.month, i);
-      const formattedDate = loopDay.toLocaleDateString();
-      updateTodoList(formattedDate);
+      selectedDate = loopDay.toLocaleDateString();
+      renderTodos();
     });
-  
+
     const dateSpan = document.createElement("span");
     dateSpan.setAttribute("data-cy", "calendar-cell-date");
     dateSpan.textContent = i;
     cell.appendChild(dateSpan);
-  
+
     if (hasTodos) {
       const todoCount = todosForDay.length;
       const todoCountSpan = document.createElement("span");
@@ -186,7 +187,7 @@ async function renderCalenderDays() {
       todoCountSpan.textContent = todoCount;
       cell.appendChild(todoCountSpan);
     }
-  
+
     dayCells.push(cell);
   }
 
