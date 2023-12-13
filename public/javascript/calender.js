@@ -162,29 +162,31 @@ async function renderCalenderDays() {
 
     const todosForDay = todos.filter((todo) => todo.date === currentDate);
     const hasTodos = todosForDay.length > 0;
-    const todoCount = hasTodos ? todosForDay.length : "";
-
+  
     const cell = document.createElement("li");
     cell.setAttribute("data-cy", "calendar-cell");
-    cell.className = isToday + (xx[0] ? " redDay" : ""); // Om det är en röd dag så blir texten röd.
-    cell.textContent = holidayString; // Test
+    cell.className = isToday + (xx[0] ? " redDay" : "");
+    cell.textContent = holidayString;
     cell.addEventListener("click", () => {
       const loopDay = new Date(calendar.year, calendar.month, i);
       const formattedDate = loopDay.toLocaleDateString();
       updateTodoList(formattedDate);
     });
-
+  
     const dateSpan = document.createElement("span");
     dateSpan.setAttribute("data-cy", "calendar-cell-date");
     dateSpan.textContent = i;
-
-    const todoCountSpan = document.createElement("span");
-    todoCountSpan.setAttribute("data-cy", "calendar-cell-todos");
-    todoCountSpan.className = "todoCountSpan";
-    todoCountSpan.textContent = todoCount;
-
-    cell.append(dateSpan, todoCountSpan);
-
+    cell.appendChild(dateSpan);
+  
+    if (hasTodos) {
+      const todoCount = todosForDay.length;
+      const todoCountSpan = document.createElement("span");
+      todoCountSpan.setAttribute("data-cy", "calendar-cell-todos");
+      todoCountSpan.className = "todoCountSpan";
+      todoCountSpan.textContent = todoCount;
+      cell.appendChild(todoCountSpan);
+    }
+  
     dayCells.push(cell);
   }
 
