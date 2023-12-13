@@ -98,6 +98,7 @@ function renderSelectedTodos(selectedTodos) {
 
 async function renderCalenderDays() {
   let calenderUL = document.querySelector(".calendar");
+  calenderUL.innerHTML = "";
 
   let firstWeekDayOfMonth = new Date(
     calendar.year,
@@ -129,10 +130,7 @@ async function renderCalenderDays() {
 
   // loop for padding days of previous month
   for (let i = firstWeekDayOfMonth; i > 0; i--) {
-    const cell = document.createElement("li");
-    cell.className = "padding-days";
-    cell.textContent = lastDateOfPrevMonth - i + 1;
-    cell.setAttribute("data-cy", "calendar-cell");
+    const cell = createAdjacentCalendarCell(lastDateOfPrevMonth - i + 1);
     dayCells.push(cell);
   }
 
@@ -162,22 +160,22 @@ async function renderCalenderDays() {
 
     const todosForDay = todos.filter((todo) => todo.date === currentDate);
     const hasTodos = todosForDay.length > 0;
-  
+
     const cell = document.createElement("li");
     cell.setAttribute("data-cy", "calendar-cell");
     cell.className = isToday + (xx[0] ? " redDay" : "");
     cell.textContent = holidayString;
     cell.addEventListener("click", () => {
       const loopDay = new Date(calendar.year, calendar.month, i);
-      const formattedDate = loopDay.toLocaleDateString();
-      updateTodoList(formattedDate);
+      selectedDate = loopDay.toLocaleDateString();
+      renderTodos();
     });
-  
+
     const dateSpan = document.createElement("span");
     dateSpan.setAttribute("data-cy", "calendar-cell-date");
     dateSpan.textContent = i;
     cell.appendChild(dateSpan);
-  
+
     if (hasTodos) {
       const todoCount = todosForDay.length;
       const todoCountSpan = document.createElement("span");
@@ -186,21 +184,26 @@ async function renderCalenderDays() {
       todoCountSpan.textContent = todoCount;
       cell.appendChild(todoCountSpan);
     }
-  
+
     dayCells.push(cell);
   }
 
   // Creating li of next month first days
   for (let i = lastDayOfMonth; i < 6; i++) {
-    const cell = document.createElement("li");
-    cell.setAttribute("data-cy", "calendar-cell");
-    cell.className = "padding-days";
-    cell.textContent = i - lastDayOfMonth + 1;
+    const cell = createAdjacentCalendarCell(i - lastDayOfMonth + 1);
     dayCells.push(cell);
   }
 
   calenderUL.innerHTML = "";
   calenderUL.append(...dayCells);
+}
+
+function createAdjacentCalendarCell(textContent) {
+  const cell = document.createElement("li");
+  cell.setAttribute("data-cy", "calendar-cell");
+  cell.className = "padding-days";
+  cell.textContent = textContent;
+  return cell;
 }
 
 /**

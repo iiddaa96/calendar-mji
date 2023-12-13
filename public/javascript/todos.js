@@ -117,7 +117,15 @@ function renderTodos() {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
 
-  todos.forEach((todo) => {
+  let filteredTodos = todos;
+  if (selectedDate) {
+    filteredTodos = todos.filter((todo) => {
+      const todoDate = new Date(todo.date);
+      return todoDate.toLocaleDateString() === selectedDate;
+    });
+  }
+
+  filteredTodos.forEach((todo) => {
     const todoItem = document.createElement("li");
     todoItem.className = "todoListText";
 
@@ -197,19 +205,6 @@ function resetTodoForm() {
 }
 
 /**
- * Filters todos based on the specified date and renders them.
- * Updates the selectedDate variable and invokes updateTodoList.
- * @param {string} date - The date for which to filter and display todos.
- */
-function showTodosForDate(date) {
-  const todosForDate = todos.filter((todo) => todo.date === date);
-  renderTodos(todosForDate);
-
-  selectedDate = date;
-  updateTodoList(selectedDate);
-}
-
-/**
  * Save our todo-array to localstorage under the name "todos"
  */
 function saveToLocalStorage() {
@@ -233,62 +228,6 @@ function showTodoArrayLength() {
   const numberOfTodosArray = todos.length;
   showTodoLength.textContent = numberOfTodosArray;
   console.log(`Antal todos: ${numberOfTodosArray}`);
-}
-
-/**
- * Sets up event listeners for calendar cells. When a cell is clicked,
- * retrieves the clicked date and calls showTodosForDate to display todos for that date.
- */
-function setupCalendarListeners() {
-  const calendarCells = document.querySelectorAll(".calendar-cell");
-  calendarCells.forEach((cell) => {
-    cell.addEventListener("click", () => {
-      const clickedDate = cell.getAttribute("data-date");
-      showTodosForDate(clickedDate);
-    });
-  });
-}
-
-/**
- * Updates the displayed todo list based on the selected date. Filters todos with a matching date,
- * then calls renderFilteredTodos to update the DOM with the filtered todos.
- */
-function updateTodoList(selectedDate) {
-  const selectedTodos = todos.filter((todo) => {
-    const todoDate = new Date(todo.date);
-    return todoDate.toLocaleDateString() === selectedDate;
-  });
-  renderFilteredTodos(selectedTodos);
-}
-
-/**
- * Denna funktionen måste finnas för den gör så att man kan se specifik todo i det datumet todon är satt
- */
-function renderFilteredTodos(filteredTodos) {
-  const todoList = document.getElementById("todoList");
-  todoList.innerHTML = "";
-
-  filteredTodos.forEach((todo) => {
-    const todoItem = document.createElement("li");
-    todoItem.className = "todoListText";
-    const updateButton = document.createElement("button");
-    updateButton.setAttribute("data-cy", "edit-todo-button");
-    updateButton.textContent = "Uppdatera";
-    updateButton.onclick = () => editTodo(todo.id);
-
-    const deleteButton = document.createElement("button");
-    deleteButton.setAttribute("data-cy", "delete-todo-button");
-    deleteButton.textContent = "Ta bort";
-    deleteButton.onclick = () => deleteTodo(todo.id);
-
-    todoItem.innerHTML = `
-      ${todo.text} ${todo.date}
-    `;
-
-    todoList.appendChild(todoItem);
-    todoItem.appendChild(updateButton);
-    todoItem.appendChild(deleteButton);
-  });
 }
 
 function addToNotes(todo) {
