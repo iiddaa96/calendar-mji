@@ -14,6 +14,7 @@ function startTodos() {
   generateUniqueId();
   showTodoArrayLength();
   editTodo();
+  renderNotes();
 }
 
 /**
@@ -83,16 +84,33 @@ function addOrUpdateTodo() {
     };
 
     todos.push(todo);
+    addToNotes(todo);
   }
 
   saveToLocalStorage();
   renderTodos();
   togglePopup();
   renderCalenderDays();
+  showTodoArrayLength();
 
   // Återställ varning och feedback till tomma strängar efter att ha lagt till eller uppdaterat todo
   warning.textContent = "";
   feedback.textContent = "";
+}
+
+function renderNotes() {
+  const notesList = document.getElementById("notesList");
+  notesList.innerHTML = "";
+
+  const notes = localStorage.getItem("notes")
+    ? JSON.parse(localStorage.getItem("notes"))
+    : [];
+
+  notes.forEach((note) => {
+    const noteItem = document.createElement("li");
+    noteItem.textContent = note.text;
+    notesList.appendChild(noteItem);
+  });
 }
 
 /** This function render a todo, it look in the todo list array and create a list, and two button: Save and Delete. */
@@ -272,4 +290,12 @@ function renderFilteredTodos(filteredTodos) {
     todoItem.appendChild(updateButton);
     todoItem.appendChild(deleteButton);
   });
+}
+
+function addToNotes(todo) {
+  const notes = localStorage.getItem("notes")
+    ? JSON.parse(localStorage.getItem("notes"))
+    : [];
+  notes.push(todo);
+  localStorage.setItem("notes", JSON.stringify(notes));
 }
