@@ -14,7 +14,6 @@ function startTodos() {
   generateUniqueId();
   showTodoArrayLength();
   editTodo();
-  renderNotes();
 }
 
 /**
