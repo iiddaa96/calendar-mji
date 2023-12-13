@@ -130,10 +130,7 @@ async function renderCalenderDays() {
 
   // loop for padding days of previous month
   for (let i = firstWeekDayOfMonth; i > 0; i--) {
-    const cell = document.createElement("li");
-    cell.className = "padding-days";
-    cell.textContent = lastDateOfPrevMonth - i + 1;
-    cell.setAttribute("data-cy", "calendar-cell");
+    const cell = createAdjacentCalendarCell(lastDateOfPrevMonth - i + 1);
     dayCells.push(cell);
   }
 
@@ -193,15 +190,20 @@ async function renderCalenderDays() {
 
   // Creating li of next month first days
   for (let i = lastDayOfMonth; i < 6; i++) {
-    const cell = document.createElement("li");
-    cell.setAttribute("data-cy", "calendar-cell");
-    cell.className = "padding-days";
-    cell.textContent = i - lastDayOfMonth + 1;
+    const cell = createAdjacentCalendarCell(i - lastDayOfMonth + 1);
     dayCells.push(cell);
   }
 
   calenderUL.innerHTML = "";
   calenderUL.append(...dayCells);
+}
+
+function createAdjacentCalendarCell(textContent) {
+  const cell = document.createElement("li");
+  cell.setAttribute("data-cy", "calendar-cell");
+  cell.className = "padding-days";
+  cell.textContent = textContent;
+  return cell;
 }
 
 /**
