@@ -10,7 +10,6 @@
   /* -----------ROOT VARIABLER------------------------------- */
   :root {
     /* Värden */
-    /* --header-height: 9rem; */
     --header-height: 5rem;
     --FS-0_7: 0.7rem;
     --FS-1_2: 1.2rem;
@@ -34,7 +33,6 @@
     text-align: center;
     /* font-size: 1.2rem; */
     color: white;
-    /* border-bottom: 2px solid; */
   }
 
   header h1 {
@@ -57,7 +55,6 @@
   }
 
   .aside-main-container {
-    /* height: calc(100vh - var(--header-height)); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,20 +63,15 @@
   /* -----------------ASIDE MENU---------------------------------- */
 
   aside {
-    /* width: 75%; */
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* margin: 22px; */
     border-radius: 10px;
     position: relative;
-    /* padding-left: 10px; */
     background-color: rgba(211, 211, 211, 0.5);
-    /* border-bottom: solid 2px; */
   }
 
   .todo-heading {
-    /* padding: 20px; */
     max-height: 210px;
     overflow-y: auto;
   }
@@ -109,8 +101,6 @@
   .create-button-div {
     display: flex;
     justify-content: center;
-    /* border-width: 0.5rem;
-  margin-bottom: 1.5rem; */
   }
 
   /* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
@@ -141,8 +131,6 @@
   .create-todo-popup {
     width: 100%;
     display: none;
-    /* top: 215px; */
-    /* left: 0; */
     margin: auto;
     padding: 1.4rem;
     background-color: lightgray;
@@ -250,28 +238,18 @@
   /* MAIN---------------------------------------------------------------------------------- */
 
   .month-div {
-    /* font-size: 1.7rem; */
     font-size: 1.5rem;
     display: flex;
-    /* justify-content: center; */
     justify-content: space-between;
-    /* padding: 17px; */
     padding: 0.5rem 0;
-    /* margin-bottom: -65px; */
-    /* margin-top: 3rem; */
     margin: 0 3rem;
     background-color: rgba(211, 211, 211, 0.7);
-    /* border-radius: 5px 5px 0 0; */
   }
 
   .weekday-div-mobile {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     margin: 1rem 0;
-    /* margin-top: 4.8rem; */
-    /* background-color: rgba(211, 211, 211, 0.7); */
-    /* border-radius: 0 0 5px 5px; */
-    /* padding: 16px; */
   }
 
   .weekday {
@@ -291,7 +269,6 @@
   }
 
   .calendar li {
-    /* height: 2.8rem; */
     height: 5rem;
     display: flex;
     justify-content: center;
@@ -313,12 +290,6 @@
     margin-left: 40px;
   }
 
-  /* .helgdag {
-    font-size: 0.6rem;
-    position: absolute;
-    top: 3rem;
-  } */
-
   .padding-days {
     color: var(--grey-color);
     background-color: rgba(211, 211, 211, 0.4);
@@ -326,11 +297,6 @@
     border-radius: 8px;
     margin: 3px;
   }
-
-  /*Tar bort prickarna från cellerna*/
-  /* .todoCountSpan {
-    display: none;
-  } */
 
   .calendar li:hover {
     background-color: var(--grey-color);
