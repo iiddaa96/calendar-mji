@@ -104,15 +104,16 @@
 
   /* STYLE FÖR LÄGG TILL ANTECKNINGAR KNAPPEN*/
   .create-button-div .createButton {
+    font-family: 'Times New Roman', Times, serif;
     margin: 1.5rem 0;
     padding: 0.5rem 2rem;
     width: 70%;
     max-width: 16rem;
     border-radius: 0.5rem;
     color: black;
-    font-size: 0.8rem;
-    background-color: beige;
-    border: solid beige 2px;
+    /* font-size: 0.8rem; */
+    background-color:beige;
+    border: solid beige 1px;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
@@ -121,7 +122,6 @@
   }
 
   .create-button-div .createButton:hover {
-    background-color: burlywood; /* Ändra färgen här */
     transform: scale(1.08);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
@@ -151,10 +151,6 @@
   #todoList.todo-container {
     padding: 20px;
   }
-
-  /*Uppdatera knappen*/
-
-  /*Style för deleted knappen i todo*/
 
   /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
   .create-todo-popup {
