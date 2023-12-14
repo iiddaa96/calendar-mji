@@ -31,7 +31,6 @@
   header {
     height: var(--header-height);
     text-align: center;
-    /* font-size: 1.2rem; */
     color: white;
   }
 
@@ -154,17 +153,8 @@
   }
 
   /*Uppdatera knappen*/
-  .todoUpdate {
-    font-size: 0.9rem;
-    margin-right: 8px;
-    font-family: "Times New Roman", Times, serif;
-  }
 
   /*Style för deleted knappen i todo*/
-  .todoDeleted {
-    font-family: "Times New Roman", Times, serif;
-    font-size: 0.9rem;
-  }
 
   /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
   .create-todo-popup {
@@ -290,12 +280,36 @@
     margin-left: 40px;
   }
 
+    /*Uppdatera knappen*/
+    .updateButton {
+      margin-right: 3px;
+      background-color: beige;
+      transition: background-color 0.2s, transform 0.9s, 
+      font-family: "Times New Roman", Times, serif;
+    }
+  
+    .updateButton:hover {
+      cursor: pointer;
+      transform: scale(1.08);
+    }
+  
+    /*Style för deleted knappen i todo*/
+   .deleteButton{
+    background-color: beige;
+    font-family: "Times New Roman", Times, serif;
+    transition: background-color 0.2s, transform 0.9s, 
+   }
+  
+   .deleteButton:hover{
+    cursor: pointer;
+    transform: scale(1.08);
+   }
+
   .padding-days {
-    color: var(--grey-color);
+    color: azure;
     background-color: rgba(211, 211, 211, 0.4);
     border: solid 1px black;
     border-radius: 8px;
-    margin: 3px;
   }
 
   .calendar li:hover {

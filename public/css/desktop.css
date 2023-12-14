@@ -90,14 +90,12 @@
   .weekday-div-mobile {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    margin: 0 1.5rem;
+    /* margin: 0 1.5rem; */
     padding-bottom: px;
     border-radius: 0 0 5px 5px;
   }
 
   .calendar li {
-    /* width: 7.4rem; */
-    /* height: 5rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,11 +107,9 @@
   }
 
   .calendar {
-    /* gap: 1px; */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr);
-    /* margin: 22px; */
   }
 
   .back-month-arrow {
@@ -134,8 +130,8 @@
     display: none;
   }
 
+  /*Todo pricken i cellen*/
   .todoCountSpan {
-    /* display: block;  */
     color: white;
     border-radius: 11px 11px;
     font-family: "Times New Roman", Times, serif;
@@ -147,15 +143,29 @@
   }
 
   /*Uppdatera knappen*/
-  .todoUpdate {
-    margin-right: 8px;
+  .updateButton {
+    margin-right: 3px;
+    background-color: beige;
+    transition: background-color 0.2s, transform 0.9s, 
     font-family: "Times New Roman", Times, serif;
   }
 
-  /*Style för deleted knappen i todo*/
-  .todoDeleted {
-    font-family: "Times New Roman", Times, serif;
+  .updateButton:hover {
+    cursor: pointer;
+    transform: scale(1.08);
   }
+
+  /*Style för deleted knappen i todo*/
+ .deleteButton{
+  background-color: beige;
+  font-family: "Times New Roman", Times, serif;
+  transition: background-color 0.2s, transform 0.9s, 
+ }
+
+ .deleteButton:hover{
+  cursor: pointer;
+  transform: scale(1.08);
+ }
 
   /* STYLE FÖR KNAPPEN "LÄGG TILL ANTECKNINGAR" SAMT INPUT */
   .create-todo-popup {
@@ -172,7 +182,6 @@
     color: rgb(177, 38, 38);
     font-weight: bolder;
     font-size: 1.1rem;
-    /* padding: 10px; */
   }
 
   .todoDate {
