@@ -51,6 +51,11 @@ const weekdays = [
   "Saturday",
 ];
 
+/**
+ * Asynchronously fetches holiday data from a third-party API based on the current year and month.
+ *
+ * @returns {Promise<Array<Object>>} A promise that resolves to an array of holiday objects.
+ */
 async function getHolidayAPI() {
   const url = `https://sholiday.faboul.se/dagar/v2.1/${calendar.year}/${
     calendar.month + 1
@@ -69,6 +74,11 @@ async function getHolidayAPI() {
   return fetchedHolidays;
 }
 
+/**
+ * Renders a list of selected todos in the HTML element with the id "todoList".
+ *
+ * @param {Array<Object>} selectedTodos - An array of selected todo objects to be rendered.
+ */
 function renderSelectedTodos(selectedTodos) {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
@@ -96,6 +106,12 @@ function renderSelectedTodos(selectedTodos) {
   });
 }
 
+/**
+ * Renders the calendar days for the specified month and year, populating the UI with day cells.
+ * @async
+ * @function renderCalenderDays
+ * @returns {Promise<void>} A Promise that resolves when the rendering is complete.
+ */
 async function renderCalenderDays() {
   let calenderUL = document.querySelector(".calendar");
   calenderUL.innerHTML = "";
@@ -124,7 +140,7 @@ async function renderCalenderDays() {
 
   const now = new Date();
 
-  const holidays = await getHolidayAPI(); //Test
+  const holidays = await getHolidayAPI();
   let liTag = "";
   const dayCells = [];
 
@@ -176,14 +192,7 @@ async function renderCalenderDays() {
     dateSpan.textContent = i;
     cell.appendChild(dateSpan);
 
-    if (hasTodos) {
-      const todoCount = todosForDay.length;
-      const todoCountSpan = document.createElement("span");
-      todoCountSpan.setAttribute("data-cy", "calendar-cell-todos");
-      todoCountSpan.className = "todoCountSpan";
-      todoCountSpan.textContent = todoCount;
-      cell.appendChild(todoCountSpan);
-    }
+    addTodoCountSpanToCell(cell, todosForDay);
 
     dayCells.push(cell);
   }
@@ -198,6 +207,34 @@ async function renderCalenderDays() {
   calenderUL.append(...dayCells);
 }
 
+/**
+ * Adds a todo count span to the specified calendar cell if there are todos for the day.
+ *
+ * @param {HTMLLIElement} cell - The calendar cell element to which the todo count span should be added.
+ * @param {Array<Object>} todosForDay - An array of todos for the specified day.
+ */
+function addTodoCountSpanToCell(cell, todosForDay) {
+  const hasTodos = todosForDay.length > 0;
+
+  if (hasTodos) {
+    const todoCount = todosForDay.length;
+
+    const todoCountSpan = document.createElement("span");
+    todoCountSpan.setAttribute("data-cy", "calendar-cell-todos");
+    todoCountSpan.className = "todoCountSpan";
+    todoCountSpan.textContent = todoCount;
+
+    // Append the todo count span to the calendar cell.
+    cell.appendChild(todoCountSpan);
+  }
+}
+
+/**
+ * Creates a calendar cell element with specified text content, intended for adjacent months' padding.
+ *
+ * @param {string} textContent - The text content to be displayed in the calendar cell.
+ * @returns {HTMLLIElement} The created calendar cell element.
+ */
 function createAdjacentCalendarCell(textContent) {
   const cell = document.createElement("li");
   cell.setAttribute("data-cy", "calendar-cell");
@@ -209,7 +246,6 @@ function createAdjacentCalendarCell(textContent) {
 /**
  * Gets the current year, month and day and displays the current month in the calendar.
  */
-
 function calenderInfo() {
   changeMonths();
 
