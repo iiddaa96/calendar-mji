@@ -140,11 +140,13 @@ function renderTodos() {
     const updateButton = document.createElement("button");
     updateButton.setAttribute("data-cy", "edit-todo-button");
     updateButton.textContent = "Uppdatera";
+    updateButton.className = "updateButton";
     updateButton.onclick = () => editTodo(todo.id);
 
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("data-cy", "delete-todo-button");
     deleteButton.textContent = "Ta bort";
+    deleteButton.className = "deleteButton";
     deleteButton.onclick = () => deleteTodo(todo.id);
 
     todoItem.innerHTML = `
