@@ -2,6 +2,13 @@ function initWelcome() {
   updateDateTime();
 }
 
+/**
+ * This function retrieves the current date and time, formats them, and updates the
+ * corresponding HTML elements with the ids "todaysDate" and "time" to display the information.
+ * It is intended to be called on page load and then repeatedly every second to keep the
+ * displayed date and time up-to-date.
+ * @returns {void}
+ */
 function updateDateTime() {
   const now = new Date();
   const days = [

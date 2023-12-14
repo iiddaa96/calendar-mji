@@ -5,7 +5,7 @@ let editingTodoId = null; // Variabel för att hålla reda på id:et för den to
 let selectedDate = null; // Variabel för att hålla reda på det datum som användaren har valt i kalendern
 
 /**
- * Funktion som initierar applikationen genom att lägga till händelselyssnare, öppna popup-fönstret, rendera todos, generera unika id:n och visa antalet todos
+ * Funktion som initierar applikationen genom att lägga till händelselyssnare, öppna popup-fönstret, rendera todos, generera unika id:n, visa antalet todos och uppdaterar
  */
 function startTodos() {
   addEventListeners();
@@ -17,7 +17,7 @@ function startTodos() {
 }
 
 /**
- * This function lisen to "click" element for the buttons
+ * This function listen to "click" element for the buttons
  */
 function addEventListeners() {
   const todoButton = document.getElementById("todoButton");
@@ -49,7 +49,7 @@ function togglePopup() {
 }
 
 /**
- * Create a todo or update a todo. if you don´t fill in the input correct a warning text popup will come
+ * Create a todo or update a todo. if you don´t fill in the input correct a warning text popup
  * The todo saves in localStorage
  */
 function addOrUpdateTodo() {
@@ -97,6 +97,11 @@ function addOrUpdateTodo() {
   feedback.textContent = "";
 }
 
+/**
+ * Retrieves notes from local storage, clears the existing content of the notes list,
+ * and populates the UI with note items.
+ * @returns {void}
+ */
 function renderNotes() {
   const notesList = document.getElementById("notesList");
   notesList.innerHTML = "";
@@ -112,7 +117,10 @@ function renderNotes() {
   });
 }
 
-/** This function render a todo, it look in the todo list array and create a list, and two button: Save and Delete. */
+/**
+ * Renders the todo items in the UI based on the todos array and the selected date.
+ * @returns {void}
+ */
 function renderTodos() {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
@@ -150,8 +158,11 @@ function renderTodos() {
 }
 
 /**
- * This function look in the todo-array after a todo with a special id you need to change.
- * could it find a new update it save it in localStorage. And the todo updates in the todo-array.
+ * Updates the UI with filtered todos based on the specified todo ID,
+ * saves changes to local storage, and triggers additional UI updates.
+ * @function updateTodo
+ * @param {string} id - The ID of the todo to be updated.
+ * @returns {void}
  */
 function updateTodo(id) {
   const selectedTodos = todos.filter((todo) => todo.id === id);
@@ -166,15 +177,22 @@ function updateTodo(id) {
   showTodoArrayLength();
 }
 
+/**
+ * Sets the editingTodoId to the specified todo ID and toggles the todo popup.
+ * @function editTodo
+ * @param {string} id - The ID of the todo to be edited.
+ * @returns {void}
+ */
 function editTodo(id) {
   editingTodoId = id;
   togglePopup();
 }
 
 /**
- * This function delete a todo. Looks after a todo with id and if it match
- * this todo deleted from the todo-array and in localstorage and render out the
- * new todo-array.
+ * Deletes a todo based on its ID, updates local storage, and triggers UI updates.
+ * @function deleteTodo
+ * @param {string} id - The ID of the todo to be deleted.
+ * @returns {void}
  */
 function deleteTodo(id) {
   const todoIndex = todos.findIndex((todo) => todo.id === id);
@@ -189,14 +207,22 @@ function deleteTodo(id) {
 }
 
 /**
- * This function create a unique id för the todo.
+ * This function generates a unique identifier by appending an underscore (_) followed by a random string
+ * derived from the `Math.random()` function and converting it to base 36.
+ * @function
+ * @returns {string} A unique identifier.
  */
 function generateUniqueId() {
   return "_" + Math.random().toString(36).substr(2, 9);
 }
 
 /**
- * Resets the todo form by clearing input fields and setting editingTodoId to null.
+ * This function clears the input field with the id "todoInput" and the input field with the id "dueDate"
+ * in a todo form. It is commonly used to reset the form after submitting or canceling an edit operation.
+ * Additionally, it sets the value of the global variable `editingTodoId` to `null`.
+ * @returns {void}
+ * @global
+ * @type {string|null} editingTodoId - The global variable that stores the ID of the todo being edited.
  */
 function resetTodoForm() {
   document.getElementById("todoInput").value = "";
@@ -212,16 +238,25 @@ function saveToLocalStorage() {
 }
 
 /**
- * This function look in localStorage if there are saved todos.
- * */
+ * This function retrieves stored todos from the local storage using the key "todos".
+ * If there are stored todos, it parses the JSON data and updates the global 'todos' array.
+ * If no todos are found in the local storage, the 'todos' array is set to an empty array.
+ * @returns {void}
+ * @global
+ * @type {Array} todos - The global array that stores todo items.
+ */
 function loadFromLocalStorage() {
   const storedTodos = localStorage.getItem("todos");
   todos = storedTodos ? JSON.parse(storedTodos) : [];
 }
 
 /**
- * Displays the number of todos in the HTML element with the id "todoCount"
- * and logs the total number of todos to the console.
+ * This function retrieves the DOM element with the id "todoCount" to display the
+ * current number of todos in the 'todos' array. It sets the text content of the
+ * element to the length of the 'todos' array and logs the count to the console.
+ * @returns {void}
+ * @type {Array} todos - The global array that stores todo items.
+ * // and the count will be logged to the console.
  */
 function showTodoArrayLength() {
   const showTodoLength = document.getElementById("todoCount");
@@ -230,6 +265,13 @@ function showTodoArrayLength() {
   console.log(`Antal todos: ${numberOfTodosArray}`);
 }
 
+/**
+ * This function retrieves the current 'notes' array from local storage, or initializes
+ * an empty array if no 'notes' are found. It then adds the provided 'todo' to the array,
+ * updates the 'notes' array in local storage, and persists the changes.
+ * @param {string} todo - The todo item to be added to the 'notes'.
+ * @type {Array} notes - The global array that stores notes or todo items.
+ */
 function addToNotes(todo) {
   const notes = localStorage.getItem("notes")
     ? JSON.parse(localStorage.getItem("notes"))
