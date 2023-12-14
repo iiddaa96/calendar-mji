@@ -1,5 +1,3 @@
-// window.addEventListener("DOMContentLoaded", initCalendar);
-
 function initCalendar() {
   renderCalenderDays();
   calenderInfo();
