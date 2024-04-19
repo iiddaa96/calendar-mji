@@ -6,5 +6,7 @@
     "update": "plugga update",
     "test": "plugga test"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "vite": "^5.2.9"
+  }
 }
