@@ -20,7 +20,6 @@ Det räcker att bara köra `npm test` om du vill jobba med kravlistan eftersom s
 
 I den här uppgiften skall ni bygga ett verktyg där användaren kan skapa och schemalägga todos. Verktyget skall visa en lista med todos och en kalender för översikt. Utöver det tekniska som skall skapas så ämnar den här uppgiften att träna på att arbeta med git och GitHub i projektform.
 
-Para ihop er i grupp om 3 - ni väljer själva vem ni jobbar med. Läs noga igenom hela uppgiftsbeskrivningen tillsammans och börja sedan med att planera och dela upp arbetet.
 
 ## Projektet
 
@@ -37,44 +36,8 @@ _Skiss att utgå ifrån till er layout (vissa delar så som väder och bilder be
 
 ---
 
-### Lista av data-cy som ska finnas i koden
+**Medverkande**
 
-- Välkomstsegment för aktuell dag:`data-cy="welcome-segment"`
-- Lista med alla todos: `data-cy="todo-list”`
-- Elementet som innehåller alla dagarna i en månad: `data-cy="calendar-body"`
-- Elementet för varje dag i kalendern: `data-cy="calendar-cell"`
-- Elementet som visar dagen i en cell: `data-cy="calendar-cell-date"`
-- Elementet som visar antal todos i en cell: `data-cy="calendar-cell-todos"`
-- Knapp för att visa todo formulär (valfritt): `data-cy="todo-reveal-form"`
-- Inputfält för titeln på en todo: `data-cy="todo-title-input"`
-- Inputfält för datumet på en todo: `data-cy="todo-date-input"`
-- Knapp för att spara en ny todo: `data-cy="save-todo-button"`
-- Knapp för att ta bort en todo: `data-cy="delete-todo-button”`
-- Knapp för att ändra en todo: `data-cy="edit-todo-button”`
-- Knapp för att ändra månad till föregående månad: `data-cy="prev-month"`
-- Knapp för att ändra månad till nästa månad: `data-cy="next-month"`
-
-### Ärendelista
-
-1. Skapa den övergripande layouten enligt skissen ovan. (G)
-2. Det skall gå att använda verktyget på alla skärmstorlekar ner till 360px i bredd. (G)
-3. Skapa och designa välkomstsegmentet (delen ovanför todo-listan) med tid, veckodag och datum presenteras. (G)
-4. Användaren skall kunna lägga till en todo. (G)
-5. Användaren skall kunna ta bort en todo. (G)
-6. Skapa och designa kalendervyn med en månadsvy över aktuell månad. (G)
-7. Kalendern ska visa hur många todos som är schemladaga för varje dag. (G)
-8. Spara todos i local storage och visa dessa vid omladdning av sidan. (G)
-9. Användaren skall kunna ändra en todo. (G)
-10. Användaren skall kunna växla till andra månader i kalendervyn. (G)
-11. Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag. (G)
-
-OBS: Gällande krav 8, så måste alla todos sparas under nyckeln `todos` i local storage.
-
-### Krav för godkänt
-
-1. Uppgiften lämnas in i tid!
-2. Verktyget fungerar enligt beskrivning.
-3. Ärenden för godkänt är gjorda.
-4. Git och GitHub har används enligt beskrivning.
-
-**LYCKA TILL!**
+- [Ida Casperson](https://github.com/iiddaa96)
+- [Jessica Rodriguez](https://github.com/iiddaa96)
+- [Michaela Andreasson](https://github.com/Navaas)
