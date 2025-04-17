@@ -15,7 +15,7 @@ Below is a list of the different scripts that can be run in the terminal:
 - `npm test -- --run` - Runs all the tests once in the terminal.
 
 
-> If you get the error `Cypress verification timed out`, you can extend the verification time - [läs mer här](https://stackoverflow.com/questions/63667880/cypress-verification-timed-out-after-30000-milliseconds).
+> If you get the error `Cypress verification timed out`, you can extend the verification time - [Read more here](https://stackoverflow.com/questions/63667880/cypress-verification-timed-out-after-30000-milliseconds).
 
 
 ## Project
